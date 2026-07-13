@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Who Verifies the Agents? | NeurIPS 2026 Workshop</title>
+  <meta name="description" content="Who Verifies the Agents? Toward Reliable Agent Development — a NeurIPS 2026 workshop on formalizing verification as a core discipline in agent development." />
+
+  <!-- Open Graph / social sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Who Verifies the Agents? Toward Reliable Agent Development" />
+  <meta property="og:description" content="A NeurIPS 2026 workshop on formalizing verification as a core discipline in agent development." />
+  <meta property="og:url" content="https://verify-agents-workshop.github.io/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary">
+      <a class="nav-brand" href="#top">Who Verifies the Agents?</a>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden />
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </label>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#pillars">Themes</a></li>
+        <li><a href="#cfp">Call for Papers</a></li>
+        <li><a href="#dates">Dates</a></li>
+        <li><a href="#speakers">Speakers</a></li>
+        <li><a href="#schedule">Schedule</a></li>
+        <li><a href="#organizers">Organizers</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-inner">
+        <p class="hero-eyebrow">NeurIPS 2026 Workshop</p>
+        <h1 class="hero-title">Who Verifies the Agents?</h1>
+        <p class="hero-subtitle">Toward Reliable Agent Development</p>
+        <p class="hero-lede">
+          Verification is the bottleneck between fragile prototypes and scalable, reliable
+          agent systems. This workshop convenes researchers and practitioners to make
+          verification a first-class discipline in agent development.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#cfp">Call for Papers</a>
+          <a class="btn btn-ghost" href="#about">Read the Overview</a>
+        </div>
+        <p class="hero-meta">San Diego, USA · December 2026 · Co-located with NeurIPS</p>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section">
+      <div class="section-inner narrow">
+        <h2 class="section-title">About the Workshop</h2>
+        <p>
+          Recent advances in autonomous agents have demonstrated potential for complex
+          reasoning and open-ended tasks. However, current agent development is often
+          fragmented and dependent on ad-hoc methods, leading to reliability challenges
+          where performance plateaus or regresses during iteration.
+        </p>
+        <p>
+          The fundamental bottleneck preventing the transition to scalable, reliable agent
+          systems is <strong>verification</strong>: the inability to systematically determine
+          whether a change to an agent constitutes a genuine improvement. This workshop seeks
+          to formalize verification as a core discipline in agent development.
+        </p>
+        <p>
+          We convene researchers and practitioners to explore three critical pillars:
+          developing robust verifiers that resist reward hacking, leveraging
+          environment-grounded simulation as the ground truth for evaluation, and integrating
+          heterogeneous signals like latency, cost, and calibration into the verification
+          loop. By centering verification in the development lifecycle, this workshop aims to
+          establish the foundation necessary to move toward truly autonomous and reliable
+          agentic systems.
+        </p>
+      </div>
+    </section>
+
+    <!-- Pillars -->
+    <section id="pillars" class="section section-alt">
+      <div class="section-inner">
+        <h2 class="section-title">Three Pillars of Verification</h2>
+        <p class="section-intro">
+          We invite work spanning — but not limited to — these three interconnected themes.
+        </p>
+        <div class="pillars">
+          <article class="pillar">
+            <div class="pillar-index">01</div>
+            <h3>Robust Verifiers</h3>
+            <p>
+              Designing verifiers and reward models that resist reward hacking, remain
+              faithful under distribution shift, and provide trustworthy signal for whether an
+              agent has genuinely improved.
+            </p>
+          </article>
+          <article class="pillar">
+            <div class="pillar-index">02</div>
+            <h3>Environment-Grounded Simulation</h3>
+            <p>
+              Treating interactive, environment-grounded simulation as the ground truth for
+              evaluation — building faithful sandboxes, benchmarks, and world models that
+              reflect real deployment conditions.
+            </p>
+          </article>
+          <article class="pillar">
+            <div class="pillar-index">03</div>
+            <h3>Heterogeneous Signals</h3>
+            <p>
+              Integrating signals beyond task success — latency, cost, calibration,
+              robustness, and safety — into a unified verification loop that reflects the true
+              objectives of deployed agents.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call for Papers -->
+    <section id="cfp" class="section">
+      <div class="section-inner narrow">
+        <h2 class="section-title">Call for Papers</h2>
+        <p class="tag tag-tentative">Details forthcoming</p>
+        <p>
+          We welcome submissions of original research, position papers, and works-in-progress
+          that advance the science and practice of verifying agents. Topics of interest
+          include, but are not limited to:
+        </p>
+        <ul class="topic-list">
+          <li>Reward hacking, specification gaming, and robustness of verifiers</li>
+          <li>Environment-grounded simulation, sandboxes, and benchmarks for agent evaluation</li>
+          <li>Process- vs. outcome-based verification and reward modeling</li>
+          <li>Calibration, uncertainty, and confidence estimation in agent evaluation</li>
+          <li>Multi-objective evaluation: latency, cost, safety, and calibration signals</li>
+          <li>Human-in-the-loop and LLM-as-judge verification, and their failure modes</li>
+          <li>Detecting regressions and attributing improvement during iterative development</li>
+          <li>Reproducibility, tooling, and infrastructure for reliable agent development</li>
+        </ul>
+        <p class="cfp-note">
+          Submission instructions, format, and page limits will be announced here. Check back
+          for the submission portal link and detailed guidelines.
+        </p>
+      </div>
+    </section>
+
+    <!-- Important Dates -->
+    <section id="dates" class="section section-alt">
+      <div class="section-inner narrow">
+        <h2 class="section-title">Important Dates</h2>
+        <p class="tag tag-tentative">Tentative — subject to change</p>
+        <ul class="dates">
+          <li><span class="date-label">Submission deadline</span><span class="date-value">TBA</span></li>
+          <li><span class="date-label">Author notification</span><span class="date-value">TBA</span></li>
+          <li><span class="date-label">Camera-ready deadline</span><span class="date-value">TBA</span></li>
+          <li><span class="date-label">Workshop date</span><span class="date-value">December 2026</span></li>
+        </ul>
+        <p class="tz-note">All deadlines are 23:59 Anywhere on Earth (AoE) unless otherwise noted.</p>
+      </div>
+    </section>
+
+    <!-- Speakers -->
+    <section id="speakers" class="section">
+      <div class="section-inner">
+        <h2 class="section-title">Invited Speakers</h2>
+        <p class="section-intro">Speaker lineup to be announced.</p>
+        <div class="cards">
+          <div class="person-card placeholder">
+            <div class="avatar"></div>
+            <div class="person-name">To be announced</div>
+            <div class="person-affil">&nbsp;</div>
+          </div>
+          <div class="person-card placeholder">
+            <div class="avatar"></div>
+            <div class="person-name">To be announced</div>
+            <div class="person-affil">&nbsp;</div>
+          </div>
+          <div class="person-card placeholder">
+            <div class="avatar"></div>
+            <div class="person-name">To be announced</div>
+            <div class="person-affil">&nbsp;</div>
+          </div>
+          <div class="person-card placeholder">
+            <div class="avatar"></div>
+            <div class="person-name">To be announced</div>
+            <div class="person-affil">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Schedule -->
+    <section id="schedule" class="section section-alt">
+      <div class="section-inner narrow">
+        <h2 class="section-title">Schedule</h2>
+        <p class="section-intro">A detailed program will be posted closer to the event.</p>
+        <ul class="schedule">
+          <li><span class="sched-time">Morning</span><span class="sched-item">Opening remarks &amp; invited talks</span></li>
+          <li><span class="sched-time">Midday</span><span class="sched-item">Contributed talks &amp; poster session</span></li>
+          <li><span class="sched-time">Afternoon</span><span class="sched-item">Panel discussion &amp; invited talks</span></li>
+          <li><span class="sched-time">Closing</span><span class="sched-item">Best paper awards &amp; closing remarks</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Organizers -->
+    <section id="organizers" class="section">
+      <div class="section-inner">
+        <h2 class="section-title">Organizers</h2>
+        <p class="section-intro">Organizing committee to be announced.</p>
+        <div class="cards">
+          <div class="person-card placeholder">
+            <div class="avatar"></div>
+            <div class="person-name">To be announced</div>
+            <div class="person-affil">&nbsp;</div>
+          </div>
+          <div class="person-card placeholder">
+            <div class="avatar"></div>
+            <div class="person-name">To be announced</div>
+            <div class="person-affil">&nbsp;</div>
+          </div>
+          <div class="person-card placeholder">
+            <div class="avatar"></div>
+            <div class="person-name">To be announced</div>
+            <div class="person-affil">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section section-alt">
+      <div class="section-inner narrow center">
+        <h2 class="section-title">Get in Touch</h2>
+        <p>
+          Questions about the workshop, submissions, or sponsorship? Reach out to the
+          organizing committee.
+        </p>
+        <p class="contact-email"><a href="mailto:contact@example.com">contact@example.com</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-title">Who Verifies the Agents? Toward Reliable Agent Development</p>
+      <p class="footer-sub">NeurIPS 2026 Workshop</p>
+    </div>
+  </footer>
+</body>
+</html>
