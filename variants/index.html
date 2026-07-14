@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design Variants — Who Verifies the Agents?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * , *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Inter', sans-serif; background: #14141f; color: #f3f3f7; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    .wrap { max-width: 900px; margin: 0 auto; padding: 72px 28px 96px; }
+    h1 { font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; margin: 0 0 8px; }
+    .sub { color: #a3a3b2; margin: 0 0 40px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+    a.card {
+      display: block; text-decoration: none; color: inherit; background: #1e1e2b;
+      border: 1px solid #2c2c3d; border-radius: 16px; padding: 26px; transition: transform .18s ease, border-color .18s ease;
+    }
+    a.card:hover { transform: translateY(-4px); border-color: #4338ca; }
+    .tag { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: #8a8a9c; font-weight: 700; }
+    .swatch { display: flex; gap: 6px; margin: 14px 0; }
+    .swatch span { width: 26px; height: 26px; border-radius: 7px; border: 1px solid rgba(255,255,255,0.1); }
+    a.card h2 { font-size: 1.25rem; margin: 6px 0 8px; }
+    a.card p { color: #a3a3b2; font-size: 0.92rem; margin: 0; }
+    .go { display: inline-block; margin-top: 16px; color: #8b9bff; font-weight: 600; font-size: 0.9rem; }
+    .baseline { margin-top: 32px; font-size: 0.95rem; color: #a3a3b2; }
+    .baseline a { color: #8b9bff; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="tag">Who Verifies the Agents? · Design Exploration</p>
+    <h1>Design Variants</h1>
+    <p class="sub">Live mockups to compare before we settle. Each keeps the same content; only the visual language changes.</p>
+
+    <div class="grid">
+      <a class="card" href="/dev/variants/swiss/">
+        <div class="tag">Variant A</div>
+        <div class="swatch"><span style="background:#ffffff"></span><span style="background:#111111"></span><span style="background:#3b5bdb"></span></div>
+        <h2>Swiss Minimal</h2>
+        <p>Strict grid, generous whitespace, monochrome plus one cool accent. Gallery-clean and understated.</p>
+        <span class="go">View mockup →</span>
+      </a>
+      <a class="card" href="/dev/variants/warm/">
+        <div class="tag">Variant B</div>
+        <div class="swatch"><span style="background:#f6f1e9"></span><span style="background:#5f7d5a"></span><span style="background:#c17a54"></span></div>
+        <h2>Warm Humanist</h2>
+        <p>Cream neutrals, sage &amp; terracotta accents, rounded cards, serif display. Approachable and inviting.</p>
+        <span class="go">View mockup →</span>
+      </a>
+    </div>
+
+    <p class="baseline">Reference: <a href="/dev/">current design (baseline) →</a></p>
+  </div>
+</body>
+</html>
