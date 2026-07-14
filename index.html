@@ -19,6 +19,16 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Staging banner: revealed only on the /dev/ preview, stays hidden on the public site. -->
+  <div id="preview-banner" class="preview-banner" hidden>
+    ⚙️ Preview build — staging version served at <code>/dev/</code>. This is not the public site.
+  </div>
+  <script>
+    if (window.location.pathname.startsWith('/dev/')) {
+      document.getElementById('preview-banner').hidden = false;
+    }
+  </script>
+
   <header class="site-header">
     <nav class="nav" aria-label="Primary">
       <a class="nav-brand" href="#top">Who Verifies the Agents?</a>

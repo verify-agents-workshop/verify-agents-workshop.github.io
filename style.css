@@ -42,6 +42,25 @@ a { color: var(--brand); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 /* --------------------------------------------------------------------------
+   Staging preview banner (only shown at /dev/)
+   -------------------------------------------------------------------------- */
+.preview-banner {
+  background: #b45309;
+  color: #fff;
+  text-align: center;
+  padding: 9px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.preview-banner code {
+  background: rgba(255, 255, 255, 0.22);
+  padding: 1px 7px;
+  border-radius: 5px;
+  font-size: 0.85em;
+}
+
+/* --------------------------------------------------------------------------
    Header / nav
    -------------------------------------------------------------------------- */
 .site-header {
