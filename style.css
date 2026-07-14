@@ -45,6 +45,8 @@ a:hover { text-decoration: underline; }
    Staging preview banner (only shown at /dev/)
    -------------------------------------------------------------------------- */
 .preview-banner {
+  width: 100%;
+  margin: 0;
   background: #b45309;
   color: #fff;
   text-align: center;
