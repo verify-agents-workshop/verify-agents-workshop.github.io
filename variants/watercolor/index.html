@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Watercolor Pastel — Who Verifies the Agents?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper: #fdfcfa;
+      --ink: #4a4553;
+      --ink-soft: #7b7487;
+      --ink-faint: #a89fb3;
+      --line: #ece7ef;
+
+      --lilac: #c9b8e8;
+      --blush: #f3c6d3;
+      --sky: #b8d8e8;
+      --mint: #c2e0cf;
+      --butter: #f7e3b9;
+
+      --lilac-deep: #8a72b8;
+      --blush-deep: #d48ba1;
+      --sky-deep: #6fa3c0;
+
+      --maxw: 1040px;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    * , *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; font-family: var(--sans); color: var(--ink); background: var(--paper);
+      line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+    }
+    a { color: var(--lilac-deep); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .variant-bar {
+      background: var(--lilac-deep); color: #fff; font-size: 0.8rem; letter-spacing: 0.04em;
+      text-align: center; padding: 9px 16px; font-weight: 600; position: relative; z-index: 30;
+    }
+    .variant-bar a { color: #fff; text-decoration: underline; opacity: 0.9; }
+
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; position: relative; }
+
+    header.top {
+      position: sticky; top: 0; z-index: 20; background: rgba(253,252,250,0.82); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .top-inner { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+    .brand { font-family: var(--serif); font-weight: 600; font-size: 1.2rem; letter-spacing: 0.01em; }
+    nav.links { display: flex; gap: 28px; }
+    nav.links a { color: var(--ink-soft); font-size: 0.9rem; font-weight: 500; }
+    nav.links a:hover { color: var(--lilac-deep); text-decoration: none; }
+
+    /* ------ watercolor washes (pure SVG, painted look via turbulence) ------ */
+    .wash { position: absolute; pointer-events: none; z-index: 0; opacity: 0.85; }
+    .hero { position: relative; text-align: center; padding: 116px 0 108px; overflow: hidden; }
+    .hero > .wrap { z-index: 2; }
+
+    .eyebrow {
+      display: inline-block; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--lilac-deep); margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: var(--serif); font-weight: 500; font-size: clamp(3rem, 7vw, 5.2rem);
+      line-height: 1.02; letter-spacing: -0.01em; margin: 0 0 14px; color: #3f3a49;
+    }
+    .hero .sub {
+      font-family: var(--serif); font-style: italic; font-size: clamp(1.3rem, 2.6vw, 1.8rem);
+      color: var(--blush-deep); font-weight: 500; margin: 0 0 30px;
+    }
+    .hero .lede { max-width: 600px; margin: 0 auto 38px; font-size: 1.12rem; color: var(--ink-soft); }
+    .btn {
+      display: inline-block; padding: 13px 32px; border-radius: 999px; font-weight: 600; font-size: 0.95rem;
+      color: #fff; background: linear-gradient(120deg, var(--lilac-deep), var(--blush-deep));
+      box-shadow: 0 10px 26px rgba(138,114,184,0.3); transition: transform .16s ease, box-shadow .16s ease;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(138,114,184,0.4); text-decoration: none; }
+    .hero .meta { margin-top: 30px; color: var(--ink-faint); font-weight: 500; font-size: 0.94rem; }
+
+    section { padding: 88px 0; position: relative; }
+    .stitle {
+      font-family: var(--serif); font-weight: 500; font-size: clamp(2rem, 3.6vw, 2.8rem);
+      letter-spacing: -0.005em; margin: 0 0 10px; text-align: center; color: #3f3a49;
+    }
+    .brush-under { display: block; margin: 0 auto 34px; width: 150px; height: 14px; }
+    .intro { text-align: center; color: var(--ink-soft); max-width: 620px; margin: 0 auto 46px; font-size: 1.05rem; }
+    .prose { max-width: 660px; margin: 0 auto; position: relative; z-index: 2; }
+    .prose p { font-size: 1.08rem; margin: 0 0 20px; }
+
+    .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; position: relative; z-index: 2; }
+    .pcard {
+      background: rgba(255,255,255,0.72); border: 1px solid rgba(236,231,239,0.9); border-radius: 22px;
+      padding: 36px 28px; backdrop-filter: blur(2px);
+      box-shadow: 0 2px 6px rgba(74,69,83,0.04), 0 16px 36px rgba(74,69,83,0.06);
+      transition: transform .2s ease, box-shadow .2s ease; text-align: center;
+    }
+    .pcard:hover { transform: translateY(-5px); box-shadow: 0 20px 44px rgba(74,69,83,0.11); }
+    .blob { width: 74px; height: 74px; margin: 0 auto 18px; display: block; }
+    .pcard h3 { font-family: var(--serif); font-weight: 600; font-size: 1.45rem; margin: 0 0 10px; color: #3f3a49; }
+    .pcard p { color: var(--ink-soft); font-size: 0.97rem; margin: 0; }
+    @media (max-width: 820px) { .pillars { grid-template-columns: 1fr; } }
+
+    .dates { max-width: 600px; margin: 0 auto; position: relative; z-index: 2; }
+    .drow { display: flex; justify-content: space-between; align-items: center; padding: 16px 6px; border-bottom: 1px dashed #ded7e4; }
+    .drow .k { font-weight: 500; }
+    .drow .v { font-weight: 600; color: var(--lilac-deep); }
+
+    footer.foot { position: relative; text-align: center; padding: 88px 24px 60px; overflow: hidden; }
+    footer.foot .t { font-family: var(--serif); font-size: 1.5rem; color: #3f3a49; position: relative; z-index: 2; }
+    footer.foot .s { color: var(--ink-faint); font-size: 0.9rem; margin-top: 6px; position: relative; z-index: 2; }
+  </style>
+</head>
+<body>
+  <!-- shared watercolor filter defs -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <!-- rough pigment edge -->
+      <filter id="wc" x="-30%" y="-30%" width="160%" height="160%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.012 0.016" numOctaves="3" seed="7" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="46"/>
+        <feGaussianBlur stdDeviation="1.4"/>
+      </filter>
+      <!-- softer, wetter wash -->
+      <filter id="wc-soft" x="-40%" y="-40%" width="180%" height="180%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.02 0.03" numOctaves="4" seed="12" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="34"/>
+        <feGaussianBlur stdDeviation="5"/>
+      </filter>
+      <!-- brush stroke edge for underlines -->
+      <filter id="wc-brush" x="-20%" y="-120%" width="140%" height="340%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.09 0.4" numOctaves="3" seed="4" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="9"/>
+        <feGaussianBlur stdDeviation="0.4"/>
+      </filter>
+    </defs>
+  </svg>
+
+  <div class="variant-bar">🎨 Design Preview · Watercolor Pastel · <a href="/dev/variants/">all variants</a> · <a href="/dev/">baseline</a></div>
+
+  <header class="top">
+    <div class="wrap top-inner">
+      <div class="brand">Who Verifies the Agents?</div>
+      <nav class="links">
+        <a href="#about">About</a>
+        <a href="#themes">Themes</a>
+        <a href="#dates">Dates</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <!-- painted washes behind the hero -->
+    <svg class="wash" style="top:-120px; left:-160px; width:760px; height:620px;" viewBox="0 0 760 620" aria-hidden="true">
+      <g filter="url(#wc-soft)">
+        <ellipse cx="360" cy="290" rx="290" ry="200" fill="#c9b8e8" opacity="0.42"/>
+        <ellipse cx="300" cy="250" rx="200" ry="150" fill="#c9b8e8" opacity="0.3"/>
+      </g>
+    </svg>
+    <svg class="wash" style="top:-60px; right:-200px; width:720px; height:600px;" viewBox="0 0 720 600" aria-hidden="true">
+      <g filter="url(#wc-soft)">
+        <ellipse cx="380" cy="270" rx="270" ry="190" fill="#f3c6d3" opacity="0.4"/>
+        <ellipse cx="430" cy="320" rx="180" ry="130" fill="#f3c6d3" opacity="0.28"/>
+      </g>
+    </svg>
+    <svg class="wash" style="bottom:-180px; left:32%; width:640px; height:480px;" viewBox="0 0 640 480" aria-hidden="true">
+      <g filter="url(#wc-soft)">
+        <ellipse cx="320" cy="240" rx="250" ry="150" fill="#b8d8e8" opacity="0.34"/>
+      </g>
+    </svg>
+
+    <div class="wrap">
+      <span class="eyebrow">NeurIPS 2026 Workshop</span>
+      <h1>Who Verifies the Agents?</h1>
+      <p class="sub">Toward Reliable Agent Development</p>
+      <p class="lede">Verification is the bottleneck between fragile prototypes and scalable, reliable agent systems. This workshop convenes researchers and practitioners to make verification a first-class discipline in agent development.</p>
+      <a class="btn" href="#about">Read the Overview</a>
+      <p class="meta">Sydney, Australia · Dec 11 or 12, 2026 · Co-located with NeurIPS</p>
+    </div>
+  </section>
+
+  <section id="about">
+    <svg class="wash" style="top:40px; right:-240px; width:560px; height:460px;" viewBox="0 0 560 460" aria-hidden="true">
+      <g filter="url(#wc-soft)">
+        <ellipse cx="300" cy="230" rx="210" ry="140" fill="#c2e0cf" opacity="0.3"/>
+      </g>
+    </svg>
+    <div class="wrap">
+      <h2 class="stitle">About the Workshop</h2>
+      <svg class="brush-under" viewBox="0 0 150 14" aria-hidden="true">
+        <rect x="6" y="4" width="138" height="6" rx="3" fill="#c9b8e8" opacity="0.8" filter="url(#wc-brush)"/>
+      </svg>
+      <div class="prose">
+        <p>Recent advances in autonomous agents have demonstrated potential for complex reasoning and open-ended tasks. However, current agent development is often fragmented and dependent on ad-hoc methods, leading to reliability challenges where performance plateaus or regresses during iteration.</p>
+        <p>The fundamental bottleneck preventing the transition to scalable, reliable agent systems is verification: the inability to systematically determine whether a change to an agent constitutes a genuine improvement. This workshop seeks to formalize verification as a core discipline in agent development.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="themes">
+    <svg class="wash" style="top:-40px; left:-260px; width:600px; height:520px;" viewBox="0 0 600 520" aria-hidden="true">
+      <g filter="url(#wc-soft)">
+        <ellipse cx="300" cy="260" rx="230" ry="160" fill="#f7e3b9" opacity="0.32"/>
+      </g>
+    </svg>
+    <div class="wrap">
+      <h2 class="stitle">Three Pillars of Verification</h2>
+      <svg class="brush-under" viewBox="0 0 150 14" aria-hidden="true">
+        <rect x="6" y="4" width="138" height="6" rx="3" fill="#f3c6d3" opacity="0.85" filter="url(#wc-brush)"/>
+      </svg>
+      <p class="intro">We invite work spanning — but not limited to — these three interconnected themes.</p>
+      <div class="pillars">
+        <div class="pcard">
+          <svg class="blob" viewBox="0 0 74 74" aria-hidden="true">
+            <g filter="url(#wc)">
+              <circle cx="37" cy="37" r="24" fill="#c9b8e8" opacity="0.85"/>
+            </g>
+            <text x="37" y="45" text-anchor="middle" font-size="24" fill="#5d4a87" font-family="Georgia, serif">✓</text>
+          </svg>
+          <h3>Robust Verifiers</h3>
+          <p>Verifiers and reward models that resist reward hacking and stay faithful under distribution shift.</p>
+        </div>
+        <div class="pcard">
+          <svg class="blob" viewBox="0 0 74 74" aria-hidden="true">
+            <g filter="url(#wc)">
+              <circle cx="37" cy="37" r="24" fill="#b8d8e8" opacity="0.85"/>
+            </g>
+            <text x="37" y="45" text-anchor="middle" font-size="24" fill="#3f6d8a" font-family="Georgia, serif">◎</text>
+          </svg>
+          <h3>Environment-Grounded Simulation</h3>
+          <p>Interactive, environment-grounded simulation as the ground truth for evaluation.</p>
+        </div>
+        <div class="pcard">
+          <svg class="blob" viewBox="0 0 74 74" aria-hidden="true">
+            <g filter="url(#wc)">
+              <circle cx="37" cy="37" r="24" fill="#f3c6d3" opacity="0.85"/>
+            </g>
+            <text x="37" y="45" text-anchor="middle" font-size="24" fill="#a05a72" font-family="Georgia, serif">≈</text>
+          </svg>
+          <h3>Heterogeneous Signals</h3>
+          <p>Latency, cost, calibration, and safety integrated into a unified verification loop.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="dates">
+    <svg class="wash" style="bottom:-80px; right:-220px; width:560px; height:440px;" viewBox="0 0 560 440" aria-hidden="true">
+      <g filter="url(#wc-soft)">
+        <ellipse cx="290" cy="220" rx="210" ry="140" fill="#c9b8e8" opacity="0.26"/>
+      </g>
+    </svg>
+    <div class="wrap">
+      <h2 class="stitle">Important Dates</h2>
+      <svg class="brush-under" viewBox="0 0 150 14" aria-hidden="true">
+        <rect x="6" y="4" width="138" height="6" rx="3" fill="#b8d8e8" opacity="0.9" filter="url(#wc-brush)"/>
+      </svg>
+      <div class="dates">
+        <div class="drow"><span class="k">Submission deadline</span><span class="v">TBA</span></div>
+        <div class="drow"><span class="k">Author notification</span><span class="v">TBA</span></div>
+        <div class="drow"><span class="k">Camera-ready</span><span class="v">TBA</span></div>
+        <div class="drow"><span class="k">Workshop date</span><span class="v">Dec 11 or 12, 2026</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <svg class="wash" style="bottom:-200px; left:50%; transform:translateX(-50%); width:900px; height:420px;" viewBox="0 0 900 420" aria-hidden="true">
+      <g filter="url(#wc-soft)">
+        <ellipse cx="450" cy="260" rx="380" ry="160" fill="#c9b8e8" opacity="0.3"/>
+        <ellipse cx="520" cy="300" rx="260" ry="120" fill="#f3c6d3" opacity="0.26"/>
+      </g>
+    </svg>
+    <div class="t">Who Verifies the Agents?</div>
+    <div class="s">NeurIPS 2026 Workshop · Sydney, Australia</div>
+  </footer>
+</body>
+</html>
