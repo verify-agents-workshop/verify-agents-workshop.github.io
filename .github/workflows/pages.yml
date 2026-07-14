@@ -1,0 +1,65 @@
+name: Deploy site (production + dev preview)
+
+# Builds the published GitHub Pages site from two branches:
+#   - `main` is served at the site root  (https://verify-agents-workshop.github.io/)
+#   - `dev`  is served at /dev/          (https://verify-agents-workshop.github.io/dev/)
+#
+# The /dev/ path is an unlinked, hidden staging copy for previewing changes
+# before they are merged into `main` and published to the root.
+
+on:
+  push:
+    branches: [main, dev]
+  workflow_dispatch:
+
+# Least-privilege permissions required by the Pages deployment.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never run two deployments at once; let an in-flight deploy finish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout production (main)
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: main
+
+      - name: Checkout preview (dev)
+        uses: actions/checkout@v4
+        with:
+          ref: dev
+          path: dev
+
+      - name: Assemble site (main at root, dev under /dev)
+        run: |
+          mkdir -p _site
+          rsync -a --exclude='.git' --exclude='.github' main/ _site/
+          mkdir -p _site/dev
+          rsync -a --exclude='.git' --exclude='.github' dev/ _site/dev/
+          # Ensure Jekyll processing stays disabled for the assembled output.
+          touch _site/.nojekyll
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
