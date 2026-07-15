@@ -16,9 +16,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=2" />
+  <link rel="stylesheet" href="style.css?v=3" />
 </head>
 <body>
+  <!-- Under-construction notice shown on the public site; replaced by the staging banner on /dev/. -->
+  <div id="construction-banner" class="construction-banner">
+    🚧 This website is under construction — details below are not final and may change.
+  </div>
   <!-- Staging banner: revealed only on the /dev/ preview, stays hidden on the public site. -->
   <div id="preview-banner" class="preview-banner" hidden>
     ⚙️ Preview build — staging version served at <code>/dev/</code>. This is not the public site.
@@ -26,6 +30,7 @@
   <script>
     if (window.location.pathname.startsWith('/dev/')) {
       document.getElementById('preview-banner').hidden = false;
+      document.getElementById('construction-banner').hidden = true;
     }
   </script>
 
@@ -73,25 +78,30 @@
       <div class="section-inner narrow">
         <h2 class="section-title">About the Workshop</h2>
         <p>
-          Recent advances in autonomous agents have demonstrated potential for complex
-          reasoning and open-ended tasks. However, current agent development is often
-          fragmented and dependent on ad-hoc methods, leading to reliability challenges
-          where performance plateaus or regresses during iteration.
+          Agent development is undergoing a crucial shift. Despite remarkable advances in
+          agents that reason, plan, and operate in open-ended environments, their
+          construction remains fragmented, dominated by manual prompt engineering and ad-hoc
+          scaffolding. The next leap is toward scalable, autonomous agent development
+          grounded in systematic engineering principles that ensure reliability in dynamic
+          environments.
         </p>
         <p>
-          The fundamental bottleneck preventing the transition to scalable, reliable agent
-          systems is <strong>verification</strong>: the inability to systematically determine
-          whether a change to an agent constitutes a genuine improvement. This workshop seeks
-          to formalize verification as a core discipline in agent development.
+          The bottleneck is not a deficit of agentic frameworks but
+          <strong>verification</strong>: the ability to reliably determine whether a change
+          to an agent — a prompt update, a new tool integration, a change in reasoning
+          logic — is a genuine improvement. Verification works in controlled settings
+          (formal math, competitive programming, coding) but remains shallow and noisy in
+          general agentic tasks, causing performance to plateau or silently regress during
+          development. Prevailing pipelines lean on limited signals — isolated outcome
+          rewards or LLM-as-judge scores — that are too narrow to capture long-horizon
+          behavior and susceptible to reward hacking.
         </p>
         <p>
-          We convene researchers and practitioners to explore three critical pillars:
-          developing robust verifiers that resist reward hacking, leveraging
-          environment-grounded simulation as the ground truth for evaluation, and integrating
-          heterogeneous signals like latency, cost, and calibration into the verification
-          loop. By centering verification in the development lifecycle, this workshop aims to
-          establish the foundation necessary to move toward truly autonomous and reliable
-          agentic systems.
+          Unlocking reliable agents in practice requires verification frameworks that are
+          broader in scope (diverse tasks and edge cases), deeper in analysis (process-level
+          reasoning), and more heterogeneous (beyond scalar rewards). This workshop convenes
+          researchers from reinforcement learning, agentic AI, evaluation and benchmarking,
+          AI safety and red-teaming, simulation, and ML systems around three pillars.
         </p>
       </div>
     </section>
@@ -106,29 +116,31 @@
         <div class="pillars">
           <article class="pillar">
             <div class="pillar-index">01</div>
-            <h3>Robust Verifiers</h3>
+            <h3>Safety &amp; Robustness of Verification</h3>
             <p>
-              Designing verifiers and reward models that resist reward hacking, remain
-              faithful under distribution shift, and provide trustworthy signal for whether an
-              agent has genuinely improved.
+              Verification must evolve with agents: robust verifiers that prevent reward
+              hacking, resist harness specification gaming, and maintain alignment — scaling
+              from outcome checks to process-level signals like traces, plans, and tool-call
+              sequences.
             </p>
           </article>
           <article class="pillar">
             <div class="pillar-index">02</div>
-            <h3>Environment-Grounded Simulation</h3>
+            <h3>Environment-Grounded Verification &amp; Simulators</h3>
             <p>
-              Treating interactive, environment-grounded simulation as the ground truth for
-              evaluation — building faithful sandboxes, benchmarks, and world models that
-              reflect real deployment conditions.
+              For open-ended tasks lacking closed-form metrics, the environment itself is the
+              ground truth. Faithful simulators of agentic tasks — from multi-agent kernel
+              optimization to self-optimizing production systems — can become a verification
+              infrastructure layer.
             </p>
           </article>
           <article class="pillar">
             <div class="pillar-index">03</div>
-            <h3>Heterogeneous Signals</h3>
+            <h3>Diverse &amp; Heterogeneous Verifiable Signals</h3>
             <p>
-              Integrating signals beyond task success — latency, cost, calibration,
-              robustness, and safety — into a unified verification loop that reflects the true
-              objectives of deployed agents.
+              Beyond scalar rewards, holistic evaluation integrates user experience,
+              cost/latency profiles, calibration, and multimodality. A key challenge is
+              composing these heterogeneous signals into reliable verification metrics.
             </p>
           </article>
         </div>
@@ -155,9 +167,15 @@
           <li>Detecting regressions and attributing improvement during iterative development</li>
           <li>Reproducibility, tooling, and infrastructure for reliable agent development</li>
         </ul>
+        <p>
+          Submissions and reviewing will be handled through <strong>OpenReview</strong>, and
+          the program will be posted on this website ahead of the conference. Organizers will
+          not submit work to the workshop, and reviewers will not use LLMs to evaluate
+          submissions.
+        </p>
         <p class="cfp-note">
-          Submission instructions, format, and page limits will be announced here. Check back
-          for the submission portal link and detailed guidelines.
+          The full call for papers — submission link, format, and page limits — will be
+          announced here.
         </p>
       </div>
     </section>
@@ -168,8 +186,9 @@
         <h2 class="section-title">Important Dates</h2>
         <p class="tag tag-tentative">Tentative — subject to change</p>
         <ul class="dates">
-          <li><span class="date-label">Submission deadline</span><span class="date-value">TBA</span></li>
-          <li><span class="date-label">Author notification</span><span class="date-value">TBA</span></li>
+          <li><span class="date-label">Call for papers released</span><span class="date-value">Mid-July 2026</span></li>
+          <li><span class="date-label">Submission deadline</span><span class="date-value">August 29, 2026</span></li>
+          <li><span class="date-label">Author notification</span><span class="date-value">September 29, 2026</span></li>
           <li><span class="date-label">Camera-ready deadline</span><span class="date-value">TBA</span></li>
           <li><span class="date-label">Workshop date</span><span class="date-value">Dec 11 or 12, 2026</span></li>
         </ul>
@@ -181,27 +200,49 @@
     <section id="speakers" class="section">
       <div class="section-inner">
         <h2 class="section-title">Invited Speakers</h2>
-        <p class="section-intro">Speaker lineup to be announced.</p>
+        <p class="section-intro">Speakers from academia and industry spanning our three pillars, listed alphabetically by last name.</p>
         <div class="cards">
-          <div class="person-card placeholder">
+          <div class="person-card">
             <div class="avatar"></div>
-            <div class="person-name">To be announced</div>
-            <div class="person-affil">&nbsp;</div>
+            <div class="person-name">Pin-Yu Chen</div>
+            <div class="person-affil">IBM</div>
+            <p class="person-bio">Principal Research Scientist, Trusted AI Group; PI at the MIT–IBM Watson AI Lab. AI safety, robustness, and trustworthiness.</p>
           </div>
-          <div class="person-card placeholder">
+          <div class="person-card">
             <div class="avatar"></div>
-            <div class="person-name">To be announced</div>
-            <div class="person-affil">&nbsp;</div>
+            <div class="person-name">Azalia Mirhoseini</div>
+            <div class="person-affil">Stanford University · Ricursive Intelligence</div>
+            <p class="person-bio">Assistant Professor at Stanford. Scalable, self-improving AI; Mixture-of-Experts and AlphaChip.</p>
           </div>
-          <div class="person-card placeholder">
+          <div class="person-card">
             <div class="avatar"></div>
-            <div class="person-name">To be announced</div>
-            <div class="person-affil">&nbsp;</div>
+            <div class="person-name">Seshendra Nalla</div>
+            <div class="person-affil">Datadog</div>
+            <p class="person-bio">VP of Observability Data Platform; core contributor to BitsEvolve, a self-optimizing code system.</p>
           </div>
-          <div class="person-card placeholder">
+          <div class="person-card">
             <div class="avatar"></div>
-            <div class="person-name">To be announced</div>
-            <div class="person-affil">&nbsp;</div>
+            <div class="person-name">Martin Odersky</div>
+            <div class="person-affil">EPFL</div>
+            <p class="person-bio">Professor at EPFL, creator of Scala, ACM Fellow. Type-and-capability tracking for safe agent harnesses.</p>
+          </div>
+          <div class="person-card">
+            <div class="avatar"></div>
+            <div class="person-name">Dhaval Patel</div>
+            <div class="person-affil">IBM Research</div>
+            <p class="person-bio">Senior Technical Staff Member at T.J. Watson. Time-series foundation models and environment-grounded LLM agents.</p>
+          </div>
+          <div class="person-card">
+            <div class="avatar"></div>
+            <div class="person-name">Ion Stoica</div>
+            <div class="person-affil">UC Berkeley · Anyscale · Databricks</div>
+            <p class="person-bio">Professor at UC Berkeley; Executive Chairman of Databricks and Anyscale. AI systems: SkyPilot, vLLM, Chatbot Arena, Ray, Spark.</p>
+          </div>
+          <div class="person-card">
+            <div class="avatar"></div>
+            <div class="person-name">Yu Su</div>
+            <div class="person-affil">Ohio State University · NeoCognition</div>
+            <p class="person-bio">Associate Professor and 2025 Sloan Fellow. Agent reliability and evaluation: Mind2Web, MMMU, SeeAct.</p>
           </div>
         </div>
       </div>
@@ -209,15 +250,48 @@
 
     <!-- Schedule -->
     <section id="schedule" class="section section-alt">
-      <div class="section-inner narrow">
+      <div class="section-inner">
         <h2 class="section-title">Schedule</h2>
-        <p class="section-intro">A detailed program will be posted closer to the event.</p>
-        <ul class="schedule">
-          <li><span class="sched-time">Morning</span><span class="sched-item">Opening remarks &amp; invited talks</span></li>
-          <li><span class="sched-time">Midday</span><span class="sched-item">Contributed talks &amp; poster session</span></li>
-          <li><span class="sched-time">Afternoon</span><span class="sched-item">Panel discussion &amp; invited talks</span></li>
-          <li><span class="sched-time">Closing</span><span class="sched-item">Best paper awards &amp; closing remarks</span></li>
-        </ul>
+        <p class="tag tag-tentative">Tentative — subject to change</p>
+        <p class="section-intro">
+          A full day of invited talks, orals, two poster sessions, a live-verifier demo
+          session, and a panel discussion themed
+          <em>“What can’t we verify yet, and what would it take?”</em>
+        </p>
+        <div class="sched-cols">
+          <div class="sched-col">
+            <h3 class="sched-heading">Morning</h3>
+            <ul class="schedule">
+              <li><span class="sched-time">08:30 – 08:45</span><span class="sched-item">Opening Remarks</span></li>
+              <li><span class="sched-time">08:45 – 09:15</span><span class="sched-item">Invited Speaker 1</span></li>
+              <li><span class="sched-time">09:15 – 09:45</span><span class="sched-item">Invited Speaker 2</span></li>
+              <li><span class="sched-time">09:45 – 10:15</span><span class="sched-item">Orals (3 talks)</span></li>
+              <li><span class="sched-time">10:15 – 10:30</span><span class="sched-item">Coffee Break</span></li>
+              <li><span class="sched-time">10:30 – 11:00</span><span class="sched-item">Lightning Talks</span></li>
+              <li><span class="sched-time">11:00 – 11:15</span><span class="sched-item">Research Speed Meeting</span></li>
+              <li><span class="sched-time">11:15 – 12:00</span><span class="sched-item">Poster Session 1</span></li>
+            </ul>
+          </div>
+          <div class="sched-col">
+            <h3 class="sched-heading">Afternoon</h3>
+            <ul class="schedule">
+              <li><span class="sched-time">1:00 – 1:30</span><span class="sched-item">Demo Session</span></li>
+              <li><span class="sched-time">1:30 – 1:45</span><span class="sched-item">What I Changed My Mind About</span></li>
+              <li><span class="sched-time">1:45 – 2:15</span><span class="sched-item">Invited Speaker 3</span></li>
+              <li><span class="sched-time">2:15 – 2:45</span><span class="sched-item">Invited Speaker 4</span></li>
+              <li><span class="sched-time">2:45 – 3:30</span><span class="sched-item">Panel Discussion</span></li>
+              <li><span class="sched-time">3:30 – 3:45</span><span class="sched-item">Coffee Break</span></li>
+              <li><span class="sched-time">3:45 – 4:30</span><span class="sched-item">Poster Session 2</span></li>
+              <li><span class="sched-time">4:30 – 5:00</span><span class="sched-item">Closing Remarks</span></li>
+            </ul>
+          </div>
+        </div>
+        <p class="sched-note">
+          Interactive formats: opt-in <strong>lightning talks</strong> by accepted-paper
+          authors, a <strong>research speed meeting</strong> icebreaker, and
+          <strong>“What I changed my mind about”</strong> — brief volunteer talks on research
+          views that have evolved.
+        </p>
       </div>
     </section>
 
@@ -225,22 +299,46 @@
     <section id="organizers" class="section">
       <div class="section-inner">
         <h2 class="section-title">Organizers</h2>
-        <p class="section-intro">Organizing committee to be announced.</p>
+        <p class="section-intro">
+          A team of researchers from academia and industry with expertise across agentic AI,
+          reinforcement learning, safety, and self-improving systems — listed alphabetically
+          by last name.
+        </p>
         <div class="cards">
-          <div class="person-card placeholder">
+          <div class="person-card">
             <div class="avatar"></div>
-            <div class="person-name">To be announced</div>
-            <div class="person-affil">&nbsp;</div>
+            <div class="person-name">Ahmad Beirami</div>
+            <div class="person-affil">Fidian</div>
           </div>
-          <div class="person-card placeholder">
+          <div class="person-card">
             <div class="avatar"></div>
-            <div class="person-name">To be announced</div>
-            <div class="person-affil">&nbsp;</div>
+            <div class="person-name">Mert Cemri</div>
+            <div class="person-affil">UC Berkeley</div>
           </div>
-          <div class="person-card placeholder">
+          <div class="person-card">
             <div class="avatar"></div>
-            <div class="person-name">To be announced</div>
-            <div class="person-affil">&nbsp;</div>
+            <div class="person-name">Zhang-Wei Hong</div>
+            <div class="person-affil">MIT–IBM Watson AI Lab</div>
+          </div>
+          <div class="person-card">
+            <div class="avatar"></div>
+            <div class="person-name">Hung Le</div>
+            <div class="person-affil">Fidian</div>
+          </div>
+          <div class="person-card">
+            <div class="avatar"></div>
+            <div class="person-name">Ninareh Mehrabi</div>
+            <div class="person-affil">Meta Superintelligence Labs</div>
+          </div>
+          <div class="person-card">
+            <div class="avatar"></div>
+            <div class="person-name">Melissa Pan</div>
+            <div class="person-affil">UC Berkeley</div>
+          </div>
+          <div class="person-card">
+            <div class="avatar"></div>
+            <div class="person-name">Dilara Soylu</div>
+            <div class="person-affil">Stanford University</div>
           </div>
         </div>
       </div>
