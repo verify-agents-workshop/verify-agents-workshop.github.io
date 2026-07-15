@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Swiss Minimal — Who Verifies the Agents?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #111111;
+      --ink-soft: #55555c;
+      --ink-faint: #8a8a92;
+      --line: #e4e4e6;
+      --accent: #3b5bdb;
+      --maxw: 1120px;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    * , *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; font-family: var(--sans); color: var(--ink); background: #fff;
+      line-height: 1.6; -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .variant-bar {
+      background: var(--ink); color: #fff; font-size: 0.78rem; letter-spacing: 0.06em;
+      text-transform: uppercase; text-align: center; padding: 8px 16px; font-weight: 600;
+    }
+    .variant-bar a { color: #fff; text-decoration: underline; opacity: 0.85; }
+
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+
+    .label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--accent);
+    }
+
+    /* Header */
+    header.top {
+      border-bottom: 1px solid var(--line); position: sticky; top: 0; background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px); z-index: 20;
+    }
+    .top-inner { display: flex; justify-content: space-between; align-items: center; height: 68px; }
+    .brand { font-weight: 700; letter-spacing: -0.01em; font-size: 0.95rem; }
+    nav.links { display: flex; gap: 30px; }
+    nav.links a { color: var(--ink-soft); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.02em; }
+    nav.links a:hover { color: var(--ink); text-decoration: none; }
+
+    /* Hero */
+    .hero { padding: 120px 0 96px; border-bottom: 1px solid var(--line); }
+    .hero .label { margin-bottom: 28px; display: block; }
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5.4rem); font-weight: 800; letter-spacing: -0.035em;
+      line-height: 0.98; margin: 0 0 24px; max-width: 14ch;
+    }
+    .hero .sub { font-size: clamp(1.1rem, 2vw, 1.5rem); font-weight: 500; color: var(--ink-soft); margin: 0 0 40px; }
+    .hero .lede { max-width: 52ch; font-size: 1.1rem; color: var(--ink); margin: 0 0 44px; }
+    .hero .meta {
+      display: flex; gap: 40px; flex-wrap: wrap; padding-top: 28px; border-top: 1px solid var(--line);
+    }
+    .meta-item { }
+    .meta-item .k { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 6px; }
+    .meta-item .v { font-weight: 600; font-size: 0.98rem; }
+
+    /* Sections */
+    section { padding: 92px 0; border-bottom: 1px solid var(--line); }
+    .sec-head { display: grid; grid-template-columns: 220px 1fr; gap: 40px; align-items: start; }
+    .sec-head h2 { font-size: clamp(1.6rem, 3vw, 2.3rem); font-weight: 700; letter-spacing: -0.02em; margin: 0; }
+    .sec-body { max-width: 62ch; }
+    .sec-body p { color: var(--ink); font-size: 1.05rem; margin: 0 0 20px; }
+    @media (max-width: 780px) { .sec-head { grid-template-columns: 1fr; gap: 16px; } }
+
+    /* Pillars */
+    .pillars { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .pillar { padding: 8px 32px 8px 0; border-left: 1px solid var(--line); padding-left: 28px; }
+    .pillar:first-child { border-left: none; padding-left: 0; }
+    .pnum { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); }
+    .pillar h3 { font-size: 1.15rem; font-weight: 700; margin: 16px 0 12px; letter-spacing: -0.01em; }
+    .pillar p { color: var(--ink-soft); font-size: 0.96rem; margin: 0; }
+    @media (max-width: 780px) { .pillars { grid-template-columns: 1fr; gap: 32px; } .pillar { border-left: none; padding-left: 0; } }
+
+    /* Dates */
+    .dates { display: grid; gap: 0; }
+    .drow { display: flex; justify-content: space-between; padding: 18px 0; border-top: 1px solid var(--line); }
+    .drow:last-child { border-bottom: 1px solid var(--line); }
+    .drow .k { font-weight: 500; }
+    .drow .v { font-weight: 600; color: var(--accent); font-variant-numeric: tabular-nums; }
+
+    footer.foot { padding: 56px 0; }
+    footer.foot .t { font-weight: 700; font-size: 1.05rem; }
+    footer.foot .s { color: var(--ink-faint); font-size: 0.88rem; margin-top: 4px; }
+  </style>
+</head>
+<body>
+  <div class="variant-bar">Design Preview · Swiss Minimal · <a href="/dev/variants/">all variants</a> · <a href="/dev/">baseline</a></div>
+
+  <header class="top">
+    <div class="wrap top-inner">
+      <div class="brand">Who Verifies the Agents?</div>
+      <nav class="links">
+        <a href="#about">About</a>
+        <a href="#themes">Themes</a>
+        <a href="#dates">Dates</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <section class="hero" style="border-bottom:none;">
+      <span class="label">NeurIPS 2026 Workshop</span>
+      <h1>Who Verifies the Agents?</h1>
+      <p class="sub">Toward Reliable Agent Development</p>
+      <p class="lede">Verification is the bottleneck between fragile prototypes and scalable, reliable agent systems. This workshop convenes researchers and practitioners to make verification a first-class discipline in agent development.</p>
+      <div class="meta">
+        <div class="meta-item"><span class="k">Location</span><span class="v">Sydney, Australia</span></div>
+        <div class="meta-item"><span class="k">Date</span><span class="v">Dec 11 or 12, 2026</span></div>
+        <div class="meta-item"><span class="k">Venue</span><span class="v">Co-located with NeurIPS</span></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <section id="about">
+      <div class="sec-head">
+        <h2>About</h2>
+        <div class="sec-body">
+          <p>Recent advances in autonomous agents have demonstrated potential for complex reasoning and open-ended tasks. However, current agent development is often fragmented and dependent on ad-hoc methods, leading to reliability challenges where performance plateaus or regresses during iteration.</p>
+          <p>The fundamental bottleneck preventing the transition to scalable, reliable agent systems is verification: the inability to systematically determine whether a change to an agent constitutes a genuine improvement. This workshop seeks to formalize verification as a core discipline in agent development.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <section id="themes">
+      <div class="sec-head">
+        <h2>Three Pillars</h2>
+        <div class="sec-body" style="max-width:none;">
+          <div class="pillars">
+            <div class="pillar">
+              <div class="pnum">01 / Verifiers</div>
+              <h3>Robust Verifiers</h3>
+              <p>Verifiers and reward models that resist reward hacking and stay faithful under distribution shift.</p>
+            </div>
+            <div class="pillar">
+              <div class="pnum">02 / Simulation</div>
+              <h3>Environment-Grounded Simulation</h3>
+              <p>Interactive, environment-grounded simulation as the ground truth for evaluation.</p>
+            </div>
+            <div class="pillar">
+              <div class="pnum">03 / Signals</div>
+              <h3>Heterogeneous Signals</h3>
+              <p>Latency, cost, calibration, and safety integrated into a unified verification loop.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <section id="dates" style="border-bottom:none;">
+      <div class="sec-head">
+        <h2>Important Dates</h2>
+        <div class="sec-body">
+          <div class="dates">
+            <div class="drow"><span class="k">Submission deadline</span><span class="v">TBA</span></div>
+            <div class="drow"><span class="k">Author notification</span><span class="v">TBA</span></div>
+            <div class="drow"><span class="k">Camera-ready</span><span class="v">TBA</span></div>
+            <div class="drow"><span class="k">Workshop</span><span class="v">Dec 11 or 12, 2026</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <footer class="foot">
+      <div class="t">Who Verifies the Agents? Toward Reliable Agent Development</div>
+      <div class="s">NeurIPS 2026 Workshop · Sydney, Australia</div>
+    </footer>
+  </div>
+</body>
+</html>
