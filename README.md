@@ -1,43 +1,37 @@
 # Who Verifies the Agents? Toward Reliable Agent Development
 
-Website for the **NeurIPS 2026 Workshop** on formalizing verification as a core
-discipline in agent development.
+Website for the **NeurIPS 2026 Workshop** on tackling verification as a first-class
+research problem for reliable agent development.
 
 🔗 Live site: https://verify-agents-workshop.github.io/
+📄 OpenReview: https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/Verify-Agents
+🐦 X: [@veri_agents](https://x.com/veri_agents)
 
-## About
+## How the site deploys
 
-Recent advances in autonomous agents have demonstrated potential for complex
-reasoning and open-ended tasks. However, current agent development is often
-fragmented and dependent on ad-hoc methods, leading to reliability challenges
-where performance plateaus or regresses during iteration. This workshop seeks to
-formalize **verification** as a core discipline in agent development, organized
-around three pillars:
+GitHub Pages builds via the Actions workflow in `.github/workflows/pages.yml`:
 
-1. **Robust verifiers** that resist reward hacking
-2. **Environment-grounded simulation** as the ground truth for evaluation
-3. **Heterogeneous signals** — latency, cost, and calibration — in the verification loop
+- **`main`** publishes to the site root: https://verify-agents-workshop.github.io/
+- **`dev`** publishes to a hidden staging path: https://verify-agents-workshop.github.io/dev/
 
-## Development
+Changes are developed on `dev`, previewed at `/dev/`, and merged into `main` to go
+public. Pushes to `main` trigger a deploy automatically; after pushing to `dev` only,
+manually dispatch the "Deploy site" workflow (the workflow file lives on `main`, so
+`dev` pushes don't self-trigger). The `variants/` folder is excluded from the
+production root and only ever renders under `/dev/variants/`.
 
-This is a static site served by GitHub Pages from the repository root. To preview
-locally, open `index.html` in a browser or run a simple static server:
+## Structure
 
-```bash
-python3 -m http.server 8000
-# then visit http://localhost:8000
-```
+| Path             | Purpose                                             |
+| ---------------- | --------------------------------------------------- |
+| `index.html`     | Single-page workshop site                           |
+| `style.css`      | Styles (cache-busted via `?v=N` query in the link)  |
+| `assets/`        | Speaker/organizer photos, favicons, social card     |
+| `variants/`      | Design mockups, staged only at `/dev/variants/`     |
+| `.nojekyll`      | Serve assets without Jekyll                         |
 
-### Structure
+To preview locally: `python3 -m http.server 8000` and open http://localhost:8000.
 
-| File         | Purpose                          |
-| ------------ | -------------------------------- |
-| `index.html` | Single-page workshop site        |
-| `style.css`  | Styles                           |
-| `.nojekyll`  | Serve assets without Jekyll      |
+## Contact
 
-## Editing content
-
-Sections marked _TBA_ / _Tentative_ (dates, speakers, organizers, submission
-details, contact email) are placeholders to be filled in as the workshop program
-is finalized.
+verify-agents-workshop@googlegroups.com

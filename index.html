@@ -4,33 +4,35 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Who Verifies the Agents? | NeurIPS 2026 Workshop</title>
-  <meta name="description" content="Who Verifies the Agents? Toward Reliable Agent Development — a NeurIPS 2026 workshop on formalizing verification as a core discipline in agent development." />
+  <meta name="description" content="Who Verifies the Agents? Toward Reliable Agent Development: a NeurIPS 2026 workshop tackling verification as a first-class research problem for reliable agent development. Sydney, Dec 11 or 12, 2026." />
 
   <!-- Open Graph / social sharing -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Who Verifies the Agents? Toward Reliable Agent Development" />
-  <meta property="og:description" content="A NeurIPS 2026 workshop on formalizing verification as a core discipline in agent development." />
+  <meta property="og:description" content="A NeurIPS 2026 workshop tackling verification as a first-class research problem for reliable agent development. Sydney, Dec 11 or 12, 2026. Submissions due Aug 29, 2026." />
   <meta property="og:url" content="https://verify-agents-workshop.github.io/" />
+  <meta property="og:image" content="https://verify-agents-workshop.github.io/assets/social-card.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://verify-agents-workshop.github.io/assets/social-card.jpg" />
 
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%F0%9F%A6%98%3C/text%3E%3C/svg%3E" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=4" />
+  <link rel="stylesheet" href="style.css?v=9" />
 </head>
 <body>
-  <!-- Under-construction notice shown on the public site; replaced by the staging banner on /dev/. -->
-  <div id="construction-banner" class="construction-banner">
-    🚧 This website is under construction — details below are not final and may change.
-  </div>
   <!-- Staging banner: revealed only on the /dev/ preview, stays hidden on the public site. -->
   <div id="preview-banner" class="preview-banner" hidden>
-    ⚙️ Preview build — staging version served at <code>/dev/</code>. This is not the public site.
+    ⚙️ Preview build: staging version served at <code>/dev/</code>. This is not the public site.
   </div>
   <script>
     if (window.location.pathname.startsWith('/dev/')) {
       document.getElementById('preview-banner').hidden = false;
-      document.getElementById('construction-banner').hidden = true;
     }
   </script>
 
@@ -42,12 +44,11 @@
         <span></span><span></span><span></span>
       </label>
       <ul class="nav-links">
-        <li><a href="#about">About</a></li>
+        <li><a href="#about">Overview</a></li>
         <li><a href="#pillars">Themes</a></li>
         <li><a href="#cfp">Call for Papers</a></li>
         <li><a href="#dates">Dates</a></li>
         <li><a href="#speakers">Speakers</a></li>
-        <li><a href="#schedule">Schedule</a></li>
         <li><a href="#organizers">Organizers</a></li>
       </ul>
     </nav>
@@ -67,41 +68,29 @@
         </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#cfp">Call for Papers</a>
-          <a class="btn btn-ghost" href="#about">Read the Overview</a>
+          <a class="btn btn-ghost" href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/Verify-Agents">Submit on OpenReview</a>
         </div>
-        <p class="hero-meta">Sydney, Australia · Dec 11 or 12, 2026 · Co-located with NeurIPS</p>
+        <p class="hero-meta">Sydney, Australia · Dec 11 or 12, 2026 · Submissions due Aug 29, 2026 (AoE)</p>
       </div>
     </section>
 
     <!-- About -->
     <section id="about" class="section">
       <div class="section-inner narrow">
-        <h2 class="section-title">About the Workshop</h2>
+        <h2 class="section-title">Overview</h2>
         <p>
-          Agent development is undergoing a crucial shift. Despite remarkable advances in
-          agents that reason, plan, and operate in open-ended environments, their
-          construction remains fragmented, dominated by manual prompt engineering and ad-hoc
-          scaffolding. The next leap is toward scalable, autonomous agent development
-          grounded in systematic engineering principles that ensure reliability in dynamic
-          environments.
+          Despite remarkable advances in agents that reason, plan, and operate in open-ended
+          environments, reliably verifying their improvements remains an unsolved challenge.
+          Verification is the ability to determine whether a change to an agent (such as a
+          prompt update, a new tool integration, or a modification to its reasoning process)
+          produces a genuine improvement in capability or reliability.
         </p>
         <p>
-          The bottleneck is not a deficit of agentic frameworks but
-          <strong>verification</strong>: the ability to reliably determine whether a change
-          to an agent — a prompt update, a new tool integration, a change in reasoning
-          logic — is a genuine improvement. Verification works in controlled settings
-          (formal math, competitive programming, coding) but remains shallow and noisy in
-          general agentic tasks, causing performance to plateau or silently regress during
-          development. Prevailing pipelines lean on limited signals — isolated outcome
-          rewards or LLM-as-judge scores — that are too narrow to capture long-horizon
-          behavior and susceptible to reward hacking.
-        </p>
-        <p>
-          Unlocking reliable agents in practice requires verification frameworks that are
-          broader in scope (diverse tasks and edge cases), deeper in analysis (process-level
-          reasoning), and more heterogeneous (beyond scalar rewards). This workshop convenes
-          researchers from reinforcement learning, agentic AI, evaluation and benchmarking,
-          AI safety and red-teaming, simulation, and ML systems around three pillars.
+          Verification works in controlled settings (formal math, competitive programming,
+          coding) but remains shallow and noisy for general agentic tasks, causing
+          performance to plateau or silently regress during development. This workshop
+          convenes researchers to tackle verification as a first-class research problem for
+          reliable agent development.
         </p>
       </div>
     </section>
@@ -111,7 +100,7 @@
       <div class="section-inner">
         <h2 class="section-title">Three Pillars of Verification</h2>
         <p class="section-intro">
-          We invite work spanning — but not limited to — these three interconnected themes.
+          We invite work spanning, but not limited to, these three interconnected themes.
         </p>
         <div class="pillars">
           <article class="pillar">
@@ -119,7 +108,7 @@
             <h3>Safety &amp; Robustness of Verification</h3>
             <p>
               Verification must evolve with agents: robust verifiers that prevent reward
-              hacking, resist harness specification gaming, and maintain alignment — scaling
+              hacking, resist harness specification gaming, and maintain alignment, scaling
               from outcome checks to process-level signals like traces, plans, and tool-call
               sequences.
             </p>
@@ -129,8 +118,8 @@
             <h3>Environment-Grounded Verification &amp; Simulators</h3>
             <p>
               For open-ended tasks lacking closed-form metrics, the environment itself is the
-              ground truth. Faithful simulators of agentic tasks — from multi-agent kernel
-              optimization to self-optimizing production systems — can become a verification
+              ground truth. Faithful simulators of agentic tasks, from multi-agent kernel
+              optimization to self-optimizing production systems, can become a verification
               infrastructure layer.
             </p>
           </article>
@@ -151,22 +140,6 @@
     <section id="cfp" class="section">
       <div class="section-inner narrow">
         <h2 class="section-title">Call for Papers</h2>
-
-        <h3 class="cfp-h3">Overview</h3>
-        <p>
-          Despite remarkable advances in agents that reason, plan, and operate in open-ended
-          environments, reliably verifying their improvements remains an unsolved challenge.
-          Verification is the ability to determine whether a change to an agent — such as a
-          prompt update, a new tool integration, or a modification to its reasoning
-          process — produces a genuine improvement in capability or reliability.
-        </p>
-        <p>
-          Verification works in controlled settings (formal math, competitive programming,
-          coding) but remains shallow and noisy for general agentic tasks, causing
-          performance to plateau or silently regress during development. This workshop
-          convenes researchers to tackle verification as a first-class research problem for
-          reliable agent development.
-        </p>
 
         <h3 class="cfp-h3">Topics of Interest</h3>
         <p>We invite submissions across three core pillars, as well as topics at their intersection:</p>
@@ -208,15 +181,15 @@
 
         <h3 class="cfp-h3">Submission Guidelines</h3>
         <ul class="guide-list">
-          <li><strong>Format:</strong> Papers should be between 4 to 9 pages (excluding references and appendices), using the NeurIPS 2026 template. We also welcome demo papers, which should be no more than 4 pages.</li>
+          <li><strong>Format:</strong> Papers should be between 4 to 9 pages (excluding references and appendices), using the <a href="https://neurips.cc/Conferences/2026/CallForPapers">NeurIPS 2026 template</a>. We also welcome demo papers, which should be no more than 4 pages.</li>
           <li><strong>Dual submission policy:</strong> We welcome work that is under review or has been recently published at other venues.</li>
           <li><strong>Review:</strong> Reviews will be double blind. Reviewers will not use LLMs to evaluate submissions.</li>
           <li><strong>Presentation:</strong> Accepted papers will be presented as posters; select papers will be chosen for oral presentations or lightning talks.</li>
           <li><strong>Non-archival:</strong> The workshop is non-archival; papers will be made available on the workshop website but do not constitute formal proceedings.</li>
         </ul>
-        <p class="cfp-note">
-          Submissions and reviewing will be handled through OpenReview — the submission link
-          will be posted here. Organizers will not submit work to the workshop.
+        <p>
+          Submissions and reviewing are handled through
+          <a href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/Verify-Agents"><strong>OpenReview</strong></a>.
         </p>
       </div>
     </section>
@@ -225,12 +198,9 @@
     <section id="dates" class="section section-alt">
       <div class="section-inner narrow">
         <h2 class="section-title">Important Dates</h2>
-        <p class="tag tag-tentative">Tentative — subject to change</p>
         <ul class="dates">
-          <li><span class="date-label">Call for papers released</span><span class="date-value">Mid-July 2026</span></li>
           <li><span class="date-label">Submission deadline</span><span class="date-value">August 29, 2026</span></li>
           <li><span class="date-label">Author notification</span><span class="date-value">September 29, 2026</span></li>
-          <li><span class="date-label">Camera-ready deadline</span><span class="date-value">TBA</span></li>
           <li><span class="date-label">Workshop date</span><span class="date-value">Dec 11 or 12, 2026</span></li>
         </ul>
         <p class="tz-note">The exact workshop day (Friday, Dec 11 or Saturday, Dec 12) will be confirmed once assigned by NeurIPS. All deadlines are 23:59 Anywhere on Earth (AoE) unless otherwise noted.</p>
@@ -240,48 +210,35 @@
     <!-- Speakers -->
     <section id="speakers" class="section">
       <div class="section-inner">
-        <h2 class="section-title">Invited Speakers</h2>
-        <p class="section-intro">Speakers from academia and industry spanning our three pillars, listed alphabetically by last name.</p>
-        <div class="cards">
+        <h2 class="section-title">Confirmed Speakers</h2>
+        <div class="cards cards-speakers">
           <div class="person-card">
-            <div class="avatar"></div>
-            <div class="person-name">Pin-Yu Chen</div>
+            <img class="avatar avatar-photo" src="assets/speakers/pin-yu-chen.jpg" alt="Pin-Yu Chen" />
+            <div class="person-name"><a href="https://sites.google.com/site/pinyuchenpage/home" target="_blank" rel="noopener">Pin-Yu Chen</a></div>
             <div class="person-affil">IBM</div>
             <p class="person-bio">Principal Research Scientist, Trusted AI Group; PI at the MIT–IBM Watson AI Lab. AI safety, robustness, and trustworthiness.</p>
           </div>
           <div class="person-card">
-            <div class="avatar"></div>
-            <div class="person-name">Azalia Mirhoseini</div>
+            <img class="avatar avatar-photo" src="assets/speakers/azalia-mirhoseini.jpg" alt="Azalia Mirhoseini" />
+            <div class="person-name"><a href="https://www.azaliamirhoseini.com/" target="_blank" rel="noopener">Azalia Mirhoseini</a></div>
             <div class="person-affil">Stanford University · Ricursive Intelligence</div>
             <p class="person-bio">Assistant Professor at Stanford. Scalable, self-improving AI; Mixture-of-Experts and AlphaChip.</p>
           </div>
           <div class="person-card">
-            <div class="avatar"></div>
-            <div class="person-name">Seshendra Nalla</div>
+            <img class="avatar avatar-photo" src="assets/speakers/seshendra-nalla.jpg" alt="Seshendra Nalla" />
+            <div class="person-name"><a href="https://www.linkedin.com/in/seshendranalla/" target="_blank" rel="noopener">Seshendra Nalla</a></div>
             <div class="person-affil">Datadog</div>
             <p class="person-bio">VP of Observability Data Platform; core contributor to BitsEvolve, a self-optimizing code system.</p>
           </div>
           <div class="person-card">
-            <div class="avatar"></div>
-            <div class="person-name">Martin Odersky</div>
-            <div class="person-affil">EPFL</div>
-            <p class="person-bio">Professor at EPFL, creator of Scala, ACM Fellow. Type-and-capability tracking for safe agent harnesses.</p>
-          </div>
-          <div class="person-card">
-            <div class="avatar"></div>
-            <div class="person-name">Dhaval Patel</div>
-            <div class="person-affil">IBM Research</div>
-            <p class="person-bio">Senior Technical Staff Member at T.J. Watson. Time-series foundation models and environment-grounded LLM agents.</p>
-          </div>
-          <div class="person-card">
-            <div class="avatar"></div>
-            <div class="person-name">Ion Stoica</div>
+            <img class="avatar avatar-photo" src="assets/speakers/ion-stoica.jpg" alt="Ion Stoica" />
+            <div class="person-name"><a href="https://people.eecs.berkeley.edu/~istoica/" target="_blank" rel="noopener">Ion Stoica</a></div>
             <div class="person-affil">UC Berkeley · Anyscale · Databricks</div>
             <p class="person-bio">Professor at UC Berkeley; Executive Chairman of Databricks and Anyscale. AI systems: SkyPilot, vLLM, Chatbot Arena, Ray, Spark.</p>
           </div>
           <div class="person-card">
-            <div class="avatar"></div>
-            <div class="person-name">Yu Su</div>
+            <img class="avatar avatar-photo" src="assets/speakers/yu-su.jpg" alt="Yu Su" />
+            <div class="person-name"><a href="https://ysu1989.github.io/" target="_blank" rel="noopener">Yu Su</a></div>
             <div class="person-affil">Ohio State University · NeoCognition</div>
             <p class="person-bio">Associate Professor and 2025 Sloan Fellow. Agent reliability and evaluation: Mind2Web, MMMU, SeeAct.</p>
           </div>
@@ -289,96 +246,45 @@
       </div>
     </section>
 
-    <!-- Schedule -->
-    <section id="schedule" class="section section-alt">
-      <div class="section-inner">
-        <h2 class="section-title">Schedule</h2>
-        <p class="tag tag-tentative">Tentative — subject to change</p>
-        <p class="section-intro">
-          A full day of invited talks, orals, two poster sessions, a live-verifier demo
-          session, and a panel discussion themed
-          <em>“What can’t we verify yet, and what would it take?”</em>
-        </p>
-        <div class="sched-cols">
-          <div class="sched-col">
-            <h3 class="sched-heading">Morning</h3>
-            <ul class="schedule">
-              <li><span class="sched-time">08:30 – 08:45</span><span class="sched-item">Opening Remarks</span></li>
-              <li><span class="sched-time">08:45 – 09:15</span><span class="sched-item">Invited Speaker 1</span></li>
-              <li><span class="sched-time">09:15 – 09:45</span><span class="sched-item">Invited Speaker 2</span></li>
-              <li><span class="sched-time">09:45 – 10:15</span><span class="sched-item">Orals (3 talks)</span></li>
-              <li><span class="sched-time">10:15 – 10:30</span><span class="sched-item">Coffee Break</span></li>
-              <li><span class="sched-time">10:30 – 11:00</span><span class="sched-item">Lightning Talks</span></li>
-              <li><span class="sched-time">11:00 – 11:15</span><span class="sched-item">Research Speed Meeting</span></li>
-              <li><span class="sched-time">11:15 – 12:00</span><span class="sched-item">Poster Session 1</span></li>
-            </ul>
-          </div>
-          <div class="sched-col">
-            <h3 class="sched-heading">Afternoon</h3>
-            <ul class="schedule">
-              <li><span class="sched-time">1:00 – 1:30</span><span class="sched-item">Demo Session</span></li>
-              <li><span class="sched-time">1:30 – 1:45</span><span class="sched-item">What I Changed My Mind About</span></li>
-              <li><span class="sched-time">1:45 – 2:15</span><span class="sched-item">Invited Speaker 3</span></li>
-              <li><span class="sched-time">2:15 – 2:45</span><span class="sched-item">Invited Speaker 4</span></li>
-              <li><span class="sched-time">2:45 – 3:30</span><span class="sched-item">Panel Discussion</span></li>
-              <li><span class="sched-time">3:30 – 3:45</span><span class="sched-item">Coffee Break</span></li>
-              <li><span class="sched-time">3:45 – 4:30</span><span class="sched-item">Poster Session 2</span></li>
-              <li><span class="sched-time">4:30 – 5:00</span><span class="sched-item">Closing Remarks</span></li>
-            </ul>
-          </div>
-        </div>
-        <p class="sched-note">
-          Interactive formats: opt-in <strong>lightning talks</strong> by accepted-paper
-          authors, a <strong>research speed meeting</strong> icebreaker, and
-          <strong>“What I changed my mind about”</strong> — brief volunteer talks on research
-          views that have evolved.
-        </p>
-      </div>
-    </section>
 
     <!-- Organizers -->
     <section id="organizers" class="section">
       <div class="section-inner">
-        <h2 class="section-title">Organizers</h2>
-        <p class="section-intro">
-          A team of researchers from academia and industry with expertise across agentic AI,
-          reinforcement learning, safety, and self-improving systems — listed alphabetically
-          by last name.
-        </p>
+        <h2 class="section-title">Organizing Committee</h2>
         <div class="cards">
           <div class="person-card">
-            <div class="avatar"></div>
-            <div class="person-name">Ahmad Beirami</div>
+            <img class="avatar avatar-photo" src="assets/organizers/ahmad-beirami.jpg" alt="Ahmad Beirami" />
+            <div class="person-name"><a href="https://beirami.github.io/" target="_blank" rel="noopener">Ahmad Beirami</a></div>
             <div class="person-affil">Fidian</div>
           </div>
           <div class="person-card">
-            <div class="avatar"></div>
-            <div class="person-name">Mert Cemri</div>
+            <img class="avatar avatar-photo" src="assets/organizers/mert-cemri.jpg" alt="Mert Cemri" />
+            <div class="person-name"><a href="https://people.eecs.berkeley.edu/~mert_cemri/" target="_blank" rel="noopener">Mert Cemri</a></div>
             <div class="person-affil">UC Berkeley</div>
           </div>
           <div class="person-card">
-            <div class="avatar"></div>
-            <div class="person-name">Zhang-Wei Hong</div>
+            <img class="avatar avatar-photo" src="assets/organizers/zhang-wei-hong.jpg" alt="Zhang-Wei Hong" />
+            <div class="person-name"><a href="https://williamd4112.github.io/" target="_blank" rel="noopener">Zhang-Wei Hong</a></div>
             <div class="person-affil">MIT–IBM Watson AI Lab</div>
           </div>
           <div class="person-card">
-            <div class="avatar"></div>
-            <div class="person-name">Hung Le</div>
+            <img class="avatar avatar-photo" src="assets/organizers/hung-le.jpg" alt="Hung Le" />
+            <div class="person-name"><a href="https://sites.google.com/view/henryle2018/home" target="_blank" rel="noopener">Hung Le</a></div>
             <div class="person-affil">Fidian</div>
           </div>
           <div class="person-card">
-            <div class="avatar"></div>
-            <div class="person-name">Ninareh Mehrabi</div>
+            <img class="avatar avatar-photo" src="assets/organizers/ninareh-mehrabi.jpg" alt="Ninareh Mehrabi" />
+            <div class="person-name"><a href="https://ninarehm.github.io" target="_blank" rel="noopener">Ninareh Mehrabi</a></div>
             <div class="person-affil">Meta Superintelligence Labs</div>
           </div>
           <div class="person-card">
-            <div class="avatar"></div>
-            <div class="person-name">Melissa Pan</div>
+            <img class="avatar avatar-photo" src="assets/organizers/melissa-pan.jpg" alt="Melissa Pan" />
+            <div class="person-name"><a href="https://melissa-pan.github.io/" target="_blank" rel="noopener">Melissa Pan</a></div>
             <div class="person-affil">UC Berkeley</div>
           </div>
           <div class="person-card">
-            <div class="avatar"></div>
-            <div class="person-name">Dilara Soylu</div>
+            <img class="avatar avatar-photo" src="assets/organizers/dilara-soylu.jpg" alt="Dilara Soylu" />
+            <div class="person-name"><a href="https://dilarasoylu.github.io/" target="_blank" rel="noopener">Dilara Soylu</a></div>
             <div class="person-affil">Stanford University</div>
           </div>
         </div>
@@ -393,7 +299,12 @@
           Questions about the workshop, submissions, or sponsorship? Reach out to the
           organizing committee.
         </p>
-        <p class="contact-email"><a href="mailto:verify-agents-neurips26-workshop@googlegroups.com">verify-agents-neurips26-workshop@googlegroups.com</a></p>
+        <p class="contact-email"><a href="mailto:verify-agents-workshop@googlegroups.com">verify-agents-workshop@googlegroups.com</a></p>
+        <p class="contact-links">
+          <a href="https://x.com/veri_agents">@veri_agents on X</a>
+          <span class="dot">·</span>
+          <a href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/Verify-Agents">OpenReview</a>
+        </p>
       </div>
     </section>
   </main>
@@ -402,6 +313,13 @@
     <div class="footer-inner">
       <p class="footer-title">Who Verifies the Agents? Toward Reliable Agent Development</p>
       <p class="footer-sub">NeurIPS 2026 Workshop</p>
+      <p class="footer-links">
+        <a href="mailto:verify-agents-workshop@googlegroups.com">Email</a>
+        <span class="dot">·</span>
+        <a href="https://x.com/veri_agents">X</a>
+        <span class="dot">·</span>
+        <a href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/Verify-Agents">OpenReview</a>
+      </p>
     </div>
   </footer>
 </body>

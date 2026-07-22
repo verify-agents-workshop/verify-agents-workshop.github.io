@@ -62,20 +62,6 @@ a:hover { text-decoration: underline; }
   font-size: 0.85em;
 }
 
-/* --------------------------------------------------------------------------
-   Under-construction banner (public site)
-   -------------------------------------------------------------------------- */
-.construction-banner {
-  width: 100%;
-  background: #fff3e0;
-  color: #b45309;
-  border-bottom: 1px solid #f6dcb8;
-  text-align: center;
-  padding: 9px 16px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-}
 
 /* --------------------------------------------------------------------------
    Header / nav
@@ -289,21 +275,12 @@ a:hover { text-decoration: underline; }
 /* --------------------------------------------------------------------------
    Topic list / CFP
    -------------------------------------------------------------------------- */
-.topic-list { padding-left: 0; list-style: none; margin: 8px 0 28px; }
+.topic-list { list-style: disc; padding-left: 26px; margin: 8px 0 24px; }
 .topic-list li {
-  position: relative;
-  padding: 8px 0 8px 30px;
-  border-bottom: 1px solid var(--line);
+  padding: 4px 0;
   color: var(--ink);
 }
-.topic-list li::before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  top: 8px;
-  color: var(--accent);
-  font-weight: 700;
-}
+.topic-list li::marker { color: var(--ink-soft); }
 .cfp-note, .tz-note {
   font-size: 0.95rem;
   color: var(--ink-faint);
@@ -355,16 +332,23 @@ a:hover { text-decoration: underline; }
    People cards
    -------------------------------------------------------------------------- */
 .cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
 }
 .person-card {
+  width: 236px;
   text-align: center;
   padding: 24px 16px;
   border-radius: var(--radius);
   border: 1px solid var(--line);
   background: var(--bg);
+}
+.person-name a { color: inherit; }
+.person-name a:hover { color: var(--brand); }
+@media (max-width: 560px) {
+  .person-card { width: 100%; max-width: 320px; }
 }
 .avatar {
   width: 84px;
@@ -372,6 +356,11 @@ a:hover { text-decoration: underline; }
   border-radius: 50%;
   margin: 0 auto 14px;
   background: linear-gradient(135deg, var(--brand-tint), #dcefee);
+}
+img.avatar-photo {
+  display: block;
+  object-fit: cover;
+  border: 1px solid var(--line);
 }
 .person-name { font-weight: 600; color: var(--ink); }
 .person-affil { font-size: 0.88rem; color: var(--ink-faint); }
@@ -422,6 +411,11 @@ a:hover { text-decoration: underline; }
    Contact
    -------------------------------------------------------------------------- */
 .contact-email { font-size: 1.15rem; font-weight: 600; margin-top: 8px; }
+.contact-links { margin-top: 6px; font-weight: 500; }
+.contact-links .dot, .footer-links .dot { margin: 0 10px; color: var(--ink-faint); }
+.footer-links { margin: 14px 0 0; font-size: 0.92rem; }
+.footer-links a { color: rgba(255, 255, 255, 0.85); }
+.footer-links .dot { color: rgba(255, 255, 255, 0.45); }
 
 /* --------------------------------------------------------------------------
    Footer
@@ -478,3 +472,6 @@ a:hover { text-decoration: underline; }
   .section { padding: 60px 0; }
   .dates li { flex-direction: column; align-items: flex-start; gap: 4px; }
 }
+
+/* Speakers: cap row width so cards flow 3 + 2 */
+.cards-speakers { max-width: 762px; margin: 0 auto; }
