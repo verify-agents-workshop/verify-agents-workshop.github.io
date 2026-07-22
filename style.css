@@ -373,6 +373,11 @@ a:hover { text-decoration: underline; }
   margin: 0 auto 14px;
   background: linear-gradient(135deg, var(--brand-tint), #dcefee);
 }
+img.avatar-photo {
+  display: block;
+  object-fit: cover;
+  border: 1px solid var(--line);
+}
 .person-name { font-weight: 600; color: var(--ink); }
 .person-affil { font-size: 0.88rem; color: var(--ink-faint); }
 .person-bio { font-size: 0.85rem; color: var(--ink-soft); margin: 10px 0 0; line-height: 1.5; }
@@ -422,6 +427,11 @@ a:hover { text-decoration: underline; }
    Contact
    -------------------------------------------------------------------------- */
 .contact-email { font-size: 1.15rem; font-weight: 600; margin-top: 8px; }
+.contact-links { margin-top: 6px; font-weight: 500; }
+.contact-links .dot, .footer-links .dot { margin: 0 10px; color: var(--ink-faint); }
+.footer-links { margin: 14px 0 0; font-size: 0.92rem; }
+.footer-links a { color: rgba(255, 255, 255, 0.85); }
+.footer-links .dot { color: rgba(255, 255, 255, 0.45); }
 
 /* --------------------------------------------------------------------------
    Footer
