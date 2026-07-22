@@ -42,7 +42,7 @@ jobs:
       - name: Assemble site (main at root, dev under /dev)
         run: |
           mkdir -p _site
-          rsync -a --exclude='.git' --exclude='.github' main/ _site/
+          rsync -a --exclude='.git' --exclude='.github' --exclude='variants' main/ _site/
           mkdir -p _site/dev
           rsync -a --exclude='.git' --exclude='.github' dev/ _site/dev/
           # Ensure Jekyll processing stays disabled for the assembled output.
