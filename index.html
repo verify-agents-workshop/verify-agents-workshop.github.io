@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=3" />
+  <link rel="stylesheet" href="style.css?v=4" />
 </head>
 <body>
   <!-- Under-construction notice shown on the public site; replaced by the staging banner on /dev/. -->
@@ -151,31 +151,72 @@
     <section id="cfp" class="section">
       <div class="section-inner narrow">
         <h2 class="section-title">Call for Papers</h2>
-        <p class="tag tag-tentative">Details forthcoming</p>
+
+        <h3 class="cfp-h3">Overview</h3>
         <p>
-          We welcome submissions of original research, position papers, and works-in-progress
-          that advance the science and practice of verifying agents. Topics of interest
-          include, but are not limited to:
+          Despite remarkable advances in agents that reason, plan, and operate in open-ended
+          environments, reliably verifying their improvements remains an unsolved challenge.
+          Verification is the ability to determine whether a change to an agent — such as a
+          prompt update, a new tool integration, or a modification to its reasoning
+          process — produces a genuine improvement in capability or reliability.
         </p>
+        <p>
+          Verification works in controlled settings (formal math, competitive programming,
+          coding) but remains shallow and noisy for general agentic tasks, causing
+          performance to plateau or silently regress during development. This workshop
+          convenes researchers to tackle verification as a first-class research problem for
+          reliable agent development.
+        </p>
+
+        <h3 class="cfp-h3">Topics of Interest</h3>
+        <p>We invite submissions across three core pillars, as well as topics at their intersection:</p>
+
+        <h4 class="cfp-h4">Pillar 1: Safety and Robustness of Verification</h4>
         <ul class="topic-list">
-          <li>Reward hacking, specification gaming, and robustness of verifiers</li>
-          <li>Environment-grounded simulation, sandboxes, and benchmarks for agent evaluation</li>
-          <li>Process- vs. outcome-based verification and reward modeling</li>
-          <li>Calibration, uncertainty, and confidence estimation in agent evaluation</li>
-          <li>Multi-objective evaluation: latency, cost, safety, and calibration signals</li>
-          <li>Human-in-the-loop and LLM-as-judge verification, and their failure modes</li>
-          <li>Detecting regressions and attributing improvement during iterative development</li>
-          <li>Reproducibility, tooling, and infrastructure for reliable agent development</li>
+          <li>Robust verifiers that prevent reward hacking and specification gaming</li>
+          <li>Adversarial robustness of verifiers and red-teaming of evaluation harnesses</li>
+          <li>Alignment-aware verification: ensuring verifiers remain faithful as agents evolve</li>
         </ul>
-        <p>
-          Submissions and reviewing will be handled through <strong>OpenReview</strong>, and
-          the program will be posted on this website ahead of the conference. Organizers will
-          not submit work to the workshop, and reviewers will not use LLMs to evaluate
-          submissions.
-        </p>
+
+        <h4 class="cfp-h4">Pillar 2: Environment-Grounded Verification and Simulators</h4>
+        <ul class="topic-list">
+          <li>Faithful simulators as verification infrastructure for open-ended tasks</li>
+          <li>Multi-agent and self-optimizing systems for environment-grounded evaluation</li>
+          <li>Measuring agents in production: observability, monitoring, and runtime verification</li>
+          <li>Evolutionary and search-based methods for environment-driven agent optimization</li>
+          <li>Benchmarks and environment design that stress-test verification methods</li>
+        </ul>
+
+        <h4 class="cfp-h4">Pillar 3: Diverse and Heterogeneous Verifiable Signals</h4>
+        <ul class="topic-list">
+          <li>Composing heterogeneous signals (user experience, cost/latency, calibration, multimodality) into reliable verification metrics</li>
+          <li>Beyond scalar rewards: holistic evaluation of agentic behavior</li>
+          <li>Human-in-the-loop verification and human–AI collaborative evaluation</li>
+          <li>Reflective and self-improving verification (agents that verify other agents)</li>
+          <li>Automated agent design, prompt optimization, and scaffold search with verifiable feedback</li>
+          <li>Formal verification of agent-generated artifacts, including the use of proof assistants and verification languages (e.g., Dafny, Rocq, and Lean)</li>
+        </ul>
+
+        <h4 class="cfp-h4">Cross-Cutting Topics</h4>
+        <ul class="topic-list">
+          <li>Verification for meta-agents and Agent4Agent systems (agents that design, optimize, or evaluate other agents)</li>
+          <li>Self-evolving agents: stable improvement without collapse or reward hacking</li>
+          <li>Evaluation of agent-generated designs vs. human-engineered systems</li>
+          <li>Scalable oversight and verification for long-horizon, multi-step agent behavior</li>
+          <li>Cognitive and neuroscience-inspired verification frameworks</li>
+        </ul>
+
+        <h3 class="cfp-h3">Submission Guidelines</h3>
+        <ul class="guide-list">
+          <li><strong>Format:</strong> Papers should be between 4 to 9 pages (excluding references and appendices), using the NeurIPS 2026 template. We also welcome demo papers, which should be no more than 4 pages.</li>
+          <li><strong>Dual submission policy:</strong> We welcome work that is under review or has been recently published at other venues.</li>
+          <li><strong>Review:</strong> Reviews will be double blind. Reviewers will not use LLMs to evaluate submissions.</li>
+          <li><strong>Presentation:</strong> Accepted papers will be presented as posters; select papers will be chosen for oral presentations or lightning talks.</li>
+          <li><strong>Non-archival:</strong> The workshop is non-archival; papers will be made available on the workshop website but do not constitute formal proceedings.</li>
+        </ul>
         <p class="cfp-note">
-          The full call for papers — submission link, format, and page limits — will be
-          announced here.
+          Submissions and reviewing will be handled through OpenReview — the submission link
+          will be posted here. Organizers will not submit work to the workshop.
         </p>
       </div>
     </section>
