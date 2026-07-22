@@ -472,3 +472,6 @@ img.avatar-photo {
   .section { padding: 60px 0; }
   .dates li { flex-direction: column; align-items: flex-start; gap: 4px; }
 }
+
+/* Speakers: cap row width so cards flow 3 + 2 */
+.cards-speakers { max-width: 762px; margin: 0 auto; }
