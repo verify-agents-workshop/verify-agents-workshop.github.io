@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blueprint — Who Verifies the Agents?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --blue: #143a75;
+      --blue-deep: #0f2f61;
+      --lineA: rgba(224, 236, 255, 0.92);
+      --lineB: rgba(224, 236, 255, 0.55);
+      --lineC: rgba(224, 236, 255, 0.3);
+      --grid: rgba(224, 236, 255, 0.07);
+      --gridBold: rgba(224, 236, 255, 0.12);
+      --maxw: 1120px;
+      --mono: 'IBM Plex Mono', 'Courier New', monospace;
+      --sans: 'Inter', sans-serif;
+    }
+    * , *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; font-family: var(--sans); color: var(--lineA);
+      background:
+        repeating-linear-gradient(to right, var(--grid) 0 1px, transparent 1px 24px),
+        repeating-linear-gradient(to bottom, var(--grid) 0 1px, transparent 1px 24px),
+        repeating-linear-gradient(to right, var(--gridBold) 0 1px, transparent 1px 120px),
+        repeating-linear-gradient(to bottom, var(--gridBold) 0 1px, transparent 1px 120px),
+        linear-gradient(160deg, var(--blue) 0%, var(--blue-deep) 100%);
+      line-height: 1.65; -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--lineA); text-decoration: underline; text-underline-offset: 3px; }
+
+    .variant-bar {
+      background: rgba(9, 26, 55, 0.9); color: #fff; font-size: 0.8rem; letter-spacing: 0.04em;
+      text-align: center; padding: 9px 16px; font-weight: 600;
+      border-bottom: 1px solid var(--lineC);
+    }
+    .variant-bar a { color: #fff; }
+
+    .drawing { max-width: var(--maxw); margin: 34px auto 60px; padding: 0 24px; }
+
+    /* drawing frame with corner ticks */
+    .frame {
+      border: 1.6px solid var(--lineA); position: relative; padding: 56px 56px 0;
+      box-shadow: inset 0 0 0 5px transparent;
+    }
+    .frame::before {
+      content: ""; position: absolute; inset: 7px; border: 0.8px solid var(--lineB); pointer-events: none;
+    }
+
+    .mono { font-family: var(--mono); }
+
+    /* header strip */
+    .hdr { text-align: center; padding-bottom: 40px; border-bottom: 0.8px solid var(--lineB); }
+    .hdr .proj {
+      font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.34em; text-transform: uppercase;
+      color: var(--lineB); margin-bottom: 22px;
+    }
+    .hdr h1 {
+      font-weight: 600; font-size: clamp(2.2rem, 5.4vw, 4rem); letter-spacing: 0.02em;
+      margin: 0 0 10px; text-transform: uppercase;
+    }
+    .hdr .sub {
+      font-family: var(--mono); font-size: clamp(0.95rem, 1.8vw, 1.15rem); color: var(--lineA);
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    /* dimension line under title */
+    .dim { width: 420px; max-width: 80%; margin: 26px auto 0; position: relative; height: 26px; }
+    .dim .bar { position: absolute; top: 12px; left: 0; right: 0; border-top: 1px solid var(--lineA); }
+    .dim .bar::before, .dim .bar::after {
+      content: ""; position: absolute; top: -6px; width: 1px; height: 12px; background: var(--lineA);
+    }
+    .dim .bar::before { left: 0; } .dim .bar::after { right: 0; }
+    .dim .lbl {
+      position: absolute; top: -4px; left: 50%; transform: translateX(-50%);
+      background: var(--blue); padding: 0 10px; font-family: var(--mono); font-size: 0.72rem;
+      letter-spacing: 0.18em;
+    }
+
+    /* schematic */
+    .schematic { padding: 46px 0 40px; border-bottom: 0.8px solid var(--lineB); }
+    .schematic svg { display: block; width: 100%; height: auto; }
+    .sch-cap {
+      font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--lineB); text-align: center; margin-top: 18px;
+    }
+
+    /* sheets */
+    .sheet { padding: 44px 0; border-bottom: 0.8px solid var(--lineB); }
+    .sheet-head { display: flex; align-items: baseline; gap: 18px; margin-bottom: 20px; }
+    .sheet-head .no {
+      font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.24em; color: var(--lineB);
+      white-space: nowrap;
+    }
+    .sheet-head .rule { flex: 1; border-top: 0.8px solid var(--lineC); }
+    .sheet-head h2 {
+      font-weight: 600; font-size: 1.5rem; margin: 0; text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .sheet p.spec { max-width: 760px; color: rgba(224,236,255,0.82); margin: 0 0 14px; }
+
+    .spec3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; border: 0.8px solid var(--lineB); }
+    .spec3 .cell { padding: 24px 22px; }
+    .spec3 .cell + .cell { border-left: 0.8px solid var(--lineB); }
+    .spec3 .cell .id { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.2em; color: var(--lineB); margin-bottom: 10px; }
+    .spec3 .cell h3 { font-size: 1.02rem; margin: 0 0 8px; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 600; }
+    .spec3 .cell p { font-size: 0.9rem; color: rgba(224,236,255,0.78); margin: 0; }
+
+    table.sched { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: 0.9rem; max-width: 640px; }
+    table.sched td { padding: 10px 8px; border-bottom: 0.8px dashed var(--lineC); }
+    table.sched td.v { text-align: right; letter-spacing: 0.06em; }
+
+    /* title block */
+    .titleblock-row { display: flex; justify-content: flex-end; padding: 40px 0 46px; }
+    .titleblock {
+      border: 1.6px solid var(--lineA); width: 460px; max-width: 100%;
+      font-family: var(--mono); font-size: 0.78rem;
+    }
+    .tb-row { display: flex; border-top: 0.8px solid var(--lineB); }
+    .tb-row:first-child { border-top: none; }
+    .tb-cell { padding: 8px 12px; flex: 1; }
+    .tb-cell + .tb-cell { border-left: 0.8px solid var(--lineB); }
+    .tb-cell .k { font-size: 0.62rem; letter-spacing: 0.2em; color: var(--lineB); text-transform: uppercase; display: block; margin-bottom: 2px; }
+
+    @media (max-width: 860px) {
+      .frame { padding: 36px 22px 0; }
+      .spec3 { grid-template-columns: 1fr; }
+      .spec3 .cell + .cell { border-left: none; border-top: 0.8px solid var(--lineB); }
+    }
+  </style>
+</head>
+<body>
+  <div class="variant-bar">📐 Design Preview · Blueprint · <a href="/dev/variants/">all variants</a> · <a href="/dev/">baseline</a></div>
+
+  <div class="drawing">
+    <div class="frame">
+
+      <header class="hdr">
+        <div class="proj">NeurIPS 2026 · Workshop Drawing No. 001 · Rev A</div>
+        <h1>Who Verifies the Agents?</h1>
+        <div class="sub">Toward Reliable Agent Development</div>
+        <div class="dim">
+          <div class="bar"></div>
+          <div class="lbl">SPAN · DEC 11 OR 12 · 2026</div>
+        </div>
+      </header>
+
+      <!-- schematic: the verification loop, drafted -->
+      <div class="schematic">
+        <svg viewBox="0 0 1000 300" fill="none" aria-hidden="true">
+          <g stroke="rgba(224,236,255,0.92)" stroke-width="1.4">
+            <!-- agent box -->
+            <rect x="60" y="112" width="170" height="76"/>
+            <!-- change node -->
+            <rect x="330" y="112" width="150" height="76"/>
+            <!-- verifier box (double frame) -->
+            <rect x="580" y="96" width="200" height="108"/>
+            <rect x="588" y="104" width="184" height="92" stroke-width="0.7" stroke="rgba(224,236,255,0.55)"/>
+            <!-- flow arrows -->
+            <path d="M230 150 H 322"/>
+            <path d="M314 145 L 324 150 L 314 155"/>
+            <path d="M480 150 H 572"/>
+            <path d="M564 145 L 574 150 L 564 155"/>
+            <!-- feedback loop underneath -->
+            <path d="M680 204 V 252 H 145 V 192"/>
+            <path d="M140 200 L 145 190 L 150 200"/>
+            <!-- signals in, from above -->
+            <path d="M620 40 V 88 M680 28 V 88 M740 40 V 88" stroke-dasharray="5 6"/>
+            <path d="M615 80 L 620 90 L 625 80 M675 80 L 680 90 L 685 80 M735 80 L 740 90 L 745 80"/>
+          </g>
+          <!-- ground truth hatching under environment -->
+          <g stroke="rgba(224,236,255,0.55)" stroke-width="0.9">
+            <path d="M330 214 H 480"/>
+            <path d="M338 214 l-8 10 M354 214 l-8 10 M370 214 l-8 10 M386 214 l-8 10 M402 214 l-8 10 M418 214 l-8 10 M434 214 l-8 10 M450 214 l-8 10 M466 214 l-8 10 M480 214 l-8 10"/>
+          </g>
+          <g fill="rgba(224,236,255,0.92)" font-family="'IBM Plex Mono', monospace" font-size="15" letter-spacing="2">
+            <text x="145" y="145" text-anchor="middle">AGENT</text>
+            <text x="145" y="166" text-anchor="middle" font-size="10" fill="rgba(224,236,255,0.55)">ITERATION n</text>
+            <text x="405" y="145" text-anchor="middle">ENV</text>
+            <text x="405" y="166" text-anchor="middle" font-size="10" fill="rgba(224,236,255,0.55)">GROUND TRUTH</text>
+            <text x="680" y="145" text-anchor="middle">VERIFIER</text>
+            <text x="680" y="166" text-anchor="middle" font-size="10" fill="rgba(224,236,255,0.55)">ROBUST · PROCESS-LEVEL</text>
+            <text x="680" y="20" text-anchor="middle" font-size="10" fill="rgba(224,236,255,0.55)">SIGNALS: COST · LATENCY · CALIBRATION</text>
+            <text x="412" y="278" text-anchor="middle" font-size="10" fill="rgba(224,236,255,0.55)">VERIFIED IMPROVEMENT → NEXT ITERATION</text>
+          </g>
+        </svg>
+        <div class="sch-cap">Fig. 1 — The verification loop · not to scale</div>
+      </div>
+
+      <!-- sheet 01: about -->
+      <section class="sheet" id="about">
+        <div class="sheet-head">
+          <span class="no">SHEET 01/03</span>
+          <h2>General Notes</h2>
+          <span class="rule"></span>
+        </div>
+        <p class="spec">Agent development is undergoing a crucial shift. Despite remarkable advances in agents that reason, plan, and operate in open-ended environments, their construction remains fragmented, dominated by manual prompt engineering and ad-hoc scaffolding.</p>
+        <p class="spec">The bottleneck is not a deficit of agentic frameworks but verification: the ability to reliably determine whether a change to an agent is a genuine improvement. This workshop convenes researchers from reinforcement learning, agentic AI, evaluation, AI safety, simulation, and ML systems to formalize verification as a core discipline.</p>
+      </section>
+
+      <!-- sheet 02: pillars -->
+      <section class="sheet" id="themes">
+        <div class="sheet-head">
+          <span class="no">SHEET 02/03</span>
+          <h2>Specifications · Three Pillars</h2>
+          <span class="rule"></span>
+        </div>
+        <div class="spec3">
+          <div class="cell">
+            <div class="id">SPEC-01</div>
+            <h3>Safety &amp; Robustness of Verification</h3>
+            <p>Verifiers that prevent reward hacking, resist specification gaming, and scale from outcome checks to process-level signals: traces, plans, tool-call sequences.</p>
+          </div>
+          <div class="cell">
+            <div class="id">SPEC-02</div>
+            <h3>Environment-Grounded Verification &amp; Simulators</h3>
+            <p>Where closed-form metrics do not exist, the environment is the ground truth. Faithful simulators become a verification infrastructure layer.</p>
+          </div>
+          <div class="cell">
+            <div class="id">SPEC-03</div>
+            <h3>Diverse &amp; Heterogeneous Verifiable Signals</h3>
+            <p>User experience, cost/latency profiles, calibration, and multimodality — composed into reliable verification metrics.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- sheet 03: dates -->
+      <section class="sheet" id="dates" style="border-bottom: none;">
+        <div class="sheet-head">
+          <span class="no">SHEET 03/03</span>
+          <h2>Milestones</h2>
+          <span class="rule"></span>
+        </div>
+        <table class="sched">
+          <tr><td>CFP RELEASE</td><td class="v">MID-JUL 2026</td></tr>
+          <tr><td>SUBMISSION DEADLINE</td><td class="v">29 AUG 2026</td></tr>
+          <tr><td>AUTHOR NOTIFICATION</td><td class="v">29 SEP 2026</td></tr>
+          <tr><td>WORKSHOP DAY</td><td class="v">11 OR 12 DEC 2026</td></tr>
+        </table>
+      </section>
+
+      <!-- title block -->
+      <div class="titleblock-row">
+        <div class="titleblock">
+          <div class="tb-row">
+            <div class="tb-cell" style="flex:2"><span class="k">Project</span>WHO VERIFIES THE AGENTS?</div>
+            <div class="tb-cell"><span class="k">Sheet</span>1 OF 1</div>
+          </div>
+          <div class="tb-row">
+            <div class="tb-cell"><span class="k">Location</span>SYDNEY, AUS</div>
+            <div class="tb-cell"><span class="k">Date</span>DEC 2026</div>
+            <div class="tb-cell"><span class="k">Scale</span>NTS</div>
+          </div>
+          <div class="tb-row">
+            <div class="tb-cell" style="flex:2"><span class="k">Drawn by</span>ORGANIZING COMMITTEE (7)</div>
+            <div class="tb-cell"><span class="k">Checked</span>PEER REVIEW</div>
+          </div>
+          <div class="tb-row">
+            <div class="tb-cell" style="flex:3"><span class="k">Contact</span>VERIFY-AGENTS-NEURIPS26-WORKSHOP@GOOGLEGROUPS.COM</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
