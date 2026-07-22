@@ -113,7 +113,9 @@
     .crow .k { font-weight: 600; }
     .crow .v { font-family: var(--disp); font-weight: 700; color: var(--orange); white-space: nowrap; }
 
-    footer.foot { background: var(--purple); color: #e8e2f4; text-align: center; padding: 54px 24px; }
+    .scene-wrap { line-height: 0; margin-top: 20px; }
+    .scene { display: block; width: 100%; height: auto; }
+    footer.foot { background: #2a2347; color: #e8e2f4; text-align: center; padding: 54px 24px; }
     footer.foot .t { font-family: var(--disp); font-weight: 800; font-size: 1.5rem; color: #fff; }
     footer.foot .s { font-size: 0.9rem; margin-top: 8px; color: #c9c0e2; }
     footer.foot .tag { font-family: var(--disp); font-weight: 700; color: #f0c987; margin-top: 16px; font-size: 1rem; }
@@ -261,7 +263,109 @@
     </div>
   </section>
 
-  <footer class="foot">
+  <!-- closing scene: the squad, the van, the manor to investigate -->
+  <div class="scene-wrap">
+    <svg class="scene" viewBox="0 0 1440 320" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <!-- dusk sky -->
+      <rect width="1440" height="320" fill="#3b3160"/>
+      <circle cx="1235" cy="72" r="40" fill="#f0e6c8"/>
+      <circle cx="1235" cy="72" r="58" fill="#f0e6c8" opacity="0.12"/>
+      <path d="M1050 46 q5 -8 10 0 q5 -8 10 0" stroke="#241d3d" stroke-width="2.5" fill="none"/>
+      <path d="M1120 100 q4 -7 8 0 q4 -7 8 0" stroke="#241d3d" stroke-width="2.2" fill="none"/>
+      <!-- distant hill -->
+      <path d="M0 252 C 300 214, 700 244, 1440 222 L 1440 320 L 0 320 Z" fill="#332a52"/>
+      <!-- haunted manor -->
+      <g>
+        <rect x="1075" y="168" width="220" height="112" fill="#241d3d"/>
+        <path d="M1065 168 L 1185 118 L 1305 168 Z" fill="#1c1631"/>
+        <rect x="1235" y="92" width="54" height="188" fill="#241d3d"/>
+        <path d="M1228 92 L 1262 56 L 1296 92 Z" fill="#1c1631"/>
+        <rect x="1103" y="196" width="22" height="30" fill="#f0c987"/>
+        <rect x="1148" y="196" width="22" height="30" fill="#f0c987" opacity="0.75"/>
+        <rect x="1193" y="196" width="22" height="30" fill="#f0c987"/>
+        <rect x="1252" y="120" width="18" height="26" fill="#f0c987" opacity="0.85"/>
+        <path d="M1160 280 L 1160 244 a14 14 0 0 1 28 0 L 1188 280 Z" fill="#100d1f"/>
+      </g>
+      <!-- ground -->
+      <rect y="262" width="1440" height="58" fill="#2a2347"/>
+      <!-- groovy van -->
+      <g transform="translate(64,152)">
+        <rect x="0" y="14" width="216" height="78" rx="24" fill="#2a9d8f"/>
+        <path d="M0 66 C 36 52, 72 82, 108 66 C 140 52, 176 80, 216 64 L 216 92 L 0 92 Z" fill="#6d5a9e" opacity="0.9"/>
+        <rect x="150" y="28" width="50" height="30" rx="8" fill="#d9f0ec"/>
+        <rect x="58" y="28" width="74" height="28" rx="8" fill="#d9f0ec"/>
+        <g transform="translate(34,44)">
+          <circle r="6" fill="#f0c987"/>
+          <circle cx="0" cy="-10" r="4.6" fill="#d97f2e"/><circle cx="9.5" cy="-3" r="4.6" fill="#d97f2e"/>
+          <circle cx="6" cy="8.5" r="4.6" fill="#d97f2e"/><circle cx="-6" cy="8.5" r="4.6" fill="#d97f2e"/>
+          <circle cx="-9.5" cy="-3" r="4.6" fill="#d97f2e"/>
+        </g>
+        <circle cx="52" cy="94" r="17" fill="#1c1830"/><circle cx="52" cy="94" r="6.5" fill="#f0c987"/>
+        <circle cx="172" cy="94" r="17" fill="#1c1830"/><circle cx="172" cy="94" r="6.5" fill="#f0c987"/>
+        <circle cx="212" cy="52" r="5" fill="#f7e3a1"/>
+      </g>
+      <!-- the squad: four original mystery-solvers, walking toward the manor -->
+      <g stroke-linecap="round">
+        <!-- 1: flashlight lead, jumpsuit + afro -->
+        <g transform="translate(470,178)">
+          <path d="M34 34 L 96 22 L 96 50 Z" fill="#f7e3a1" opacity="0.5"/>
+          <circle cx="14" cy="14" r="13" fill="#3a2a20"/>
+          <circle cx="15" cy="16" r="8.6" fill="#c98e63"/>
+          <rect x="4" y="26" width="22" height="40" rx="9" fill="#d97f2e"/>
+          <path d="M26 34 L 36 34" stroke="#c98e63" stroke-width="6"/>
+          <rect x="33" y="30" width="10" height="8" rx="2" fill="#3b3160"/>
+          <path d="M10 66 L 6 96 M20 66 L 26 96" stroke="#d97f2e" stroke-width="8"/>
+        </g>
+        <!-- 2: laptop under arm, purple hoodie -->
+        <g transform="translate(570,180)">
+          <circle cx="14" cy="13" r="9.4" fill="#e8b98d"/>
+          <path d="M4 10 a10 10 0 0 1 20 0 l 0 -2 a 10 8 0 0 0 -20 0 Z" fill="#33261c"/>
+          <rect x="3" y="24" width="24" height="40" rx="10" fill="#6d5a9e"/>
+          <rect x="22" y="38" width="16" height="11" rx="2" fill="#a4b24a"/>
+          <path d="M9 64 L 6 94 M21 64 L 25 94" stroke="#4d4076" stroke-width="8"/>
+        </g>
+        <!-- 3: tall one with the clipboard, teal jacket -->
+        <g transform="translate(668,166)">
+          <circle cx="14" cy="12" r="9.6" fill="#f0cfa8"/>
+          <path d="M5 7 q 9 -8 18 0 l 0 -3 q -9 -7 -18 0 Z" fill="#b3651f"/>
+          <rect x="2" y="23" width="25" height="46" rx="10" fill="#2a9d8f"/>
+          <rect x="24" y="34" width="13" height="17" rx="2" fill="#f8efdc"/>
+          <path d="M27 42 l 3 3 5 -6" stroke="#d97f2e" stroke-width="2.4" fill="none"/>
+          <path d="M9 69 L 7 100 M20 69 L 24 100" stroke="#1f7a70" stroke-width="8"/>
+        </g>
+        <!-- 4: magnifier in hand, lime tee + headband -->
+        <g transform="translate(762,182)">
+          <circle cx="13" cy="13" r="9.2" fill="#8a5a3b"/>
+          <path d="M3 9 h 20" stroke="#e6392f" stroke-width="4"/>
+          <rect x="2" y="24" width="23" height="38" rx="9" fill="#a4b24a"/>
+          <path d="M24 32 L 34 40" stroke="#8a5a3b" stroke-width="5"/>
+          <circle cx="40" cy="45" r="8" fill="none" stroke="#33261c" stroke-width="3"/>
+          <path d="M9 62 L 6 92 M19 62 L 24 92" stroke="#6b8032" stroke-width="8"/>
+        </g>
+      </g>
+      <!-- the hound, out front and on the scent -->
+      <g transform="translate(1345,162) scale(-0.78,0.78)">
+        <path d="M470 76 C 492 60, 500 44, 494 28" stroke="#8a5a3b" stroke-width="13" stroke-linecap="round" fill="none"/>
+        <path d="M330 118 C 342 84, 380 68, 420 70 C 458 72, 480 92, 478 116 C 476 142, 446 156, 404 156 C 364 156, 340 142, 330 118 Z" fill="#8a5a3b"/>
+        <path d="M438 140 L 438 168" stroke="#8a5a3b" stroke-width="15" stroke-linecap="round"/>
+        <path d="M352 138 L 340 166" stroke="#8a5a3b" stroke-width="15" stroke-linecap="round"/>
+        <path d="M268 128 C 270 106, 292 92, 318 96 C 344 100, 356 118, 350 136 C 344 154, 318 160, 296 152 C 280 146, 268 140, 268 128 Z" fill="#8a5a3b"/>
+        <path d="M240 138 C 250 128, 264 124, 276 128 L 276 148 C 262 152, 248 148, 240 138 Z" fill="#a9764e"/>
+        <circle cx="242" cy="136" r="7" fill="#f8efdc"/>
+        <path d="M310 100 C 330 92, 346 98, 348 116 C 350 136, 338 152, 322 150 C 308 148, 302 132, 306 116 Z" fill="#5d3820"/>
+        <circle cx="296" cy="118" r="4.4" fill="#f8efdc"/>
+        <path d="M322 96 C 336 100, 348 110, 350 122" stroke="#2a9d8f" stroke-width="9" stroke-linecap="round" fill="none"/>
+      </g>
+      <!-- paw trail on the ground between squad and hound -->
+      <g fill="#f0c987" opacity="0.4">
+        <g transform="translate(846,290)"><ellipse cx="0" cy="4" rx="6" ry="4.6"/><circle cx="-5.5" cy="-3" r="2.2"/><circle cx="-1.5" cy="-5" r="2.2"/><circle cx="2.5" cy="-5" r="2.2"/><circle cx="6.5" cy="-3" r="2.2"/></g>
+        <g transform="translate(902,278) rotate(8)"><ellipse cx="0" cy="4" rx="6" ry="4.6"/><circle cx="-5.5" cy="-3" r="2.2"/><circle cx="-1.5" cy="-5" r="2.2"/><circle cx="2.5" cy="-5" r="2.2"/><circle cx="6.5" cy="-3" r="2.2"/></g>
+        <g transform="translate(956,290) rotate(-6)"><ellipse cx="0" cy="4" rx="6" ry="4.6"/><circle cx="-5.5" cy="-3" r="2.2"/><circle cx="-1.5" cy="-5" r="2.2"/><circle cx="2.5" cy="-5" r="2.2"/><circle cx="6.5" cy="-3" r="2.2"/></g>
+      </g>
+    </svg>
+  </div>
+
+  <footer class="foot" style="padding-top: 40px;">
     <div class="t">Who Verifies the Agents?</div>
     <div class="s">NeurIPS 2026 · Sydney, Australia</div>
     <div class="tag">No mystery is solved until it's verified. 🐾</div>
