@@ -4,25 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Who Verifies the Agents? | NeurIPS 2026 Workshop</title>
-  <meta name="description" content="Who Verifies the Agents? Toward Reliable Agent Development: a NeurIPS 2026 workshop on formalizing verification as a core discipline in agent development." />
+  <meta name="description" content="Who Verifies the Agents? Toward Reliable Agent Development: a NeurIPS 2026 workshop tackling verification as a first-class research problem for reliable agent development. Sydney, Dec 11 or 12, 2026." />
 
   <!-- Open Graph / social sharing -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Who Verifies the Agents? Toward Reliable Agent Development" />
-  <meta property="og:description" content="A NeurIPS 2026 workshop on formalizing verification as a core discipline in agent development." />
+  <meta property="og:description" content="A NeurIPS 2026 workshop tackling verification as a first-class research problem for reliable agent development. Sydney, Dec 11 or 12, 2026. Submissions due Aug 29, 2026." />
   <meta property="og:url" content="https://verify-agents-workshop.github.io/" />
+  <meta property="og:image" content="https://verify-agents-workshop.github.io/assets/social-card.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://verify-agents-workshop.github.io/assets/social-card.jpg" />
 
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%F0%9F%A6%98%3C/text%3E%3C/svg%3E" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=7" />
+  <link rel="stylesheet" href="style.css?v=8" />
 </head>
 <body>
-  <!-- Under-construction notice shown on the public site; replaced by the staging banner on /dev/. -->
-  <div id="construction-banner" class="construction-banner">
-    🚧 This website is under construction. Details below are not final and may change.
-  </div>
   <!-- Staging banner: revealed only on the /dev/ preview, stays hidden on the public site. -->
   <div id="preview-banner" class="preview-banner" hidden>
     ⚙️ Preview build: staging version served at <code>/dev/</code>. This is not the public site.
@@ -30,7 +33,6 @@
   <script>
     if (window.location.pathname.startsWith('/dev/')) {
       document.getElementById('preview-banner').hidden = false;
-      document.getElementById('construction-banner').hidden = true;
     }
   </script>
 
@@ -68,7 +70,7 @@
           <a class="btn btn-primary" href="#cfp">Call for Papers</a>
           <a class="btn btn-ghost" href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/Verify-Agents">Submit on OpenReview</a>
         </div>
-        <p class="hero-meta">Sydney, Australia · Dec 11 or 12, 2026 · Co-located with NeurIPS</p>
+        <p class="hero-meta">Sydney, Australia · Dec 11 or 12, 2026 · Submissions due Aug 29, 2026 (AoE)</p>
       </div>
     </section>
 
@@ -196,9 +198,7 @@
     <section id="dates" class="section section-alt">
       <div class="section-inner narrow">
         <h2 class="section-title">Important Dates</h2>
-        <p class="tag tag-tentative">Tentative, subject to change</p>
         <ul class="dates">
-          <li><span class="date-label">Call for papers released</span><span class="date-value">Mid-July 2026</span></li>
           <li><span class="date-label">Submission deadline</span><span class="date-value">August 29, 2026</span></li>
           <li><span class="date-label">Author notification</span><span class="date-value">September 29, 2026</span></li>
           <li><span class="date-label">Workshop date</span><span class="date-value">Dec 11 or 12, 2026</span></li>
@@ -215,31 +215,31 @@
         <div class="cards">
           <div class="person-card">
             <img class="avatar avatar-photo" src="assets/speakers/pin-yu-chen.jpg" alt="Pin-Yu Chen" />
-            <div class="person-name">Pin-Yu Chen</div>
+            <div class="person-name"><a href="https://sites.google.com/site/pinyuchenpage/home" target="_blank" rel="noopener">Pin-Yu Chen</a></div>
             <div class="person-affil">IBM</div>
             <p class="person-bio">Principal Research Scientist, Trusted AI Group; PI at the MIT–IBM Watson AI Lab. AI safety, robustness, and trustworthiness.</p>
           </div>
           <div class="person-card">
             <img class="avatar avatar-photo" src="assets/speakers/azalia-mirhoseini.jpg" alt="Azalia Mirhoseini" />
-            <div class="person-name">Azalia Mirhoseini</div>
+            <div class="person-name"><a href="https://www.azaliamirhoseini.com/" target="_blank" rel="noopener">Azalia Mirhoseini</a></div>
             <div class="person-affil">Stanford University · Ricursive Intelligence</div>
             <p class="person-bio">Assistant Professor at Stanford. Scalable, self-improving AI; Mixture-of-Experts and AlphaChip.</p>
           </div>
           <div class="person-card">
             <img class="avatar avatar-photo" src="assets/speakers/seshendra-nalla.jpg" alt="Seshendra Nalla" />
-            <div class="person-name">Seshendra Nalla</div>
+            <div class="person-name"><a href="https://www.linkedin.com/in/seshendranalla/" target="_blank" rel="noopener">Seshendra Nalla</a></div>
             <div class="person-affil">Datadog</div>
             <p class="person-bio">VP of Observability Data Platform; core contributor to BitsEvolve, a self-optimizing code system.</p>
           </div>
           <div class="person-card">
             <img class="avatar avatar-photo" src="assets/speakers/ion-stoica.jpg" alt="Ion Stoica" />
-            <div class="person-name">Ion Stoica</div>
+            <div class="person-name"><a href="https://people.eecs.berkeley.edu/~istoica/" target="_blank" rel="noopener">Ion Stoica</a></div>
             <div class="person-affil">UC Berkeley · Anyscale · Databricks</div>
             <p class="person-bio">Professor at UC Berkeley; Executive Chairman of Databricks and Anyscale. AI systems: SkyPilot, vLLM, Chatbot Arena, Ray, Spark.</p>
           </div>
           <div class="person-card">
             <img class="avatar avatar-photo" src="assets/speakers/yu-su.jpg" alt="Yu Su" />
-            <div class="person-name">Yu Su</div>
+            <div class="person-name"><a href="https://ysu1989.github.io/" target="_blank" rel="noopener">Yu Su</a></div>
             <div class="person-affil">Ohio State University · NeoCognition</div>
             <p class="person-bio">Associate Professor and 2025 Sloan Fellow. Agent reliability and evaluation: Mind2Web, MMMU, SeeAct.</p>
           </div>
@@ -255,37 +255,37 @@
         <div class="cards">
           <div class="person-card">
             <img class="avatar avatar-photo" src="assets/organizers/ahmad-beirami.jpg" alt="Ahmad Beirami" />
-            <div class="person-name">Ahmad Beirami</div>
+            <div class="person-name"><a href="https://beirami.github.io/" target="_blank" rel="noopener">Ahmad Beirami</a></div>
             <div class="person-affil">Fidian</div>
           </div>
           <div class="person-card">
             <img class="avatar avatar-photo" src="assets/organizers/mert-cemri.jpg" alt="Mert Cemri" />
-            <div class="person-name">Mert Cemri</div>
+            <div class="person-name"><a href="https://people.eecs.berkeley.edu/~mert_cemri/" target="_blank" rel="noopener">Mert Cemri</a></div>
             <div class="person-affil">UC Berkeley</div>
           </div>
           <div class="person-card">
             <img class="avatar avatar-photo" src="assets/organizers/zhang-wei-hong.jpg" alt="Zhang-Wei Hong" />
-            <div class="person-name">Zhang-Wei Hong</div>
+            <div class="person-name"><a href="https://williamd4112.github.io/" target="_blank" rel="noopener">Zhang-Wei Hong</a></div>
             <div class="person-affil">MIT–IBM Watson AI Lab</div>
           </div>
           <div class="person-card">
             <img class="avatar avatar-photo" src="assets/organizers/hung-le.jpg" alt="Hung Le" />
-            <div class="person-name">Hung Le</div>
+            <div class="person-name"><a href="https://sites.google.com/view/henryle2018/home" target="_blank" rel="noopener">Hung Le</a></div>
             <div class="person-affil">Fidian</div>
           </div>
           <div class="person-card">
             <img class="avatar avatar-photo" src="assets/organizers/ninareh-mehrabi.jpg" alt="Ninareh Mehrabi" />
-            <div class="person-name">Ninareh Mehrabi</div>
+            <div class="person-name"><a href="https://ninarehm.github.io" target="_blank" rel="noopener">Ninareh Mehrabi</a></div>
             <div class="person-affil">Meta Superintelligence Labs</div>
           </div>
           <div class="person-card">
             <img class="avatar avatar-photo" src="assets/organizers/melissa-pan.jpg" alt="Melissa Pan" />
-            <div class="person-name">Melissa Pan</div>
+            <div class="person-name"><a href="https://melissa-pan.github.io/" target="_blank" rel="noopener">Melissa Pan</a></div>
             <div class="person-affil">UC Berkeley</div>
           </div>
           <div class="person-card">
             <img class="avatar avatar-photo" src="assets/organizers/dilara-soylu.jpg" alt="Dilara Soylu" />
-            <div class="person-name">Dilara Soylu</div>
+            <div class="person-name"><a href="https://dilarasoylu.github.io/" target="_blank" rel="noopener">Dilara Soylu</a></div>
             <div class="person-affil">Stanford University</div>
           </div>
         </div>
