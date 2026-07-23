@@ -9,15 +9,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --sky: #d9ecf5; --cream: #fdf6e9; --sunset: #e58a4e; --gold: #d99a3d;
-      --green: #5f8f52; --purple: #7a5a9e; --ink: #2f2b33; --soft: #635c66;
+      --sky: #cfe2f0; --cream: #fdf6e9; --sunset: #e58a4e; --gold: #d99a3d; --teal: #2f847f;
+      --green: #5f8f52; --purple: #7a4e94; --ink: #2f2b33; --soft: #635c66;
       --line: #e9dfc9; --maxw: 1060px;
       --disp: 'Baloo 2', cursive; --sans: 'Inter', sans-serif;
     }
     * , *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body { margin: 0; font-family: var(--sans); color: var(--ink); background: var(--cream); line-height: 1.68; -webkit-font-smoothing: antialiased; }
-    a { color: var(--green); text-decoration: none; }
+    a { color: var(--teal); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .variant-bar { background: var(--purple); color: #fff; font-size: 0.8rem; letter-spacing: 0.04em; text-align: center; padding: 9px 16px; font-weight: 700; }
     .variant-bar a { color: #fff; text-decoration: underline; }
@@ -28,7 +28,7 @@
     nav.links { display: flex; gap: 24px; }
     nav.links a { color: var(--soft); font-size: 0.9rem; font-weight: 600; }
     nav.links a:hover { color: var(--sunset); text-decoration: none; }
-    .hero { padding: 56px 0 84px; text-align: center; background: linear-gradient(180deg, var(--sky) 0%, #f3e4cd 78%, var(--cream) 100%); }
+    .hero { padding: 56px 0 84px; text-align: center; background: linear-gradient(180deg, var(--sky) 0%, #e8dcc8 48%, #f7e3bd 76%, var(--cream) 100%); }
     .banner-frame { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
     .banner-frame img { width: 100%; height: auto; display: block; border-radius: 14px; box-shadow: 0 12px 44px rgba(47,43,51,0.25); }
     .hero .lede { max-width: 610px; margin: 42px auto 32px; font-size: 1.1rem; color: var(--soft); }
@@ -43,7 +43,7 @@
     .ov { font-size: 1.05rem; margin: 0 0 20px; }
     .cc-narrow { max-width: 760px; margin: 0 auto; text-align: left; }
     .cc-h3 { margin: 36px 0 10px; font-size: 1.35rem; font-weight: 700; font-family: var(--disp); }
-    .cc-h4 { margin: 22px 0 4px; font-size: 1rem; font-weight: 700; color: var(--purple); }
+    .cc-h4 { margin: 22px 0 4px; font-size: 1rem; font-weight: 700; color: var(--teal); }
     .cc-list { margin: 6px 0 18px; padding-left: 24px; }
     .cc-list li { padding: 3px 0; }
     .cc-guide { list-style: none; padding: 0; margin: 8px 0 20px; }
@@ -51,7 +51,7 @@
     .cc-people { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 30px; }
     .cc-people-sp { max-width: 790px; margin-left: auto; margin-right: auto; }
     .cc-person { width: 232px; text-align: center; padding: 22px 14px; background: #fffdf6; border-radius: 18px; box-shadow: 0 3px 0 rgba(47,43,51,0.14); }
-    .cc-avatar { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; margin-bottom: 12px; border: 3px solid var(--gold); }
+    .cc-avatar { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; margin-bottom: 12px; border: 3px solid #3aa6a0; }
     .cc-name { font-weight: 700; }
     .cc-name a { color: inherit; }
     .cc-affil { font-size: 0.85rem; color: var(--soft); }
@@ -98,7 +98,7 @@
   <section id="about">
     <div class="wrap">
       <h2 class="stitle">Overview</h2>
-      <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g fill="#d99a3d"><circle cx="35" cy="13" r="6"/><circle cx="35" cy="13" r="9" fill="none" stroke="#d99a3d" stroke-width="2" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6"/><circle cx="95" cy="13" r="9" fill="none" stroke="#d99a3d" stroke-width="2" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6"/><circle cx="155" cy="13" r="9" fill="none" stroke="#d99a3d" stroke-width="2" stroke-dasharray="3 4"/></g></svg>
+      <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g><circle cx="35" cy="13" r="6" fill="#d99a3d"/><circle cx="35" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6" fill="#d99a3d"/><circle cx="95" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6" fill="#d99a3d"/><circle cx="155" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/></g></svg>
       <div class="cc-narrow"><p class="ov">Despite remarkable advances in agents that reason, plan, and operate in open-ended environments, reliably verifying their improvements remains an unsolved challenge. Verification is the ability to determine whether a change to an agent (such as a prompt update, a new tool integration, or a modification to its reasoning process) produces a genuine improvement in capability or reliability.</p><p class="ov">Verification works in controlled settings (formal math, competitive programming, coding) but remains shallow and noisy for general agentic tasks, causing performance to plateau or silently regress during development. This workshop convenes researchers to tackle verification as a first-class research problem for reliable agent development.</p></div>
     </div>
   </section>
@@ -106,7 +106,7 @@
   <section id="cfp" style="background: #f4ead6;">
     <div class="wrap">
       <h2 class="stitle">Call for Papers</h2>
-      <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g fill="#d99a3d"><circle cx="35" cy="13" r="6"/><circle cx="35" cy="13" r="9" fill="none" stroke="#d99a3d" stroke-width="2" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6"/><circle cx="95" cy="13" r="9" fill="none" stroke="#d99a3d" stroke-width="2" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6"/><circle cx="155" cy="13" r="9" fill="none" stroke="#d99a3d" stroke-width="2" stroke-dasharray="3 4"/></g></svg>
+      <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g><circle cx="35" cy="13" r="6" fill="#d99a3d"/><circle cx="35" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6" fill="#d99a3d"/><circle cx="95" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6" fill="#d99a3d"/><circle cx="155" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/></g></svg>
       <div class="cc-narrow"><h3 class="cc-h3">Topics of Interest</h3>
 <p class="cc-p">We invite submissions across three core pillars, as well as topics at their intersection:</p>
 <h4 class="cc-h4">Pillar 1: Safety and Robustness of Verification</h4>
@@ -156,7 +156,7 @@
   <section id="dates">
     <div class="wrap">
       <h2 class="stitle">Important Dates</h2>
-      <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g fill="#d99a3d"><circle cx="35" cy="13" r="6"/><circle cx="35" cy="13" r="9" fill="none" stroke="#d99a3d" stroke-width="2" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6"/><circle cx="95" cy="13" r="9" fill="none" stroke="#d99a3d" stroke-width="2" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6"/><circle cx="155" cy="13" r="9" fill="none" stroke="#d99a3d" stroke-width="2" stroke-dasharray="3 4"/></g></svg>
+      <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g><circle cx="35" cy="13" r="6" fill="#d99a3d"/><circle cx="35" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6" fill="#d99a3d"/><circle cx="95" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6" fill="#d99a3d"/><circle cx="155" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/></g></svg>
       <div class="cc-narrow"><div class="cc-guide" style="max-width:580px;margin:0 auto;"><li style="display:flex;justify-content:space-between;font-weight:600;"><span>Submission deadline</span><span style="color:var(--sunset);font-family:var(--disp);">August 29, 2026</span></li><li style="display:flex;justify-content:space-between;font-weight:600;"><span>Author notification</span><span style="color:var(--sunset);font-family:var(--disp);">September 29, 2026</span></li><li style="display:flex;justify-content:space-between;font-weight:600;"><span>Workshop day</span><span style="color:var(--sunset);font-family:var(--disp);">Dec 11 or 12, 2026</span></li></div><p class="cc-note">The exact workshop day (Friday, Dec 11 or Saturday, Dec 12) will be confirmed once assigned by NeurIPS. All deadlines are 23:59 Anywhere on Earth (AoE) unless otherwise noted.</p></div>
     </div>
   </section>
@@ -164,7 +164,7 @@
   <section id="speakers" style="background: #f4ead6;">
     <div class="wrap">
       <h2 class="stitle">Confirmed Speakers &amp; Panelists</h2>
-      <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g fill="#d99a3d"><circle cx="35" cy="13" r="6"/><circle cx="35" cy="13" r="9" fill="none" stroke="#d99a3d" stroke-width="2" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6"/><circle cx="95" cy="13" r="9" fill="none" stroke="#d99a3d" stroke-width="2" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6"/><circle cx="155" cy="13" r="9" fill="none" stroke="#d99a3d" stroke-width="2" stroke-dasharray="3 4"/></g></svg>
+      <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g><circle cx="35" cy="13" r="6" fill="#d99a3d"/><circle cx="35" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6" fill="#d99a3d"/><circle cx="95" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6" fill="#d99a3d"/><circle cx="155" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/></g></svg>
       <div class="cc-narrow"><div class="cc-people cc-people-sp"><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/pin-yu-chen.jpg" alt="Pin-Yu Chen" /><div class="cc-name"><a href="https://sites.google.com/site/pinyuchenpage/home" target="_blank" rel="noopener">Pin-Yu Chen</a></div><div class="cc-affil">IBM</div><p class="cc-bio">Principal Research Scientist, Trusted AI Group; PI at the MIT–IBM Watson AI Lab. AI safety, robustness, and trustworthiness.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/azalia-mirhoseini.jpg" alt="Azalia Mirhoseini" /><div class="cc-name"><a href="https://www.azaliamirhoseini.com/" target="_blank" rel="noopener">Azalia Mirhoseini</a></div><div class="cc-affil">Stanford University · Ricursive Intelligence</div><p class="cc-bio">Assistant Professor at Stanford. Scalable, self-improving AI; Mixture-of-Experts and AlphaChip.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/seshendra-nalla.jpg" alt="Seshendra Nalla" /><div class="cc-name"><a href="https://www.linkedin.com/in/seshendranalla/" target="_blank" rel="noopener">Seshendra Nalla</a></div><div class="cc-affil">Datadog</div><p class="cc-bio">VP of Observability Data Platform; core contributor to BitsEvolve, a self-optimizing code system.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/ion-stoica.jpg" alt="Ion Stoica" /><div class="cc-name"><a href="https://people.eecs.berkeley.edu/~istoica/" target="_blank" rel="noopener">Ion Stoica</a></div><div class="cc-affil">UC Berkeley · Anyscale · Databricks</div><p class="cc-bio">Professor at UC Berkeley; Executive Chairman of Databricks and Anyscale. AI systems: SkyPilot, vLLM, Chatbot Arena, Ray, Spark.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/yu-su.jpg" alt="Yu Su" /><div class="cc-name"><a href="https://ysu1989.github.io/" target="_blank" rel="noopener">Yu Su</a></div><div class="cc-affil">Ohio State University · NeoCognition</div><p class="cc-bio">Associate Professor and 2025 Sloan Fellow. Agent reliability and evaluation: Mind2Web, MMMU, SeeAct.</p></div></div></div>
     </div>
   </section>
@@ -172,7 +172,7 @@
   <section id="organizers">
     <div class="wrap">
       <h2 class="stitle">Organizing Committee</h2>
-      <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g fill="#d99a3d"><circle cx="35" cy="13" r="6"/><circle cx="35" cy="13" r="9" fill="none" stroke="#d99a3d" stroke-width="2" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6"/><circle cx="95" cy="13" r="9" fill="none" stroke="#d99a3d" stroke-width="2" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6"/><circle cx="155" cy="13" r="9" fill="none" stroke="#d99a3d" stroke-width="2" stroke-dasharray="3 4"/></g></svg>
+      <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g><circle cx="35" cy="13" r="6" fill="#d99a3d"/><circle cx="35" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6" fill="#d99a3d"/><circle cx="95" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6" fill="#d99a3d"/><circle cx="155" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/></g></svg>
       <div class="cc-narrow"><div class="cc-people"><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/ahmad-beirami.jpg" alt="Ahmad Beirami" /><div class="cc-name"><a href="https://beirami.github.io/" target="_blank" rel="noopener">Ahmad Beirami</a></div><div class="cc-affil">Fidian</div></div><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/mert-cemri.jpg" alt="Mert Cemri" /><div class="cc-name"><a href="https://people.eecs.berkeley.edu/~mert_cemri/" target="_blank" rel="noopener">Mert Cemri</a></div><div class="cc-affil">UC Berkeley</div></div><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/zhang-wei-hong.jpg" alt="Zhang-Wei Hong" /><div class="cc-name"><a href="https://williamd4112.github.io/" target="_blank" rel="noopener">Zhang-Wei Hong</a></div><div class="cc-affil">MIT–IBM Watson AI Lab</div></div><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/hung-le.jpg" alt="Hung Le" /><div class="cc-name"><a href="https://sites.google.com/view/henryle2018/home" target="_blank" rel="noopener">Hung Le</a></div><div class="cc-affil">Fidian</div></div><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/ninareh-mehrabi.jpg" alt="Ninareh Mehrabi" /><div class="cc-name"><a href="https://ninarehm.github.io" target="_blank" rel="noopener">Ninareh Mehrabi</a></div><div class="cc-affil">Meta Superintelligence Labs</div></div><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/melissa-pan.jpg" alt="Melissa Pan" /><div class="cc-name"><a href="https://melissa-pan.github.io/" target="_blank" rel="noopener">Melissa Pan</a></div><div class="cc-affil">UC Berkeley</div></div><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/dilara-soylu.jpg" alt="Dilara Soylu" /><div class="cc-name"><a href="https://dilarasoylu.github.io/" target="_blank" rel="noopener">Dilara Soylu</a></div><div class="cc-affil">Stanford University</div></div></div></div>
     </div>
   </section>
@@ -180,7 +180,7 @@
   <section id="contact" style="background: #f4ead6;">
     <div class="wrap">
       <h2 class="stitle">Get in Touch</h2>
-      <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g fill="#d99a3d"><circle cx="35" cy="13" r="6"/><circle cx="35" cy="13" r="9" fill="none" stroke="#d99a3d" stroke-width="2" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6"/><circle cx="95" cy="13" r="9" fill="none" stroke="#d99a3d" stroke-width="2" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6"/><circle cx="155" cy="13" r="9" fill="none" stroke="#d99a3d" stroke-width="2" stroke-dasharray="3 4"/></g></svg>
+      <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g><circle cx="35" cy="13" r="6" fill="#d99a3d"/><circle cx="35" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6" fill="#d99a3d"/><circle cx="95" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6" fill="#d99a3d"/><circle cx="155" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/></g></svg>
       <div class="cc-narrow"><p class="cc-p cc-center">Questions about the workshop, submissions, or sponsorship? Reach out to the organizing committee.</p><p class="cc-email cc-center"><a href="mailto:verify-agents-workshop@googlegroups.com">verify-agents-workshop@googlegroups.com</a></p><p class="cc-p cc-center"><a href="https://x.com/veri_agents">@veri_agents on X</a> · <a href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/Verify-Agents">OpenReview</a></p></div>
     </div>
   </section>
