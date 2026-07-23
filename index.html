@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=9" />
+  <link rel="stylesheet" href="style.css?v=10" />
 </head>
 <body>
   <!-- Staging banner: revealed only on the /dev/ preview, stays hidden on the public site. -->
@@ -45,7 +45,6 @@
       </label>
       <ul class="nav-links">
         <li><a href="#about">Overview</a></li>
-        <li><a href="#pillars">Themes</a></li>
         <li><a href="#cfp">Call for Papers</a></li>
         <li><a href="#dates">Dates</a></li>
         <li><a href="#speakers">Speakers</a></li>
@@ -95,46 +94,6 @@
       </div>
     </section>
 
-    <!-- Pillars -->
-    <section id="pillars" class="section section-alt">
-      <div class="section-inner">
-        <h2 class="section-title">Three Pillars of Verification</h2>
-        <p class="section-intro">
-          We invite work spanning, but not limited to, these three interconnected themes.
-        </p>
-        <div class="pillars">
-          <article class="pillar">
-            <div class="pillar-index">01</div>
-            <h3>Safety &amp; Robustness of Verification</h3>
-            <p>
-              Verification must evolve with agents: robust verifiers that prevent reward
-              hacking, resist harness specification gaming, and maintain alignment, scaling
-              from outcome checks to process-level signals like traces, plans, and tool-call
-              sequences.
-            </p>
-          </article>
-          <article class="pillar">
-            <div class="pillar-index">02</div>
-            <h3>Environment-Grounded Verification &amp; Simulators</h3>
-            <p>
-              For open-ended tasks lacking closed-form metrics, the environment itself is the
-              ground truth. Faithful simulators of agentic tasks, from multi-agent kernel
-              optimization to self-optimizing production systems, can become a verification
-              infrastructure layer.
-            </p>
-          </article>
-          <article class="pillar">
-            <div class="pillar-index">03</div>
-            <h3>Diverse &amp; Heterogeneous Verifiable Signals</h3>
-            <p>
-              Beyond scalar rewards, holistic evaluation integrates user experience,
-              cost/latency profiles, calibration, and multimodality. A key challenge is
-              composing these heterogeneous signals into reliable verification metrics.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
 
     <!-- Call for Papers -->
     <section id="cfp" class="section">
@@ -183,9 +142,9 @@
         <ul class="guide-list">
           <li><strong>Format:</strong> Papers should be between 4 to 9 pages (excluding references and appendices), using the <a href="https://neurips.cc/Conferences/2026/CallForPapers">NeurIPS 2026 template</a>. We also welcome demo papers, which should be no more than 4 pages.</li>
           <li><strong>Dual submission policy:</strong> We welcome work that is under review or has been recently published at other venues.</li>
-          <li><strong>Review:</strong> Reviews will be double blind. Reviewers will not use LLMs to evaluate submissions.</li>
+          <li><strong>Review:</strong> Reviews will be double blind. Authors of submitted papers may be asked to contribute reviews.</li>
           <li><strong>Presentation:</strong> Accepted papers will be presented as posters; select papers will be chosen for oral presentations or lightning talks.</li>
-          <li><strong>Non-archival:</strong> The workshop is non-archival; papers will be made available on the workshop website but do not constitute formal proceedings.</li>
+          <li><strong>Non-archival:</strong> The workshop is non-archival; accepted papers will be made available on OpenReview but do not constitute formal proceedings.</li>
         </ul>
         <p>
           Submissions and reviewing are handled through
@@ -210,7 +169,7 @@
     <!-- Speakers -->
     <section id="speakers" class="section">
       <div class="section-inner">
-        <h2 class="section-title">Confirmed Speakers</h2>
+        <h2 class="section-title">Confirmed Speakers &amp; Panelists</h2>
         <div class="cards cards-speakers">
           <div class="person-card">
             <img class="avatar avatar-photo" src="assets/speakers/pin-yu-chen.jpg" alt="Pin-Yu Chen" />

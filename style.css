@@ -154,15 +154,16 @@ a:hover { text-decoration: underline; }
 }
 .hero-eyebrow {
   display: inline-block;
-  margin: 0 0 20px;
-  padding: 6px 16px;
+  margin: 0 0 24px;
+  padding: 10px 26px;
   border-radius: 999px;
-  background: var(--brand-tint);
-  color: var(--brand-deep);
-  font-weight: 600;
-  font-size: 0.82rem;
-  letter-spacing: 0.04em;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  box-shadow: 0 4px 14px rgba(67, 56, 202, 0.3);
 }
 .hero-title {
   font-family: var(--font-serif);
