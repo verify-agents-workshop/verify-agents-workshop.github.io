@@ -28,10 +28,21 @@
     nav.links { display: flex; gap: 24px; }
     nav.links a { color: var(--soft); font-size: 0.9rem; font-weight: 600; }
     nav.links a:hover { color: var(--sunset); text-decoration: none; }
-    .hero { padding: 0 0 84px; text-align: center; background: linear-gradient(180deg, var(--sky) 0%, #e8dcc8 48%, #f7e3bd 76%, var(--cream) 100%); }
-    .banner-frame { margin: 0; padding: 0; }
-    .banner-frame img { width: 100%; height: auto; display: block; }
-    .hero .lede { max-width: 610px; margin: 42px auto 32px; font-size: 1.1rem; color: var(--soft); }
+    .hero-cover {
+      position: relative; min-height: 93vh; text-align: center;
+      background: url(assets/banner.jpg) center top / cover no-repeat;
+      display: flex; align-items: flex-end; justify-content: center;
+    }
+    .hero-cover::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(38,26,48,0) 38%, rgba(38,26,48,0.55) 66%, rgba(38,26,48,0.92) 100%);
+    }
+    .hero-overlay {
+      position: relative; z-index: 2; max-width: 760px; padding: 0 28px 58px; color: #fdf6e9;
+    }
+    .ov-lede { font-size: clamp(1rem, 1.6vw, 1.18rem); line-height: 1.6; margin: 0 0 26px; color: #fbf3e2; text-shadow: 0 1px 10px rgba(38,26,48,0.55); }
+    .ov-actions { margin-bottom: 20px; }
+    .ov-meta { font-weight: 600; font-size: 0.9rem; color: #eadfc8; margin: 0; text-shadow: 0 1px 8px rgba(38,26,48,0.6); }
     .btn { display: inline-block; font-family: var(--disp); font-weight: 700; font-size: 1rem; padding: 12px 30px; border-radius: 999px; margin: 0 6px 10px; transition: transform .14s ease; }
     .btn:hover { transform: scale(1.05); text-decoration: none; }
     .btn-s { background: var(--sunset); color: #fff; box-shadow: 0 6px 0 #c06c33; }
@@ -81,17 +92,14 @@
     </div>
   </header>
 
-  <section class="hero">
-    <div class="banner-frame">
-      <img src="assets/banner.jpg" alt="Who Verifies the Agents? Workshop on verification of AI agents, NeurIPS 2026, Sydney, Australia, December 2026" />
-    </div>
-    <div class="wrap">
-      <p class="lede">Verification is the bottleneck between fragile prototypes and scalable, reliable agent systems. This workshop convenes researchers and practitioners to make verification a first-class discipline in agent development.</p>
-      <div>
+  <section class="hero-cover" role="img" aria-label="Who Verifies the Agents? Workshop on verification of AI agents, NeurIPS 2026, Sydney, Australia, December 2026">
+    <div class="hero-overlay">
+      <p class="ov-lede">Verification is the bottleneck between fragile prototypes and scalable, reliable agent systems. This workshop convenes researchers and practitioners to make verification a first-class discipline in agent development.</p>
+      <div class="ov-actions">
         <a class="btn btn-s" href="#cfp">Call for Papers</a>
         <a class="btn btn-g" href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/Verify-Agents">Submit on OpenReview</a>
       </div>
-      <p class="meta">Sydney, Australia · Dec 11 or 12, 2026 · Submissions due Aug 29, 2026 (AoE)</p>
+      <p class="ov-meta">Sydney, Australia · Dec 11 or 12, 2026 · Submissions due Aug 29, 2026 (AoE)</p>
     </div>
   </section>
 
