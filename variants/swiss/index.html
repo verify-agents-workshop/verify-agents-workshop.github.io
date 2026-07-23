@@ -93,6 +93,28 @@
     footer.foot { padding: 56px 0; }
     footer.foot .t { font-weight: 700; font-size: 1.05rem; }
     footer.foot .s { color: var(--ink-faint); font-size: 0.88rem; margin-top: 4px; }
+
+    /* canonical content blocks */
+    .cc-narrow { max-width: 760px; margin: 0 auto; text-align: left; }
+    .cc-h3 { margin: 36px 0 10px; font-size: 1.35rem; font-weight: 700; }
+    .cc-h4 { margin: 22px 0 4px; font-size: 1rem; font-weight: 700; color: #3b5bdb; }
+    .cc-list { margin: 6px 0 18px; padding-left: 24px; }
+    .cc-list li { padding: 3px 0; }
+    .cc-guide { list-style: none; padding: 0; margin: 8px 0 20px; }
+    .cc-guide li { padding: 9px 0; border-bottom: 1px solid #e4e4e6; }
+    .cc-people { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 30px; }
+    .cc-people-sp { max-width: 790px; margin-left: auto; margin-right: auto; }
+    .cc-person { width: 232px; text-align: center; padding: 22px 14px; background: #fff; border: 1px solid #e4e4e6; box-shadow: none; border-radius: 10px; }
+    .cc-avatar { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; margin-bottom: 12px; }
+    .cc-name { font-weight: 700; }
+    .cc-name a { color: inherit; }
+    .cc-affil { font-size: 0.85rem; color: #55555c; }
+    .cc-bio { font-size: 0.83rem; color: #55555c; line-height: 1.5; margin: 8px 0 0; }
+    .cc-center { text-align: center; }
+    .cc-email a { font-weight: 700; font-size: 1.05rem; }
+    .cc-note { font-style: italic; font-size: 0.9rem; color: #55555c; margin-top: 16px; text-align: center; }
+    .cc-links { margin: 0 0 34px; }
+    .cc-links a { margin-right: 26px; font-weight: 600; }
   </style>
 </head>
 <body>
@@ -102,9 +124,11 @@
     <div class="wrap top-inner">
       <div class="brand">Who Verifies the Agents?</div>
       <nav class="links">
-        <a href="#about">About</a>
-        <a href="#themes">Themes</a>
+        <a href="#about">Overview</a>
+        <a href="#cfp">Call for Papers</a>
         <a href="#dates">Dates</a>
+        <a href="#speakers">Speakers</a>
+        <a href="#organizers">Organizers</a>
       </nav>
     </div>
   </header>
@@ -115,10 +139,11 @@
       <h1>Who Verifies the Agents?</h1>
       <p class="sub">Toward Reliable Agent Development</p>
       <p class="lede">Verification is the bottleneck between fragile prototypes and scalable, reliable agent systems. This workshop convenes researchers and practitioners to make verification a first-class discipline in agent development.</p>
+      <p class="cc-links"><a href="#cfp">Call for Papers →</a><a href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/Verify-Agents">Submit on OpenReview →</a></p>
       <div class="meta">
         <div class="meta-item"><span class="k">Location</span><span class="v">Sydney, Australia</span></div>
         <div class="meta-item"><span class="k">Date</span><span class="v">Dec 11 or 12, 2026</span></div>
-        <div class="meta-item"><span class="k">Venue</span><span class="v">Co-located with NeurIPS</span></div>
+        <div class="meta-item"><span class="k">Deadline</span><span class="v">Submissions due Aug 29, 2026 (AoE)</span></div>
       </div>
     </section>
   </div>
@@ -126,54 +151,107 @@
   <div class="wrap">
     <section id="about">
       <div class="sec-head">
-        <h2>About</h2>
+        <h2>Overview</h2>
         <div class="sec-body">
-          <p>Recent advances in autonomous agents have demonstrated potential for complex reasoning and open-ended tasks. However, current agent development is often fragmented and dependent on ad-hoc methods, leading to reliability challenges where performance plateaus or regresses during iteration.</p>
-          <p>The fundamental bottleneck preventing the transition to scalable, reliable agent systems is verification: the inability to systematically determine whether a change to an agent constitutes a genuine improvement. This workshop seeks to formalize verification as a core discipline in agent development.</p>
+          <p>Despite remarkable advances in agents that reason, plan, and operate in open-ended environments, reliably verifying their improvements remains an unsolved challenge. Verification is the ability to determine whether a change to an agent (such as a prompt update, a new tool integration, or a modification to its reasoning process) produces a genuine improvement in capability or reliability.</p>
+          <p>Verification works in controlled settings (formal math, competitive programming, coding) but remains shallow and noisy for general agentic tasks, causing performance to plateau or silently regress during development. This workshop convenes researchers to tackle verification as a first-class research problem for reliable agent development.</p>
         </div>
       </div>
     </section>
   </div>
 
+
   <div class="wrap">
-    <section id="themes">
+    <section id="cfp">
       <div class="sec-head">
-        <h2>Three Pillars</h2>
+        <h2>Call for Papers</h2>
         <div class="sec-body" style="max-width:none;">
-          <div class="pillars">
-            <div class="pillar">
-              <div class="pnum">01 / Verifiers</div>
-              <h3>Robust Verifiers</h3>
-              <p>Verifiers and reward models that resist reward hacking and stay faithful under distribution shift.</p>
-            </div>
-            <div class="pillar">
-              <div class="pnum">02 / Simulation</div>
-              <h3>Environment-Grounded Simulation</h3>
-              <p>Interactive, environment-grounded simulation as the ground truth for evaluation.</p>
-            </div>
-            <div class="pillar">
-              <div class="pnum">03 / Signals</div>
-              <h3>Heterogeneous Signals</h3>
-              <p>Latency, cost, calibration, and safety integrated into a unified verification loop.</p>
-            </div>
-          </div>
+<h3 class="cc-h3">Topics of Interest</h3>
+<p class="cc-p">We invite submissions across three core pillars, as well as topics at their intersection:</p>
+<h4 class="cc-h4">Pillar 1: Safety and Robustness of Verification</h4>
+<ul class="cc-list">
+  <li>Robust verifiers that prevent reward hacking and specification gaming</li>
+  <li>Adversarial robustness of verifiers and red-teaming of evaluation harnesses</li>
+  <li>Alignment-aware verification: ensuring verifiers remain faithful as agents evolve</li>
+</ul>
+<h4 class="cc-h4">Pillar 2: Environment-Grounded Verification and Simulators</h4>
+<ul class="cc-list">
+  <li>Faithful simulators as verification infrastructure for open-ended tasks</li>
+  <li>Multi-agent and self-optimizing systems for environment-grounded evaluation</li>
+  <li>Measuring agents in production: observability, monitoring, and runtime verification</li>
+  <li>Evolutionary and search-based methods for environment-driven agent optimization</li>
+  <li>Benchmarks and environment design that stress-test verification methods</li>
+</ul>
+<h4 class="cc-h4">Pillar 3: Diverse and Heterogeneous Verifiable Signals</h4>
+<ul class="cc-list">
+  <li>Composing heterogeneous signals (user experience, cost/latency, calibration, multimodality) into reliable verification metrics</li>
+  <li>Beyond scalar rewards: holistic evaluation of agentic behavior</li>
+  <li>Human-in-the-loop verification and human–AI collaborative evaluation</li>
+  <li>Reflective and self-improving verification (agents that verify other agents)</li>
+  <li>Automated agent design, prompt optimization, and scaffold search with verifiable feedback</li>
+  <li>Formal verification of agent-generated artifacts, including the use of proof assistants and verification languages (e.g., Dafny, Rocq, and Lean)</li>
+</ul>
+<h4 class="cc-h4">Cross-Cutting Topics</h4>
+<ul class="cc-list">
+  <li>Verification for meta-agents and Agent4Agent systems (agents that design, optimize, or evaluate other agents)</li>
+  <li>Self-evolving agents: stable improvement without collapse or reward hacking</li>
+  <li>Evaluation of agent-generated designs vs. human-engineered systems</li>
+  <li>Scalable oversight and verification for long-horizon, multi-step agent behavior</li>
+  <li>Cognitive and neuroscience-inspired verification frameworks</li>
+</ul>
+<h3 class="cc-h3">Submission Guidelines</h3>
+<ul class="cc-guide">
+  <li><strong>Format:</strong> Papers should be between 4 to 9 pages (excluding references and appendices), using the <a href="https://neurips.cc/Conferences/2026/CallForPapers">NeurIPS 2026 template</a>. We also welcome demo papers, which should be no more than 4 pages.</li>
+  <li><strong>Dual submission policy:</strong> We welcome work that is under review or has been recently published at other venues.</li>
+  <li><strong>Review:</strong> Reviews will be double blind. Authors of submitted papers may be asked to contribute reviews.</li>
+  <li><strong>Presentation:</strong> Accepted papers will be presented as posters; select papers will be chosen for oral presentations or lightning talks.</li>
+  <li><strong>Non-archival:</strong> The workshop is non-archival; accepted papers will be made available on OpenReview but do not constitute formal proceedings.</li>
+</ul>
+<p class="cc-p">Submissions and reviewing are handled through <a href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/Verify-Agents"><strong>OpenReview</strong></a>.</p>
         </div>
       </div>
     </section>
   </div>
 
   <div class="wrap">
-    <section id="dates" style="border-bottom:none;">
+    <section id="dates">
       <div class="sec-head">
         <h2>Important Dates</h2>
         <div class="sec-body">
           <div class="dates">
-            <div class="drow"><span class="k">Submission deadline</span><span class="v">TBA</span></div>
-            <div class="drow"><span class="k">Author notification</span><span class="v">TBA</span></div>
-            <div class="drow"><span class="k">Camera-ready</span><span class="v">TBA</span></div>
-            <div class="drow"><span class="k">Workshop</span><span class="v">Dec 11 or 12, 2026</span></div>
+            <div class="drow"><span class="k">Submission deadline</span><span class="v">August 29, 2026</span></div>
+            <div class="drow"><span class="k">Author notification</span><span class="v">September 29, 2026</span></div>
+            <div class="drow"><span class="k">Workshop day</span><span class="v">Dec 11 or 12, 2026</span></div>
           </div>
+          <p class="cc-note">The exact workshop day (Friday, Dec 11 or Saturday, Dec 12) will be confirmed once assigned by NeurIPS. All deadlines are 23:59 Anywhere on Earth (AoE) unless otherwise noted.</p>
         </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <section id="speakers">
+      <div class="sec-head">
+        <h2>Confirmed Speakers &amp; Panelists</h2>
+        <div class="sec-body" style="max-width:none;"><div class="cc-people cc-people-sp"><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/pin-yu-chen.jpg" alt="Pin-Yu Chen" /><div class="cc-name"><a href="https://sites.google.com/site/pinyuchenpage/home" target="_blank" rel="noopener">Pin-Yu Chen</a></div><div class="cc-affil">IBM</div><p class="cc-bio">Principal Research Scientist, Trusted AI Group; PI at the MIT–IBM Watson AI Lab. AI safety, robustness, and trustworthiness.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/azalia-mirhoseini.jpg" alt="Azalia Mirhoseini" /><div class="cc-name"><a href="https://www.azaliamirhoseini.com/" target="_blank" rel="noopener">Azalia Mirhoseini</a></div><div class="cc-affil">Stanford University · Ricursive Intelligence</div><p class="cc-bio">Assistant Professor at Stanford. Scalable, self-improving AI; Mixture-of-Experts and AlphaChip.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/seshendra-nalla.jpg" alt="Seshendra Nalla" /><div class="cc-name"><a href="https://www.linkedin.com/in/seshendranalla/" target="_blank" rel="noopener">Seshendra Nalla</a></div><div class="cc-affil">Datadog</div><p class="cc-bio">VP of Observability Data Platform; core contributor to BitsEvolve, a self-optimizing code system.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/ion-stoica.jpg" alt="Ion Stoica" /><div class="cc-name"><a href="https://people.eecs.berkeley.edu/~istoica/" target="_blank" rel="noopener">Ion Stoica</a></div><div class="cc-affil">UC Berkeley · Anyscale · Databricks</div><p class="cc-bio">Professor at UC Berkeley; Executive Chairman of Databricks and Anyscale. AI systems: SkyPilot, vLLM, Chatbot Arena, Ray, Spark.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/yu-su.jpg" alt="Yu Su" /><div class="cc-name"><a href="https://ysu1989.github.io/" target="_blank" rel="noopener">Yu Su</a></div><div class="cc-affil">Ohio State University · NeoCognition</div><p class="cc-bio">Associate Professor and 2025 Sloan Fellow. Agent reliability and evaluation: Mind2Web, MMMU, SeeAct.</p></div></div></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <section id="organizers">
+      <div class="sec-head">
+        <h2>Organizing Committee</h2>
+        <div class="sec-body" style="max-width:none;"><div class="cc-people"><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/ahmad-beirami.jpg" alt="Ahmad Beirami" /><div class="cc-name"><a href="https://beirami.github.io/" target="_blank" rel="noopener">Ahmad Beirami</a></div><div class="cc-affil">Fidian</div></div><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/mert-cemri.jpg" alt="Mert Cemri" /><div class="cc-name"><a href="https://people.eecs.berkeley.edu/~mert_cemri/" target="_blank" rel="noopener">Mert Cemri</a></div><div class="cc-affil">UC Berkeley</div></div><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/zhang-wei-hong.jpg" alt="Zhang-Wei Hong" /><div class="cc-name"><a href="https://williamd4112.github.io/" target="_blank" rel="noopener">Zhang-Wei Hong</a></div><div class="cc-affil">MIT–IBM Watson AI Lab</div></div><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/hung-le.jpg" alt="Hung Le" /><div class="cc-name"><a href="https://sites.google.com/view/henryle2018/home" target="_blank" rel="noopener">Hung Le</a></div><div class="cc-affil">Fidian</div></div><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/ninareh-mehrabi.jpg" alt="Ninareh Mehrabi" /><div class="cc-name"><a href="https://ninarehm.github.io" target="_blank" rel="noopener">Ninareh Mehrabi</a></div><div class="cc-affil">Meta Superintelligence Labs</div></div><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/melissa-pan.jpg" alt="Melissa Pan" /><div class="cc-name"><a href="https://melissa-pan.github.io/" target="_blank" rel="noopener">Melissa Pan</a></div><div class="cc-affil">UC Berkeley</div></div><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/dilara-soylu.jpg" alt="Dilara Soylu" /><div class="cc-name"><a href="https://dilarasoylu.github.io/" target="_blank" rel="noopener">Dilara Soylu</a></div><div class="cc-affil">Stanford University</div></div></div></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <section id="contact">
+      <div class="sec-head">
+        <h2>Get in Touch</h2>
+        <div class="sec-body" style="max-width:none;"><p class="cc-p cc-center">Questions about the workshop, submissions, or sponsorship? Reach out to the organizing committee.</p><p class="cc-email cc-center"><a href="mailto:verify-agents-workshop@googlegroups.com">verify-agents-workshop@googlegroups.com</a></p><p class="cc-p cc-center"><a href="https://x.com/veri_agents">@veri_agents on X</a> · <a href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/Verify-Agents">OpenReview</a></p></div>
       </div>
     </section>
   </div>
