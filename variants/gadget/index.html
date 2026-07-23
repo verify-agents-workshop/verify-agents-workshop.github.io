@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gadget — Who Verifies the Agents?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper: #f6f1e2;
+      --ink: #17171d;
+      --blue: #1f4fd8;
+      --red: #e6392f;
+      --yellow: #ffd23f;
+      --teal: #12a5a0;
+      --maxw: 1040px;
+      --disp: 'Archivo Black', sans-serif;
+      --sans: 'Inter', sans-serif;
+    }
+    * , *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; font-family: var(--sans); color: var(--ink);
+      background:
+        radial-gradient(rgba(23,23,29,0.055) 1.2px, transparent 1.3px),
+        var(--paper);
+      background-size: 18px 18px;
+      line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+    }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .variant-bar {
+      background: var(--ink); color: #fff; font-size: 0.8rem; letter-spacing: 0.04em;
+      text-align: center; padding: 9px 16px; font-weight: 700;
+    }
+    .variant-bar a { color: var(--yellow); text-decoration: underline; }
+
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+
+    header.top {
+      position: sticky; top: 0; z-index: 20; background: rgba(246,241,226,0.94);
+      backdrop-filter: blur(8px); border-bottom: 3px solid var(--ink);
+    }
+    .top-inner { display: flex; justify-content: space-between; align-items: center; height: 66px; }
+    .brand { font-family: var(--disp); font-size: 0.98rem; letter-spacing: 0.01em; }
+    nav.links { display: flex; gap: 24px; }
+    nav.links a { color: var(--ink); font-size: 0.88rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+    nav.links a:hover { color: var(--red); text-decoration: none; }
+
+    /* comic panel */
+    .panel {
+      background: #fffdf4; border: 3px solid var(--ink); border-radius: 10px;
+      box-shadow: 8px 8px 0 var(--ink);
+    }
+
+    .hero { padding: 80px 0 96px; text-align: center; position: relative; }
+    .burst {
+      display: inline-block; background: var(--red); color: #fff; font-family: var(--disp);
+      font-size: 0.8rem; letter-spacing: 0.1em; padding: 8px 18px; border: 3px solid var(--ink);
+      border-radius: 999px; box-shadow: 4px 4px 0 var(--ink); transform: rotate(-2deg);
+      margin-bottom: 30px;
+    }
+    .hero h1 {
+      font-family: var(--disp); font-size: clamp(2.6rem, 6.6vw, 4.6rem); line-height: 1.02;
+      margin: 0 0 10px; text-transform: uppercase; color: var(--blue);
+      text-shadow: 3px 3px 0 var(--yellow);
+    }
+    .hero h1 .alt { color: var(--red); text-shadow: 3px 3px 0 var(--yellow); }
+    .hero .sub {
+      font-weight: 700; font-size: clamp(1.05rem, 2.2vw, 1.4rem); letter-spacing: 0.14em;
+      text-transform: uppercase; margin: 0 0 26px;
+    }
+    .gadget-arm { display: block; width: min(720px, 92%); margin: 8px auto 30px; height: auto; }
+    .hero .lede { max-width: 600px; margin: 0 auto 34px; font-size: 1.1rem; color: #45454f; }
+    .btn {
+      display: inline-block; font-family: var(--disp); font-size: 0.85rem; letter-spacing: 0.06em;
+      text-transform: uppercase; padding: 14px 26px; border: 3px solid var(--ink); border-radius: 8px;
+      box-shadow: 5px 5px 0 var(--ink); margin: 0 6px 10px; transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .btn:hover { transform: translate(2px, 2px); box-shadow: 3px 3px 0 var(--ink); text-decoration: none; }
+    .btn-y { background: var(--yellow); color: var(--ink); }
+    .btn-b { background: var(--blue); color: #fff; }
+    .hero .meta { margin-top: 26px; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; color: #6a6a75; }
+
+    section { padding: 78px 0; }
+    .stitle {
+      font-family: var(--disp); font-size: clamp(1.7rem, 3.2vw, 2.4rem); text-transform: uppercase;
+      text-align: center; margin: 0 0 12px;
+    }
+    .stitle .chip { background: var(--yellow); padding: 2px 14px; border: 3px solid var(--ink); border-radius: 8px; box-shadow: 4px 4px 0 var(--ink); display: inline-block; transform: rotate(-1deg); }
+    .intro { text-align: center; color: #55555f; max-width: 620px; margin: 14px auto 44px; }
+
+    .prose { max-width: 700px; margin: 34px auto 0; padding: 36px 40px; }
+    .prose p { font-size: 1.04rem; margin: 0 0 18px; }
+    .prose p:last-child { margin-bottom: 0; }
+
+    .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px; }
+    .pcard { padding: 30px 24px 28px; text-align: center; position: relative; }
+    .pcard.rot1 { transform: rotate(-0.6deg); } .pcard.rot2 { transform: rotate(0.5deg); }
+    .pcard .icon { width: 84px; height: 84px; margin: 0 auto 14px; display: block; }
+    .pcard h3 { font-family: var(--disp); font-size: 1.02rem; text-transform: uppercase; line-height: 1.35; margin: 0 0 10px; }
+    .pcard p { font-size: 0.93rem; color: #55555f; margin: 0; }
+    @media (max-width: 820px) { .pillars { grid-template-columns: 1fr; } }
+
+    .dates-panel { max-width: 620px; margin: 40px auto 0; padding: 30px 36px; }
+    .drow { display: flex; justify-content: space-between; gap: 14px; padding: 13px 2px; border-bottom: 2px dashed #cfc7ac; font-weight: 600; }
+    .drow:last-child { border-bottom: none; }
+    .drow .v { font-family: var(--disp); font-size: 0.9rem; color: var(--red); white-space: nowrap; }
+
+    footer.foot { background: var(--ink); color: #fff; text-align: center; padding: 52px 24px; border-top: 6px solid var(--yellow); }
+    footer.foot .t { font-family: var(--disp); font-size: 1.2rem; text-transform: uppercase; }
+    footer.foot .s { color: #b5b5c2; font-size: 0.85rem; margin-top: 10px; }
+    footer.foot .joke { color: var(--yellow); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 18px; }
+  </style>
+</head>
+<body>
+  <div class="variant-bar">🔧 Design Preview · Gadget · <a href="/dev/variants/">all variants</a> · <a href="/dev/">baseline</a></div>
+
+  <header class="top">
+    <div class="wrap top-inner">
+      <div class="brand">WHO VERIFIES THE AGENTS?</div>
+      <nav class="links">
+        <a href="#about">Overview</a>
+        <a href="#themes">Themes</a>
+        <a href="#dates">Dates</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="burst">NEURIPS 2026 WORKSHOP</div>
+      <h1>Who Verifies<br/><span class="alt">the Agents?</span></h1>
+      <p class="sub">Toward Reliable Agent Development</p>
+
+      <!-- telescoping gadget arm extending a magnifier -->
+      <svg class="gadget-arm" viewBox="0 0 720 150" fill="none" aria-hidden="true">
+        <g stroke="#17171d" stroke-width="4">
+          <!-- shoulder housing -->
+          <rect x="8" y="47" width="74" height="56" rx="10" fill="#1f4fd8"/>
+          <circle cx="45" cy="75" r="11" fill="#ffd23f"/>
+          <!-- telescoping segments -->
+          <rect x="82" y="56" width="150" height="38" rx="8" fill="#e6e0cc"/>
+          <rect x="232" y="61" width="130" height="28" rx="7" fill="#d5cfba"/>
+          <rect x="362" y="65" width="110" height="20" rx="6" fill="#c4bda6"/>
+          <!-- joint bolts -->
+          <circle cx="105" cy="75" r="6" fill="#ffd23f"/>
+          <circle cx="250" cy="75" r="5" fill="#ffd23f"/>
+          <circle cx="378" cy="75" r="4.5" fill="#ffd23f"/>
+          <!-- gripper -->
+          <path d="M472 75 L 502 55 M472 75 L 502 95" stroke-width="5"/>
+          <circle cx="472" cy="75" r="9" fill="#e6392f"/>
+          <!-- magnifier held by gripper -->
+          <circle cx="565" cy="66" r="44" fill="rgba(18,165,160,0.12)"/>
+          <circle cx="565" cy="66" r="44"/>
+          <path d="M597 98 L 640 136" stroke-width="9" stroke-linecap="round"/>
+          <!-- check inside lens -->
+          <path d="M545 66 L 560 82 L 590 48" stroke="#12a5a0" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <!-- action lines -->
+          <path d="M652 40 l 26 -12 M660 66 l 30 -2 M652 92 l 26 12" stroke-width="3.4" stroke-linecap="round"/>
+        </g>
+      </svg>
+
+      <p class="lede">Verification is the bottleneck between fragile prototypes and scalable, reliable agent systems. This workshop convenes researchers and practitioners to make verification a first-class discipline in agent development.</p>
+      <div>
+        <a class="btn btn-y" href="#about">Read the Overview</a>
+        <a class="btn btn-b" href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/Verify-Agents">Submit on OpenReview</a>
+      </div>
+      <p class="meta">Sydney, Australia · Dec 11 or 12, 2026 · Submissions due Aug 29</p>
+    </div>
+  </section>
+
+  <section id="about" style="padding-top: 8px;">
+    <div class="wrap">
+      <h2 class="stitle"><span class="chip">Overview</span></h2>
+      <div class="panel prose">
+        <p>Despite remarkable advances in agents that reason, plan, and operate in open-ended environments, reliably verifying their improvements remains an unsolved challenge. Verification is the ability to determine whether a change to an agent (such as a prompt update, a new tool integration, or a modification to its reasoning process) produces a genuine improvement in capability or reliability.</p>
+        <p>Verification works in controlled settings (formal math, competitive programming, coding) but remains shallow and noisy for general agentic tasks, causing performance to plateau or silently regress during development. This workshop convenes researchers to tackle verification as a first-class research problem for reliable agent development.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="themes">
+    <div class="wrap">
+      <h2 class="stitle"><span class="chip" style="background:#12a5a0; color:#fff;">Three Pillars</span></h2>
+      <div class="pillars">
+        <div class="panel pcard rot1">
+          <svg class="icon" viewBox="0 0 84 84" aria-hidden="true">
+            <g stroke="#17171d" stroke-width="3.4" fill="#ffd23f">
+              <path d="M42 14 l6 8 10-3 2 10 10 2-3 10 8 6-8 6 3 10-10 2-2 10-10-3-6 8-6-8-10 3-2-10-10-2 3-10-8-6 8-6-3-10 10-2 2-10 10 3 z"/>
+              <circle cx="42" cy="42" r="13" fill="#fffdf4"/>
+              <path d="M36 42 l5 5 9-11" fill="none" stroke="#e6392f" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+          </svg>
+          <h3>Safety &amp; Robustness of Verification</h3>
+          <p>Robust verifiers that prevent reward hacking, resist specification gaming, and scale from outcome checks to process-level signals.</p>
+        </div>
+        <div class="panel pcard">
+          <svg class="icon" viewBox="0 0 84 84" aria-hidden="true">
+            <g stroke="#17171d" stroke-width="3.4" fill="none">
+              <rect x="16" y="50" width="52" height="20" rx="6" fill="#1f4fd8"/>
+              <path d="M42 50 V 30" stroke-width="4"/>
+              <rect x="34" y="14" width="16" height="16" rx="4" fill="#e6392f"/>
+              <path d="M50 22 h 14" stroke-width="4"/>
+              <circle cx="68" cy="22" r="6" fill="#ffd23f"/>
+              <circle cx="30" cy="60" r="3" fill="#ffd23f"/><circle cx="42" cy="60" r="3" fill="#ffd23f"/><circle cx="54" cy="60" r="3" fill="#ffd23f"/>
+            </g>
+          </svg>
+          <h3>Environment-Grounded Verification &amp; Simulators</h3>
+          <p>For open-ended tasks lacking closed-form metrics, the environment itself is the ground truth. Simulators as verification infrastructure.</p>
+        </div>
+        <div class="panel pcard rot2">
+          <svg class="icon" viewBox="0 0 84 84" aria-hidden="true">
+            <g stroke="#17171d" stroke-width="3.4" fill="none">
+              <path d="M14 62 a28 28 0 0 1 56 0" fill="#12a5a0"/>
+              <path d="M42 62 L 58 40" stroke-width="4" stroke-linecap="round"/>
+              <circle cx="42" cy="62" r="5" fill="#ffd23f"/>
+              <path d="M22 54 l 5 3 M32 44 l 4 4 M46 38 l 2 5 M60 44 l -4 4" stroke-width="3" stroke-linecap="round"/>
+            </g>
+          </svg>
+          <h3>Diverse &amp; Heterogeneous Verifiable Signals</h3>
+          <p>User experience, cost and latency, calibration, and multimodality composed into reliable verification metrics.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="dates" style="padding-bottom: 96px;">
+    <div class="wrap">
+      <h2 class="stitle"><span class="chip" style="background:#e6392f; color:#fff;">Important Dates</span></h2>
+      <div class="panel dates-panel">
+        <div class="drow"><span>Submission deadline</span><span class="v">AUG 29, 2026</span></div>
+        <div class="drow"><span>Author notification</span><span class="v">SEP 29, 2026</span></div>
+        <div class="drow"><span>Workshop day</span><span class="v">DEC 11 OR 12</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="t">Who Verifies the Agents?</div>
+    <div class="s">NeurIPS 2026 · Sydney, Australia</div>
+    <div class="joke">⚙ This message will self-verify in five seconds.</div>
+  </footer>
+</body>
+</html>

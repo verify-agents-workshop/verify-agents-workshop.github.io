@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mystery Hound — Who Verifies the Agents?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #f8efdc;
+      --ink: #33261c;
+      --ink-soft: #6b5a4a;
+      --orange: #d97f2e;
+      --teal: #2a9d8f;
+      --purple: #6d5a9e;
+      --lime: #a4b24a;
+      --brown: #8a5a3b;
+      --maxw: 1040px;
+      --disp: 'Baloo 2', cursive;
+      --sans: 'Inter', sans-serif;
+    }
+    * , *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; font-family: var(--sans); color: var(--ink); background: var(--cream);
+      line-height: 1.68; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+    }
+    a { color: var(--teal); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .variant-bar {
+      background: var(--purple); color: #fff; font-size: 0.8rem; letter-spacing: 0.04em;
+      text-align: center; padding: 9px 16px; font-weight: 700;
+    }
+    .variant-bar a { color: #fff; text-decoration: underline; }
+
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; position: relative; }
+
+    header.top {
+      position: sticky; top: 0; z-index: 20; background: rgba(248,239,220,0.94);
+      backdrop-filter: blur(8px); border-bottom: 3px solid var(--orange);
+    }
+    .top-inner { display: flex; justify-content: space-between; align-items: center; height: 66px; }
+    .brand { font-family: var(--disp); font-weight: 800; font-size: 1.1rem; color: var(--purple); }
+    nav.links { display: flex; gap: 24px; }
+    nav.links a { color: var(--ink-soft); font-size: 0.9rem; font-weight: 600; }
+    nav.links a:hover { color: var(--orange); text-decoration: none; }
+
+    .blob { position: absolute; pointer-events: none; z-index: 0; opacity: 0.16; }
+
+    .hero { position: relative; padding: 88px 0 110px; text-align: center; overflow: hidden; }
+    .hero > .wrap { z-index: 2; }
+    .casefile {
+      display: inline-block; font-family: var(--disp); font-weight: 700; font-size: 0.9rem;
+      background: var(--lime); color: #3d431c; padding: 5px 20px; border-radius: 999px;
+      transform: rotate(-1.5deg); margin-bottom: 26px;
+    }
+    .hero h1 {
+      font-family: var(--disp); font-weight: 800; font-size: clamp(2.8rem, 6.8vw, 4.8rem);
+      line-height: 1.02; margin: 0 0 8px; color: var(--purple);
+      text-shadow: 3px 3px 0 rgba(217,127,46,0.35);
+    }
+    .hero .sub { font-family: var(--disp); font-weight: 700; font-size: clamp(1.2rem, 2.4vw, 1.6rem); color: var(--orange); margin: 0 0 24px; }
+    .hero .lede { max-width: 590px; margin: 0 auto 32px; font-size: 1.1rem; color: var(--ink-soft); }
+    .btn {
+      display: inline-block; font-family: var(--disp); font-weight: 700; font-size: 1rem;
+      padding: 12px 30px; border-radius: 999px; margin: 0 6px 10px; transition: transform .14s ease;
+    }
+    .btn:hover { transform: scale(1.05) rotate(-1deg); text-decoration: none; }
+    .btn-o { background: var(--orange); color: #fff; box-shadow: 0 6px 0 #b3651f; }
+    .btn-t { background: var(--teal); color: #fff; box-shadow: 0 6px 0 #1f7a70; }
+    .hero .meta { margin-top: 30px; font-weight: 600; font-size: 0.9rem; color: var(--ink-soft); }
+
+    /* the hound, sniffing along the paw trail */
+    .hound { display: block; width: min(560px, 88%); margin: 18px auto 6px; height: auto; }
+
+    section { padding: 76px 0; position: relative; }
+    .stitle {
+      font-family: var(--disp); font-weight: 800; font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+      text-align: center; margin: 0 0 8px; color: var(--ink);
+    }
+    .paw-divider { display: block; width: 190px; margin: 0 auto 38px; height: auto; opacity: 0.75; }
+
+    .prose { max-width: 660px; margin: 0 auto; position: relative; z-index: 2; }
+    .prose p { font-size: 1.05rem; margin: 0 0 20px; }
+
+    .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; position: relative; z-index: 2; }
+    .pcard {
+      border-radius: 26px; padding: 34px 26px; text-align: center;
+      transition: transform .16s ease;
+    }
+    .pcard:hover { transform: translateY(-5px) rotate(-0.5deg); }
+    .pcard .num {
+      width: 54px; height: 54px; border-radius: 50%; margin: 0 auto 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--disp); font-weight: 800; font-size: 1.5rem; color: #fff;
+    }
+    .pcard h3 { font-family: var(--disp); font-weight: 700; font-size: 1.22rem; line-height: 1.3; margin: 0 0 10px; }
+    .pcard p { font-size: 0.94rem; margin: 0; }
+    .pc-o { background: #f6dfc4; } .pc-o .num { background: var(--orange); } .pc-o p { color: #7a5426; }
+    .pc-t { background: #cfe7e2; } .pc-t .num { background: var(--teal); } .pc-t p { color: #23655c; }
+    .pc-p { background: #ddd6ec; } .pc-p .num { background: var(--purple); } .pc-p p { color: #4d4076; }
+    @media (max-width: 820px) { .pillars { grid-template-columns: 1fr; } }
+
+    .clues { max-width: 580px; margin: 0 auto; position: relative; z-index: 2; }
+    .crow {
+      display: flex; justify-content: space-between; align-items: center; gap: 14px;
+      background: #fff8ea; border-radius: 18px; padding: 15px 24px; margin-bottom: 14px;
+      box-shadow: 0 3px 0 rgba(51,38,28,0.12);
+    }
+    .crow .k { font-weight: 600; }
+    .crow .v { font-family: var(--disp); font-weight: 700; color: var(--orange); white-space: nowrap; }
+
+    .scene-wrap { line-height: 0; margin-top: 20px; }
+    .scene { display: block; width: 100%; height: auto; }
+    footer.foot { background: #2a2347; color: #e8e2f4; text-align: center; padding: 54px 24px; }
+    footer.foot .t { font-family: var(--disp); font-weight: 800; font-size: 1.5rem; color: #fff; }
+    footer.foot .s { font-size: 0.9rem; margin-top: 8px; color: #c9c0e2; }
+    footer.foot .tag { font-family: var(--disp); font-weight: 700; color: #f0c987; margin-top: 16px; font-size: 1rem; }
+  </style>
+</head>
+<body>
+  <div class="variant-bar">🐾 Design Preview · Mystery Hound · <a href="/dev/variants/">all variants</a> · <a href="/dev/">baseline</a></div>
+
+  <header class="top">
+    <div class="wrap top-inner">
+      <div class="brand">Who Verifies the Agents?</div>
+      <nav class="links">
+        <a href="#about">Overview</a>
+        <a href="#themes">Themes</a>
+        <a href="#dates">Dates</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <svg class="blob" style="top:-90px; left:-140px; width:520px;" viewBox="0 0 520 460" aria-hidden="true">
+      <path d="M260 20 C 400 10, 510 120, 490 250 C 472 370, 340 460, 210 430 C 80 400, 10 290, 40 170 C 66 70, 150 28, 260 20 Z" fill="#2a9d8f"/>
+    </svg>
+    <svg class="blob" style="bottom:-120px; right:-150px; width:540px;" viewBox="0 0 520 460" aria-hidden="true">
+      <path d="M240 30 C 380 0, 500 90, 500 220 C 500 350, 390 450, 250 440 C 110 430, 20 330, 30 200 C 40 90, 120 56, 240 30 Z" fill="#d97f2e"/>
+    </svg>
+
+    <div class="wrap">
+      <div class="casefile">CASE FILE · NEURIPS 2026 · SYDNEY</div>
+      <h1>Who Verifies the Agents?</h1>
+      <p class="sub">Toward Reliable Agent Development</p>
+
+      <!-- original mystery hound sniffing a paw-print trail toward a pawprint under a magnifier -->
+      <svg class="hound" viewBox="0 0 560 190" fill="none" aria-hidden="true">
+        <!-- paw trail -->
+        <g fill="#8a5a3b" opacity="0.5">
+          <g transform="translate(28,150)"><ellipse cx="0" cy="6" rx="7" ry="5.6"/><circle cx="-6.5" cy="-2.5" r="2.6"/><circle cx="-2" cy="-5" r="2.6"/><circle cx="3" cy="-5" r="2.6"/><circle cx="7.5" cy="-2.5" r="2.6"/></g>
+          <g transform="translate(78,132) rotate(12)"><ellipse cx="0" cy="6" rx="7" ry="5.6"/><circle cx="-6.5" cy="-2.5" r="2.6"/><circle cx="-2" cy="-5" r="2.6"/><circle cx="3" cy="-5" r="2.6"/><circle cx="7.5" cy="-2.5" r="2.6"/></g>
+          <g transform="translate(128,148) rotate(-8)"><ellipse cx="0" cy="6" rx="7" ry="5.6"/><circle cx="-6.5" cy="-2.5" r="2.6"/><circle cx="-2" cy="-5" r="2.6"/><circle cx="3" cy="-5" r="2.6"/><circle cx="7.5" cy="-2.5" r="2.6"/></g>
+          <g transform="translate(178,130) rotate(10)"><ellipse cx="0" cy="6" rx="7" ry="5.6"/><circle cx="-6.5" cy="-2.5" r="2.6"/><circle cx="-2" cy="-5" r="2.6"/><circle cx="3" cy="-5" r="2.6"/><circle cx="7.5" cy="-2.5" r="2.6"/></g>
+        </g>
+        <!-- hound: floppy-eared beagle-ish profile, nose to the trail -->
+        <g>
+          <!-- tail -->
+          <path d="M470 76 C 492 60, 500 44, 494 28" stroke="#8a5a3b" stroke-width="13" stroke-linecap="round"/>
+          <!-- body -->
+          <path d="M330 118 C 342 84, 380 68, 420 70 C 458 72, 480 92, 478 116 C 476 142, 446 156, 404 156 C 364 156, 340 142, 330 118 Z" fill="#8a5a3b"/>
+          <!-- back patch -->
+          <path d="M394 72 C 424 68, 456 78, 470 96 C 458 82, 420 76, 396 82 Z" fill="#6e4227"/>
+          <!-- rear leg -->
+          <path d="M438 140 L 438 168" stroke="#8a5a3b" stroke-width="15" stroke-linecap="round"/>
+          <!-- front leg -->
+          <path d="M352 138 L 340 166" stroke="#8a5a3b" stroke-width="15" stroke-linecap="round"/>
+          <!-- head, lowered to sniff -->
+          <path d="M268 128 C 270 106, 292 92, 318 96 C 344 100, 356 118, 350 136 C 344 154, 318 160, 296 152 C 280 146, 268 140, 268 128 Z" fill="#8a5a3b"/>
+          <!-- snout -->
+          <path d="M240 138 C 250 128, 264 124, 276 128 L 276 148 C 262 152, 248 148, 240 138 Z" fill="#a9764e"/>
+          <circle cx="242" cy="136" r="7" fill="#33261c"/>
+          <!-- floppy ear -->
+          <path d="M310 100 C 330 92, 346 98, 348 116 C 350 136, 338 152, 322 150 C 308 148, 302 132, 306 116 Z" fill="#5d3820"/>
+          <!-- eye -->
+          <circle cx="296" cy="118" r="4.4" fill="#33261c"/>
+          <!-- collar -->
+          <path d="M322 96 C 336 100, 348 110, 350 122" stroke="#2a9d8f" stroke-width="9" stroke-linecap="round"/>
+          <circle cx="349" cy="124" r="6" fill="#f0c987"/>
+          <!-- sniff lines -->
+          <path d="M224 128 c -8 -4, -8 -12, -2 -16 M220 144 c -10 0, -14 -6, -12 -12" stroke="#8a5a3b" stroke-width="3.4" stroke-linecap="round" opacity="0.7"/>
+        </g>
+        <!-- the clue: pawprint under magnifier -->
+        <g transform="translate(505,60)">
+          <circle cx="0" cy="0" r="34" fill="rgba(42,157,143,0.14)" stroke="#33261c" stroke-width="4"/>
+          <path d="M24 24 L 44 44" stroke="#33261c" stroke-width="8" stroke-linecap="round"/>
+          <g fill="#6d5a9e"><ellipse cx="0" cy="6" rx="9" ry="7"/><circle cx="-8.5" cy="-4" r="3.4"/><circle cx="-3" cy="-7" r="3.4"/><circle cx="3.5" cy="-7" r="3.4"/><circle cx="9" cy="-4" r="3.4"/></g>
+        </g>
+      </svg>
+
+      <p class="lede">Verification is the bottleneck between fragile prototypes and scalable, reliable agent systems. This workshop convenes researchers and practitioners to make verification a first-class discipline in agent development.</p>
+      <div>
+        <a class="btn btn-o" href="#about">Read the Overview</a>
+        <a class="btn btn-t" href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/Verify-Agents">Submit on OpenReview</a>
+      </div>
+      <p class="meta">Sydney, Australia · Dec 11 or 12, 2026 · Submissions due Aug 29</p>
+    </div>
+  </section>
+
+  <section id="about" style="padding-top: 10px;">
+    <div class="wrap">
+      <h2 class="stitle">Overview</h2>
+      <svg class="paw-divider" viewBox="0 0 190 26" aria-hidden="true">
+        <g fill="#d97f2e"><g transform="translate(20,13)"><ellipse cx="0" cy="4" rx="6" ry="4.6"/><circle cx="-5.5" cy="-3" r="2.2"/><circle cx="-1.5" cy="-5" r="2.2"/><circle cx="2.5" cy="-5" r="2.2"/><circle cx="6.5" cy="-3" r="2.2"/></g>
+        <g transform="translate(70,13) rotate(8)"><ellipse cx="0" cy="4" rx="6" ry="4.6"/><circle cx="-5.5" cy="-3" r="2.2"/><circle cx="-1.5" cy="-5" r="2.2"/><circle cx="2.5" cy="-5" r="2.2"/><circle cx="6.5" cy="-3" r="2.2"/></g>
+        <g transform="translate(120,13) rotate(-6)"><ellipse cx="0" cy="4" rx="6" ry="4.6"/><circle cx="-5.5" cy="-3" r="2.2"/><circle cx="-1.5" cy="-5" r="2.2"/><circle cx="2.5" cy="-5" r="2.2"/><circle cx="6.5" cy="-3" r="2.2"/></g>
+        <g transform="translate(170,13) rotate(6)"><ellipse cx="0" cy="4" rx="6" ry="4.6"/><circle cx="-5.5" cy="-3" r="2.2"/><circle cx="-1.5" cy="-5" r="2.2"/><circle cx="2.5" cy="-5" r="2.2"/><circle cx="6.5" cy="-3" r="2.2"/></g></g>
+      </svg>
+      <div class="prose">
+        <p>Despite remarkable advances in agents that reason, plan, and operate in open-ended environments, reliably verifying their improvements remains an unsolved challenge. Verification is the ability to determine whether a change to an agent (such as a prompt update, a new tool integration, or a modification to its reasoning process) produces a genuine improvement in capability or reliability.</p>
+        <p>Verification works in controlled settings (formal math, competitive programming, coding) but remains shallow and noisy for general agentic tasks, causing performance to plateau or silently regress during development. This workshop convenes researchers to tackle verification as a first-class research problem for reliable agent development.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="themes" style="background: #f2e6cc;">
+    <div class="wrap">
+      <h2 class="stitle">Three Pillars of Verification</h2>
+      <svg class="paw-divider" viewBox="0 0 190 26" aria-hidden="true">
+        <g fill="#2a9d8f"><g transform="translate(20,13)"><ellipse cx="0" cy="4" rx="6" ry="4.6"/><circle cx="-5.5" cy="-3" r="2.2"/><circle cx="-1.5" cy="-5" r="2.2"/><circle cx="2.5" cy="-5" r="2.2"/><circle cx="6.5" cy="-3" r="2.2"/></g>
+        <g transform="translate(70,13) rotate(8)"><ellipse cx="0" cy="4" rx="6" ry="4.6"/><circle cx="-5.5" cy="-3" r="2.2"/><circle cx="-1.5" cy="-5" r="2.2"/><circle cx="2.5" cy="-5" r="2.2"/><circle cx="6.5" cy="-3" r="2.2"/></g>
+        <g transform="translate(120,13) rotate(-6)"><ellipse cx="0" cy="4" rx="6" ry="4.6"/><circle cx="-5.5" cy="-3" r="2.2"/><circle cx="-1.5" cy="-5" r="2.2"/><circle cx="2.5" cy="-5" r="2.2"/><circle cx="6.5" cy="-3" r="2.2"/></g>
+        <g transform="translate(170,13) rotate(6)"><ellipse cx="0" cy="4" rx="6" ry="4.6"/><circle cx="-5.5" cy="-3" r="2.2"/><circle cx="-1.5" cy="-5" r="2.2"/><circle cx="2.5" cy="-5" r="2.2"/><circle cx="6.5" cy="-3" r="2.2"/></g></g>
+      </svg>
+      <div class="pillars">
+        <div class="pcard pc-o">
+          <div class="num">1</div>
+          <h3>Safety &amp; Robustness of Verification</h3>
+          <p>Robust verifiers that prevent reward hacking, resist specification gaming, and scale from outcome checks to process-level signals.</p>
+        </div>
+        <div class="pcard pc-t">
+          <div class="num">2</div>
+          <h3>Environment-Grounded Verification &amp; Simulators</h3>
+          <p>For open-ended tasks lacking closed-form metrics, the environment itself is the ground truth. Simulators as verification infrastructure.</p>
+        </div>
+        <div class="pcard pc-p">
+          <div class="num">3</div>
+          <h3>Diverse &amp; Heterogeneous Verifiable Signals</h3>
+          <p>User experience, cost and latency, calibration, and multimodality composed into reliable verification metrics.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="dates">
+    <div class="wrap">
+      <h2 class="stitle">Important Dates</h2>
+      <svg class="paw-divider" viewBox="0 0 190 26" aria-hidden="true">
+        <g fill="#6d5a9e"><g transform="translate(20,13)"><ellipse cx="0" cy="4" rx="6" ry="4.6"/><circle cx="-5.5" cy="-3" r="2.2"/><circle cx="-1.5" cy="-5" r="2.2"/><circle cx="2.5" cy="-5" r="2.2"/><circle cx="6.5" cy="-3" r="2.2"/></g>
+        <g transform="translate(70,13) rotate(8)"><ellipse cx="0" cy="4" rx="6" ry="4.6"/><circle cx="-5.5" cy="-3" r="2.2"/><circle cx="-1.5" cy="-5" r="2.2"/><circle cx="2.5" cy="-5" r="2.2"/><circle cx="6.5" cy="-3" r="2.2"/></g>
+        <g transform="translate(120,13) rotate(-6)"><ellipse cx="0" cy="4" rx="6" ry="4.6"/><circle cx="-5.5" cy="-3" r="2.2"/><circle cx="-1.5" cy="-5" r="2.2"/><circle cx="2.5" cy="-5" r="2.2"/><circle cx="6.5" cy="-3" r="2.2"/></g>
+        <g transform="translate(170,13) rotate(6)"><ellipse cx="0" cy="4" rx="6" ry="4.6"/><circle cx="-5.5" cy="-3" r="2.2"/><circle cx="-1.5" cy="-5" r="2.2"/><circle cx="2.5" cy="-5" r="2.2"/><circle cx="6.5" cy="-3" r="2.2"/></g></g>
+      </svg>
+      <div class="clues">
+        <div class="crow"><span class="k">Submission deadline</span><span class="v">August 29, 2026</span></div>
+        <div class="crow"><span class="k">Author notification</span><span class="v">September 29, 2026</span></div>
+        <div class="crow"><span class="k">Workshop day</span><span class="v">Dec 11 or 12, 2026</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- closing scene: the squad, the van, the manor to investigate -->
+  <div class="scene-wrap">
+    <svg class="scene" viewBox="0 0 1440 320" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <!-- dusk sky -->
+      <rect width="1440" height="320" fill="#3b3160"/>
+      <circle cx="1235" cy="72" r="40" fill="#f0e6c8"/>
+      <circle cx="1235" cy="72" r="58" fill="#f0e6c8" opacity="0.12"/>
+      <path d="M1050 46 q5 -8 10 0 q5 -8 10 0" stroke="#241d3d" stroke-width="2.5" fill="none"/>
+      <path d="M1120 100 q4 -7 8 0 q4 -7 8 0" stroke="#241d3d" stroke-width="2.2" fill="none"/>
+      <!-- distant hill -->
+      <path d="M0 252 C 300 214, 700 244, 1440 222 L 1440 320 L 0 320 Z" fill="#332a52"/>
+      <!-- haunted manor -->
+      <g>
+        <rect x="1075" y="168" width="220" height="112" fill="#241d3d"/>
+        <path d="M1065 168 L 1185 118 L 1305 168 Z" fill="#1c1631"/>
+        <rect x="1235" y="92" width="54" height="188" fill="#241d3d"/>
+        <path d="M1228 92 L 1262 56 L 1296 92 Z" fill="#1c1631"/>
+        <rect x="1103" y="196" width="22" height="30" fill="#f0c987"/>
+        <rect x="1148" y="196" width="22" height="30" fill="#f0c987" opacity="0.75"/>
+        <rect x="1193" y="196" width="22" height="30" fill="#f0c987"/>
+        <rect x="1252" y="120" width="18" height="26" fill="#f0c987" opacity="0.85"/>
+        <path d="M1160 280 L 1160 244 a14 14 0 0 1 28 0 L 1188 280 Z" fill="#100d1f"/>
+      </g>
+      <!-- ground -->
+      <rect y="262" width="1440" height="58" fill="#2a2347"/>
+      <!-- groovy van -->
+      <g transform="translate(64,152)">
+        <rect x="0" y="14" width="216" height="78" rx="24" fill="#2a9d8f"/>
+        <path d="M0 66 C 36 52, 72 82, 108 66 C 140 52, 176 80, 216 64 L 216 92 L 0 92 Z" fill="#6d5a9e" opacity="0.9"/>
+        <rect x="150" y="28" width="50" height="30" rx="8" fill="#d9f0ec"/>
+        <rect x="58" y="28" width="74" height="28" rx="8" fill="#d9f0ec"/>
+        <g transform="translate(34,44)">
+          <circle r="6" fill="#f0c987"/>
+          <circle cx="0" cy="-10" r="4.6" fill="#d97f2e"/><circle cx="9.5" cy="-3" r="4.6" fill="#d97f2e"/>
+          <circle cx="6" cy="8.5" r="4.6" fill="#d97f2e"/><circle cx="-6" cy="8.5" r="4.6" fill="#d97f2e"/>
+          <circle cx="-9.5" cy="-3" r="4.6" fill="#d97f2e"/>
+        </g>
+        <circle cx="52" cy="94" r="17" fill="#1c1830"/><circle cx="52" cy="94" r="6.5" fill="#f0c987"/>
+        <circle cx="172" cy="94" r="17" fill="#1c1830"/><circle cx="172" cy="94" r="6.5" fill="#f0c987"/>
+        <circle cx="212" cy="52" r="5" fill="#f7e3a1"/>
+      </g>
+      <!-- the squad: four original mystery-solvers, walking toward the manor -->
+      <g stroke-linecap="round">
+        <!-- 1: flashlight lead, jumpsuit + afro -->
+        <g transform="translate(470,178)">
+          <path d="M34 34 L 96 22 L 96 50 Z" fill="#f7e3a1" opacity="0.5"/>
+          <circle cx="14" cy="14" r="13" fill="#3a2a20"/>
+          <circle cx="15" cy="16" r="8.6" fill="#c98e63"/>
+          <rect x="4" y="26" width="22" height="40" rx="9" fill="#d97f2e"/>
+          <path d="M26 34 L 36 34" stroke="#c98e63" stroke-width="6"/>
+          <rect x="33" y="30" width="10" height="8" rx="2" fill="#3b3160"/>
+          <path d="M10 66 L 6 96 M20 66 L 26 96" stroke="#d97f2e" stroke-width="8"/>
+        </g>
+        <!-- 2: laptop under arm, purple hoodie -->
+        <g transform="translate(570,180)">
+          <circle cx="14" cy="13" r="9.4" fill="#e8b98d"/>
+          <path d="M4 10 a10 10 0 0 1 20 0 l 0 -2 a 10 8 0 0 0 -20 0 Z" fill="#33261c"/>
+          <rect x="3" y="24" width="24" height="40" rx="10" fill="#6d5a9e"/>
+          <rect x="22" y="38" width="16" height="11" rx="2" fill="#a4b24a"/>
+          <path d="M9 64 L 6 94 M21 64 L 25 94" stroke="#4d4076" stroke-width="8"/>
+        </g>
+        <!-- 3: tall one with the clipboard, teal jacket -->
+        <g transform="translate(668,166)">
+          <circle cx="14" cy="12" r="9.6" fill="#f0cfa8"/>
+          <path d="M5 7 q 9 -8 18 0 l 0 -3 q -9 -7 -18 0 Z" fill="#b3651f"/>
+          <rect x="2" y="23" width="25" height="46" rx="10" fill="#2a9d8f"/>
+          <rect x="24" y="34" width="13" height="17" rx="2" fill="#f8efdc"/>
+          <path d="M27 42 l 3 3 5 -6" stroke="#d97f2e" stroke-width="2.4" fill="none"/>
+          <path d="M9 69 L 7 100 M20 69 L 24 100" stroke="#1f7a70" stroke-width="8"/>
+        </g>
+        <!-- 4: magnifier in hand, lime tee + headband -->
+        <g transform="translate(762,182)">
+          <circle cx="13" cy="13" r="9.2" fill="#8a5a3b"/>
+          <path d="M3 9 h 20" stroke="#e6392f" stroke-width="4"/>
+          <rect x="2" y="24" width="23" height="38" rx="9" fill="#a4b24a"/>
+          <path d="M24 32 L 34 40" stroke="#8a5a3b" stroke-width="5"/>
+          <circle cx="40" cy="45" r="8" fill="none" stroke="#33261c" stroke-width="3"/>
+          <path d="M9 62 L 6 92 M19 62 L 24 92" stroke="#6b8032" stroke-width="8"/>
+        </g>
+      </g>
+      <!-- the hound, out front and on the scent -->
+      <g transform="translate(1345,162) scale(-0.78,0.78)">
+        <path d="M470 76 C 492 60, 500 44, 494 28" stroke="#8a5a3b" stroke-width="13" stroke-linecap="round" fill="none"/>
+        <path d="M330 118 C 342 84, 380 68, 420 70 C 458 72, 480 92, 478 116 C 476 142, 446 156, 404 156 C 364 156, 340 142, 330 118 Z" fill="#8a5a3b"/>
+        <path d="M438 140 L 438 168" stroke="#8a5a3b" stroke-width="15" stroke-linecap="round"/>
+        <path d="M352 138 L 340 166" stroke="#8a5a3b" stroke-width="15" stroke-linecap="round"/>
+        <path d="M268 128 C 270 106, 292 92, 318 96 C 344 100, 356 118, 350 136 C 344 154, 318 160, 296 152 C 280 146, 268 140, 268 128 Z" fill="#8a5a3b"/>
+        <path d="M240 138 C 250 128, 264 124, 276 128 L 276 148 C 262 152, 248 148, 240 138 Z" fill="#a9764e"/>
+        <circle cx="242" cy="136" r="7" fill="#f8efdc"/>
+        <path d="M310 100 C 330 92, 346 98, 348 116 C 350 136, 338 152, 322 150 C 308 148, 302 132, 306 116 Z" fill="#5d3820"/>
+        <circle cx="296" cy="118" r="4.4" fill="#f8efdc"/>
+        <path d="M322 96 C 336 100, 348 110, 350 122" stroke="#2a9d8f" stroke-width="9" stroke-linecap="round" fill="none"/>
+      </g>
+      <!-- paw trail on the ground between squad and hound -->
+      <g fill="#f0c987" opacity="0.4">
+        <g transform="translate(846,290)"><ellipse cx="0" cy="4" rx="6" ry="4.6"/><circle cx="-5.5" cy="-3" r="2.2"/><circle cx="-1.5" cy="-5" r="2.2"/><circle cx="2.5" cy="-5" r="2.2"/><circle cx="6.5" cy="-3" r="2.2"/></g>
+        <g transform="translate(902,278) rotate(8)"><ellipse cx="0" cy="4" rx="6" ry="4.6"/><circle cx="-5.5" cy="-3" r="2.2"/><circle cx="-1.5" cy="-5" r="2.2"/><circle cx="2.5" cy="-5" r="2.2"/><circle cx="6.5" cy="-3" r="2.2"/></g>
+        <g transform="translate(956,290) rotate(-6)"><ellipse cx="0" cy="4" rx="6" ry="4.6"/><circle cx="-5.5" cy="-3" r="2.2"/><circle cx="-1.5" cy="-5" r="2.2"/><circle cx="2.5" cy="-5" r="2.2"/><circle cx="6.5" cy="-3" r="2.2"/></g>
+      </g>
+    </svg>
+  </div>
+
+  <footer class="foot" style="padding-top: 40px;">
+    <div class="t">Who Verifies the Agents?</div>
+    <div class="s">NeurIPS 2026 · Sydney, Australia</div>
+    <div class="tag">No mystery is solved until it's verified. 🐾</div>
+  </footer>
+</body>
+</html>
