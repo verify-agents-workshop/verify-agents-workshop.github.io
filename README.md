@@ -16,6 +16,7 @@ easy to retheme — swap the text and the `:root` color variables.
 | `broadsheet/` | **Broadsheet** | The page as a newspaper front page: masthead, dateline rule, multi-column justified lead story with drop caps, agate dates sidebar, boxed "public notice" CFP. Pure typography, zero illustration. Fonts: Playfair Display + EB Garamond. |
 | `blueprint/` | **Blueprint** | A cyanotype engineering drawing: graph-grid background, drafted schematic with dimension lines and dashed leaders, numbered sheets, and a real engineering title block (project / sheet / scale / drawn by). Fonts: IBM Plex Mono + Inter. |
 | `gallery/` | **Exhibition** | A museum at night: near-black walls, spotlight gradients, content as brass-framed line artworks with museum placards (exhibit no., title, medium), dates as "Visitor Information". Fonts: Cormorant Garamond + Inter. |
+| `earthen-watercolor/` | **Earthen Watercolor** | Moss/sand/stone watercolor washes with pencil-sketched eucalyptus, botanical touches, and a hand-drawn landscape band. Fonts: Cormorant Garamond + Inter. |
 | `pastel-watercolor/` | **Watercolor Pastel** | Soft lilac/blush/sky watercolor washes with hand-painted edges, brush-stroke underlines, and pigment-blob icons — all pure SVG (turbulence + displacement filters), no image assets. Fonts: Cormorant Garamond + Inter. |
 
 ## Notes
