@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mystery Crew — Who Verifies the Agents?</title>
+  <title>Mystery Crew (Split Hero) — Who Verifies the Agents?</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -28,21 +28,38 @@
     nav.links { display: flex; gap: 24px; }
     nav.links a { color: var(--soft); font-size: 0.9rem; font-weight: 600; }
     nav.links a:hover { color: var(--sunset); text-decoration: none; }
-    .hero-cover {
-      position: relative; height: clamp(520px, 68vh, 760px); text-align: center;
-      background: url(assets/banner.jpg) center top / cover no-repeat;
-      display: flex; align-items: flex-end; justify-content: center;
+    .hero-split {
+      display: grid; grid-template-columns: 1.05fr 1fr; gap: 52px; align-items: center;
+      max-width: 1180px; margin: 0 auto; padding: 64px 28px 84px;
+      background: linear-gradient(180deg, var(--sky) 0%, #f3e6cd 62%, var(--cream) 100%);
+      background-attachment: scroll;
     }
-    .hero-cover::after {
-      content: ""; position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(38,26,48,0) 38%, rgba(38,26,48,0.55) 66%, rgba(38,26,48,0.92) 100%);
+    .hs-text { text-align: left; }
+    .hs-chip {
+      display: inline-block; font-family: var(--disp); font-weight: 700; font-size: 0.85rem;
+      background: var(--purple); color: #fff; padding: 5px 18px; border-radius: 999px; margin-bottom: 22px;
     }
-    .hero-overlay {
-      position: relative; z-index: 2; max-width: 760px; padding: 0 28px 58px; color: #fdf6e9;
+    .hs-text h1 {
+      font-family: var(--disp); font-weight: 800; font-size: clamp(2.6rem, 4.6vw, 3.9rem);
+      line-height: 1.04; margin: 0 0 10px; color: var(--purple);
+      text-shadow: 2px 2px 0 rgba(217,127,46,0.3);
     }
-    .ov-lede { font-size: clamp(1rem, 1.6vw, 1.18rem); line-height: 1.6; margin: 0 0 26px; color: #fbf3e2; text-shadow: 0 1px 10px rgba(38,26,48,0.55); }
-    .ov-actions { margin-bottom: 20px; }
-    .ov-meta { font-weight: 600; font-size: 0.9rem; color: #eadfc8; margin: 0; text-shadow: 0 1px 8px rgba(38,26,48,0.6); }
+    .hs-sub { font-family: var(--disp); font-weight: 700; font-size: clamp(1.1rem, 1.9vw, 1.4rem); color: var(--sunset); margin: 0 0 20px; }
+    .hs-lede { font-size: 1.05rem; color: var(--soft); margin: 0 0 26px; max-width: 46ch; }
+    .hs-actions { margin-bottom: 22px; }
+    .hs-actions .btn { margin-left: 0; margin-right: 12px; }
+    .hs-meta { font-weight: 600; font-size: 0.92rem; color: var(--soft); margin: 0; line-height: 1.7; }
+    .hs-art img {
+      width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 58% center;
+      display: block; border-radius: 22px; box-shadow: 0 16px 48px rgba(47,43,51,0.28);
+    }
+    @media (max-width: 880px) {
+      .hero-split { grid-template-columns: 1fr; gap: 34px; padding-top: 44px; }
+      .hs-text { text-align: center; }
+      .hs-lede { margin-left: auto; margin-right: auto; }
+      .hs-actions .btn { margin: 0 6px 10px; }
+      .hs-art img { aspect-ratio: 4 / 3; object-position: 50% 40%; }
+    }
     .btn { display: inline-block; font-family: var(--disp); font-weight: 700; font-size: 1rem; padding: 12px 30px; border-radius: 999px; margin: 0 6px 10px; transition: transform .14s ease; }
     .btn:hover { transform: scale(1.05); text-decoration: none; }
     .btn-s { background: var(--sunset); color: #fff; box-shadow: 0 6px 0 #c06c33; }
@@ -77,7 +94,7 @@
   </style>
 </head>
 <body>
-  <div class="variant-bar">🐕 Design Preview · Mystery Crew · hero: <strong>overlay</strong> / <a href="split.html">split</a> · <a href="/dev/variants/">all variants</a> · <a href="/dev/">baseline</a></div>
+  <div class="variant-bar">🐕 Design Preview · Mystery Crew · hero: <a href="index.html">overlay</a> / <strong>split</strong> · <a href="/dev/variants/">all variants</a> · <a href="/dev/">baseline</a></div>
 
   <header class="top">
     <div class="wrap top-inner">
@@ -92,14 +109,20 @@
     </div>
   </header>
 
-  <section class="hero-cover" role="img" aria-label="Who Verifies the Agents? Workshop on verification of AI agents, NeurIPS 2026, Sydney, Australia, December 2026">
-    <div class="hero-overlay">
-      <p class="ov-lede">Verification is the bottleneck between fragile prototypes and scalable, reliable agent systems. This workshop convenes researchers and practitioners to make verification a first-class discipline in agent development.</p>
-      <div class="ov-actions">
+  <section class="hero-split">
+    <div class="hs-text">
+      <span class="hs-chip">NeurIPS 2026 Workshop</span>
+      <h1>Who Verifies<br/>the Agents?</h1>
+      <p class="hs-sub">Toward Reliable Agent Development</p>
+      <p class="hs-lede">Verification is the bottleneck between fragile prototypes and scalable, reliable agent systems. This workshop convenes researchers and practitioners to make verification a first-class discipline in agent development.</p>
+      <div class="hs-actions">
         <a class="btn btn-s" href="#cfp">Call for Papers</a>
         <a class="btn btn-g" href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/Verify-Agents">Submit on OpenReview</a>
       </div>
-      <p class="ov-meta">Sydney, Australia · Dec 11 or 12, 2026 · Submissions due Aug 29, 2026 (AoE)</p>
+      <p class="hs-meta">Sydney, Australia · Dec 11 or 12, 2026<br/>Submissions due Aug 29, 2026 (AoE)</p>
+    </div>
+    <div class="hs-art">
+      <img src="assets/banner.jpg" alt="The mystery crew and their golden retriever investigating on the Sydney harbour promenade" />
     </div>
   </section>
 
