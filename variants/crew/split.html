@@ -30,18 +30,22 @@
     nav.links a:hover { color: var(--sunset); text-decoration: none; }
     .hero-side {
       position: relative; height: clamp(540px, 72vh, 800px);
-      background: url(assets/banner.jpg) right center / cover no-repeat;
+      background: url(assets/banner-wide.jpg) right center / cover no-repeat;
     }
     .hero-side::before {
       content: ""; position: absolute; inset: 0;
-      background: linear-gradient(90deg, rgba(253,246,233,0.94) 0%, rgba(253,246,233,0.78) 30%, rgba(253,246,233,0.28) 52%, rgba(253,246,233,0) 68%);
+      background: linear-gradient(90deg, rgba(253,246,233,0.22) 0%, rgba(253,246,233,0.08) 34%, rgba(253,246,233,0) 52%);
     }
     .hs-inner {
       position: relative; z-index: 2; max-width: 1180px; margin: 0 auto; padding: 0 28px;
       height: 100%; display: flex; flex-direction: column; justify-content: center;
       align-items: flex-start; text-align: left; max-width: 1180px;
     }
-    .hs-inner > * { max-width: 520px; }
+    .hs-card {
+      max-width: 560px; background: rgba(253,246,233,0.66); backdrop-filter: blur(9px);
+      border-radius: 26px; padding: 40px 44px; box-shadow: 0 12px 38px rgba(47,43,51,0.16);
+      border: 1px solid rgba(255,255,255,0.5);
+    }
     .hs-chip {
       display: inline-block; font-family: var(--disp); font-weight: 700; font-size: 0.85rem;
       background: var(--purple); color: #fff; padding: 5px 18px; border-radius: 999px; margin-bottom: 22px;
@@ -49,7 +53,7 @@
     .hs-inner h1 {
       font-family: var(--disp); font-weight: 800; font-size: clamp(2.6rem, 4.6vw, 3.9rem);
       line-height: 1.04; margin: 0 0 10px; color: var(--purple);
-      text-shadow: 2px 2px 0 rgba(253,246,233,0.7);
+      text-shadow: none;
     }
     .hs-sub { font-family: var(--disp); font-weight: 700; font-size: clamp(1.1rem, 1.9vw, 1.4rem); color: #c06c33; margin: 0 0 20px; }
     .hs-lede { font-size: 1.03rem; color: #4c4450; margin: 0 0 26px; }
@@ -58,7 +62,8 @@
     .hs-meta { font-weight: 600; font-size: 0.9rem; color: #4c4450; margin: 0; }
     @media (max-width: 880px) {
       .hero-side { height: auto; padding: 54px 0 64px; background-position: 72% center; }
-      .hero-side::before { background: rgba(253,246,233,0.82); }
+      .hero-side::before { background: rgba(253,246,233,0.45); }
+      .hs-card { padding: 30px 26px; }
       .hs-inner { align-items: center; text-align: center; }
       .hs-actions .btn { margin: 0 6px 10px; }
     }
@@ -113,6 +118,7 @@
 
   <section class="hero-side">
     <div class="hs-inner">
+      <div class="hs-card">
       <span class="hs-chip">NeurIPS 2026 Workshop</span>
       <h1>Who Verifies<br/>the Agents?</h1>
       <p class="hs-sub">Toward Reliable Agent Development</p>
@@ -122,6 +128,7 @@
         <a class="btn btn-g" href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/Verify-Agents">Submit on OpenReview</a>
       </div>
       <p class="hs-meta">Sydney, Australia · Dec 11 or 12, 2026 · Submissions due Aug 29, 2026 (AoE)</p>
+      </div>
     </div>
   </section>
 
