@@ -20,21 +20,6 @@
     a { color: var(--teal); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
-    .hero-head {
-      position: absolute; top: 0; left: 0; right: 0; z-index: 5;
-      display: flex; justify-content: flex-end; align-items: center; gap: 14px;
-      padding: 20px 34px;
-    }
-    .hero-head .head-cta {
-      font-family: var(--disp); font-weight: 700; font-size: 0.92rem;
-      background: var(--purple); color: #fff;
-      padding: 10px 22px; border-radius: 999px; box-shadow: 0 4px 14px rgba(47,43,51,0.25);
-      transition: transform .14s ease;
-    }
-    .hero-head .head-cta:hover { transform: scale(1.05); text-decoration: none; }
-    @media (max-width: 560px) {
-      .hero-head { padding: 14px 18px; }
-    }
     .hero-side {
       position: relative;
       height: 100vh; height: 100svh;
@@ -65,11 +50,15 @@
     .hs-actions { margin-bottom: 4px; }
     .hs-actions .btn { margin-left: 0; margin-right: 12px; font-size: 1.08rem; padding: 14px 34px; }
     .hs-meta {
-      display: flex; flex-wrap: wrap; align-items: center; gap: 10px 26px;
-      font-weight: 600; font-size: 1.02rem; color: #4c4450; margin: 0 0 28px;
+      display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px;
+      font-weight: 600; font-size: 1rem; margin: 0 0 28px;
     }
-    .hs-meta span { display: inline-flex; align-items: center; gap: 9px; }
-    .hs-meta svg { flex: none; color: var(--sunset); }
+    .hs-meta span {
+      display: inline-flex; align-items: center; gap: 9px;
+      background: rgba(43,38,61,0.55); color: #f3ecdf;
+      padding: 8px 18px; border-radius: 999px; backdrop-filter: blur(3px);
+    }
+    .hs-meta svg { flex: none; color: #f0b45c; }
     .hs-deadline { font-weight: 600; font-size: 0.92rem; color: #ded4ec; text-shadow: 0 1px 8px rgba(43,38,61,0.6); margin: 0; }
     .scroll-cue {
       position: absolute; z-index: 3; left: 50%; bottom: 18px; transform: translateX(-50%);
@@ -134,7 +123,7 @@
     .cc-center { text-align: center; }
     .cc-email a { font-weight: 700; font-size: 1.05rem; }
     .cc-note { font-style: italic; font-size: 0.9rem; color: var(--soft); margin-top: 16px; text-align: center; }
-    .finale-sec { padding: 90px 0 30px; background: var(--cream); overflow: hidden; }
+    .finale-sec { padding: 90px 0 70px; background: var(--cream); overflow: hidden; }
     .finale-wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; text-align: center; }
     .finale-svg { width: 100%; height: auto; display: block; }
     .finale-svg path { fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; opacity: 0.88; }
@@ -142,14 +131,14 @@
     footer.foot { background: var(--purple); color: #e8e2f4; text-align: center; padding: 54px 24px; }
     footer.foot .t { font-family: var(--disp); font-weight: 800; font-size: 1.5rem; color: #fff; }
     footer.foot .s { font-size: 0.9rem; margin-top: 8px; color: #cfc5e6; }
+    footer.foot .reach { font-size: 0.95rem; color: #d9cfe8; margin: 26px auto 4px; line-height: 1.9; }
+    footer.foot .reach a, footer.foot .soc a { color: #f0c987; font-weight: 700; }
+    footer.foot .soc { font-size: 0.9rem; color: #cfc5e6; margin: 4px 0 0; }
     footer.foot .tag { font-family: var(--disp); font-weight: 700; color: #f0c987; margin-top: 16px; font-size: 1rem; }
   </style>
 </head>
 <body>
   <section class="hero-side">
-    <div class="hero-head">
-      <a class="head-cta" href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/Verify-Agents">Submit on OpenReview</a>
-    </div>
     <div class="hs-inner">
       <div class="hs-card">
       <span class="hs-chip">NeurIPS 2026 Workshop</span>
@@ -162,6 +151,7 @@
       </p>
       <div class="hs-actions">
         <a class="btn btn-s" href="#cfp">Call for Papers</a>
+        <a class="btn btn-g" href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/Verify-Agents">Submit on OpenReview</a>
       </div>
       <p class="hs-deadline">Submissions due Aug 29, 2026 (AoE)</p>
       </div>
@@ -258,28 +248,31 @@
     </div>
   </section>
 
-  <section id="contact" class="tinted">
-    <div class="wrap reveal">
-      <h2 class="stitle">Get in Touch</h2>
-      <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g><circle cx="35" cy="13" r="6" fill="#d99a3d"/><circle cx="35" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6" fill="#d99a3d"/><circle cx="95" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6" fill="#d99a3d"/><circle cx="155" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/></g></svg>
-      <div class="cc-narrow"><p class="cc-p cc-center">Questions about the workshop, submissions, or sponsorship? Reach out to the organizing committee.</p><p class="cc-email cc-center"><a href="mailto:verify-agents-workshop@googlegroups.com">verify-agents-workshop@googlegroups.com</a></p><p class="cc-p cc-center"><a href="https://x.com/veri_agents">@veri_agents on X</a> · <a href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/Verify-Agents">OpenReview</a></p></div>
-    </div>
-  </section>
-
   <section class="finale-sec">
     <div class="finale-wrap">
       <svg id="finale" class="finale-svg" viewBox="0 0 1200 430" aria-label="Line drawing of Sydney Harbour: the Harbour Bridge, a ferry, and the Opera House">
+        <!-- clouds -->
+        <path d="M 142 100 Q 150 80 174 82 Q 184 64 210 68 Q 234 62 242 80 Q 262 80 256 98 Q 200 104 142 100" />
+        <path d="M 396 66 Q 404 50 422 53 Q 430 40 450 45 Q 468 42 472 58 Q 484 60 478 70 Q 436 74 396 66" />
         <!-- sun with rays -->
         <path d="M 1080 96 a 26 26 0 1 0 0.1 0" />
         <path d="M 1080 84 L 1080 70 M 1107 95 L 1117 85 M 1118 122 L 1132 122 M 1053 95 L 1043 85 M 1042 122 L 1028 122" />
         <!-- birds -->
         <path d="M 664 118 Q 673 108 682 118 Q 691 108 700 118 M 726 96 Q 734 87 742 96 Q 750 87 758 96 M 622 84 Q 629 76 636 84 Q 643 76 650 84" />
+        <!-- sparkles -->
+        <path d="M 980 62 Q 982 70 990 72 Q 982 74 980 82 Q 978 74 970 72 Q 978 70 980 62" />
+        <path d="M 880 150 Q 881 156 887 157 Q 881 158 880 164 Q 879 158 873 157 Q 879 156 880 150" />
+        <path d="M 1150 56 Q 1151 62 1157 63 Q 1151 64 1150 70 Q 1149 64 1143 63 Q 1149 62 1150 56" />
         <!-- Harbour Bridge: outer arch -->
         <path d="M 70 372 Q 315 96 560 372" />
         <!-- inner arch -->
         <path d="M 100 372 Q 315 148 530 372" />
+        <!-- lattice bracing between the arches -->
+        <path d="M 150 297 L 165 315 L 180 276 L 195 295 L 210 259 L 225 280 L 240 247 L 255 269 L 270 239 L 285 262 L 300 234 L 315 260 L 330 235 L 345 262 L 360 238 L 375 268 L 390 247 L 405 279 L 420 259 L 435 295 L 450 276 L 465 315 L 480 297" />
         <!-- deck -->
         <path d="M 42 315 L 588 315 M 42 326 L 588 326" />
+        <!-- deck railing -->
+        <path d="M 60 305 L 570 305 M 90 305 L 90 315 M 130 305 L 130 315 M 170 305 L 170 315 M 210 305 L 210 315 M 250 305 L 250 315 M 290 305 L 290 315 M 330 305 L 330 315 M 370 305 L 370 315 M 410 305 L 410 315 M 450 305 L 450 315 M 490 305 L 490 315 M 530 305 L 530 315" />
         <!-- hangers -->
         <path d="M 170 285 L 170 315 M 230 252 L 230 315 M 290 237 L 290 315 M 340 234 L 340 315 M 400 246 L 400 315 M 460 276 L 460 315" />
         <!-- pylons -->
@@ -292,8 +285,11 @@
         <path d="M 270 354 L 270 342 L 370 342 L 370 354" />
         <path d="M 280 348 L 288 348 M 298 348 L 306 348 M 316 348 L 324 348 M 334 348 L 342 348 M 352 348 L 360 348" />
         <path d="M 300 342 L 300 334 L 342 334 L 342 342 M 320 334 L 320 328 L 328 330" />
-        <!-- Opera House: podium -->
+        <!-- ferry wake -->
+        <path d="M 206 378 L 242 378 M 398 378 L 436 378" />
+        <!-- Opera House: podium and steps -->
         <path d="M 640 372 L 648 352 L 1142 352 L 1150 372" />
+        <path d="M 655 362 L 1136 362" />
         <!-- large sail group -->
         <path d="M 672 352 C 674 268 716 200 806 174 C 812 236 810 300 800 352" />
         <path d="M 712 352 C 718 276 764 212 862 190 C 866 248 862 304 852 352" />
@@ -301,19 +297,32 @@
         <!-- small sail group -->
         <path d="M 946 352 C 950 306 984 270 1044 258 C 1048 292 1046 324 1040 352" />
         <path d="M 980 352 C 986 316 1016 290 1068 282 C 1072 308 1070 332 1064 352" />
-        <!-- sailboat right of the Opera House -->
-        <path d="M 1108 340 L 1146 340 L 1138 348 L 1114 348 L 1108 340 M 1126 340 L 1126 310 M 1126 312 L 1144 336 L 1128 336 M 1124 316 L 1112 336 L 1123 336" />
+        <!-- shell ribs -->
+        <path d="M 700 352 C 702 285 730 225 790 195" />
+        <path d="M 745 352 C 750 292 786 235 845 208" />
+        <path d="M 795 352 C 803 300 840 255 895 238" />
+        <path d="M 962 352 C 966 315 992 288 1030 276" />
+        <path d="M 1000 352 C 1006 322 1030 302 1058 294" />
+        <!-- sailboat (sails away as you reach the end) -->
+        <g id="sailboat">
+          <path d="M 1108 340 L 1146 340 L 1138 348 L 1114 348 L 1108 340 M 1126 340 L 1126 310 M 1126 312 L 1144 336 L 1128 336 M 1124 316 L 1112 336 L 1123 336" />
+          <path d="M 1104 354 L 1150 354" />
+        </g>
         <!-- water line and reflections -->
         <path d="M 20 372 L 1180 372" />
         <path d="M 150 398 L 280 398 M 420 404 L 520 404 M 660 400 L 800 400 M 930 396 L 1060 396 M 1090 404 L 1160 404" />
+        <path d="M 90 388 L 150 388 M 320 390 L 380 390 M 560 392 L 640 392 M 840 388 L 900 388" />
       </svg>
       <p class="finale-cap">See you in Sydney! 🐾</p>
     </div>
   </section>
 
-  <footer class="foot">
+  <footer class="foot" id="contact">
     <div class="t">Who Verifies the Agents?</div>
-    <div class="s">NeurIPS 2026 · Sydney, Australia</div>
+    <div class="s">NeurIPS 2026 · Sydney, Australia · Dec 11 or 12, 2026</div>
+    <p class="reach">Questions about the workshop, submissions, or sponsorship?<br/>
+      <a href="mailto:verify-agents-workshop@googlegroups.com">verify-agents-workshop@googlegroups.com</a></p>
+    <p class="soc"><a href="https://x.com/veri_agents">@veri_agents on X</a> · <a href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/Verify-Agents">OpenReview</a></p>
     <div class="tag">No mystery is solved until it's verified. 🐾</div>
   </footer>
 
@@ -336,6 +345,7 @@
 
       // Scroll-driven line drawing of the harbour finale
       var svg = document.getElementById('finale');
+      var boat = document.getElementById('sailboat');
       var paths = Array.prototype.slice.call(svg.querySelectorAll('path'));
       var lens = paths.map(function (p) { return p.getTotalLength(); });
       var total = lens.reduce(function (a, b) { return a + b; }, 0);
@@ -353,8 +363,8 @@
         var r = svg.getBoundingClientRect();
         var vh = window.innerHeight;
         // 0 when the drawing enters the bottom of the viewport,
-        // 1 shortly after its top clears the upper part of the screen
-        var progress = (vh * 0.92 - r.top) / (vh * 0.5 + r.height * 0.55);
+        // 1 shortly before the page bottom, so every stroke is seen drawing
+        var progress = (vh * 0.92 - r.top) / (vh * 0.48 + r.height * 0.6);
         progress = Math.max(0, Math.min(1, progress));
         var drawn = progress * total;
         for (var i = 0; i < paths.length; i++) {
@@ -362,6 +372,12 @@
           paths[i].style.strokeDashoffset = lens[i] - take;
           drawn -= take;
         }
+        // once everything is drawn, the sailboat casts off on the last stretch of scroll
+        var doc = document.documentElement;
+        var remaining = doc.scrollHeight - (window.scrollY + vh);
+        var sail = 1 - Math.max(0, Math.min(1, remaining / 150));
+        if (progress < 1) sail = 0;
+        boat.setAttribute('transform', 'translate(' + (sail * 96) + ' ' + (-sail * 9) + ')');
       }
       function onScroll() {
         if (!ticking) { ticking = true; window.requestAnimationFrame(draw); }
