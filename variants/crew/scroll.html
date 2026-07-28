@@ -46,11 +46,11 @@
       position: relative;
       height: calc(100vh - 38px); height: calc(100svh - 38px);
       min-height: 560px;
-      background: url(assets/banner-wide.jpg) right center / cover no-repeat;
+      background: url(assets/banner-wide2.png) 42% center / cover no-repeat;
     }
     .hero-side::before {
       content: ""; position: absolute; inset: 0;
-      background: linear-gradient(90deg, rgba(253,246,233,0.6) 0%, rgba(253,246,233,0.34) 36%, rgba(253,246,233,0) 58%);
+      background: linear-gradient(90deg, rgba(253,246,233,0.42) 0%, rgba(253,246,233,0.18) 34%, rgba(253,246,233,0) 55%);
     }
     .hero-side::after {
       content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 130px;
@@ -62,8 +62,8 @@
       height: 100%; display: flex; flex-direction: column; justify-content: center;
       align-items: flex-start; text-align: left;
     }
-    .hs-card { max-width: 560px; }
-    .hs-inner h1, .hs-sub { text-shadow: 0 1px 14px rgba(253,246,233,0.85); }
+    .hs-card { max-width: 560px; margin-bottom: 7vh; }
+    .hs-inner h1, .hs-sub { text-shadow: 0 2px 18px rgba(253,246,233,0.95); }
     .hs-chip {
       display: inline-block; font-family: var(--disp); font-weight: 700; font-size: 0.85rem;
       background: var(--purple); color: #fff; padding: 5px 18px; border-radius: 999px; margin-bottom: 22px;
@@ -76,7 +76,10 @@
     .hs-lede { font-size: 1.03rem; color: #4c4450; margin: 0 0 26px; }
     .hs-actions { margin-bottom: 22px; }
     .hs-actions .btn { margin-left: 0; margin-right: 12px; }
-    .hs-meta { font-weight: 600; font-size: 0.9rem; color: #4c4450; margin: 0; }
+    .hs-meta {
+      display: inline-block; font-weight: 600; font-size: 0.9rem; color: #4c4450; margin: 0;
+      background: rgba(253,246,233,0.72); padding: 7px 16px; border-radius: 999px;
+    }
     .scroll-cue {
       position: absolute; z-index: 3; left: 50%; bottom: 18px; transform: translateX(-50%);
       color: var(--purple); opacity: 0.92; filter: drop-shadow(0 1px 3px rgba(253,246,233,0.7));
