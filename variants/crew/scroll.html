@@ -394,15 +394,18 @@
         var stage = document.querySelector('.finale-pin');
         var pinSpan = sr.height - stage.offsetHeight;
         var y = vh - sr.top;
-        var drawSpan = (vh - vh * 0.22) + pinSpan * 0.8;
-        var progress = Math.max(0, Math.min(1, y / drawSpan));
+        // first strokes appear once the canvas reaches mid-viewport,
+        // then the drawing runs through 80% of the pinned stretch
+        var startY = vh * 0.5;
+        var drawSpan = vh * 0.28 + pinSpan * 0.8;
+        var progress = Math.max(0, Math.min(1, (y - startY) / drawSpan));
         var drawn = progress * total;
         for (var i = 0; i < paths.length; i++) {
           var take = Math.max(0, Math.min(lens[i], drawn));
           paths[i].style.strokeDashoffset = lens[i] - take;
           drawn -= take;
         }
-        var sail = Math.max(0, Math.min(1, (y - drawSpan * 0.96) / (pinSpan * 0.2)));
+        var sail = Math.max(0, Math.min(1, (y - startY - drawSpan * 0.96) / (pinSpan * 0.2)));
         var r = svg.getBoundingClientRect();
         var scale = r.width / 1200;
         var toEdge = (window.innerWidth - r.left) / scale - 1104 + 30; // svg-units from the boat to past the window edge
