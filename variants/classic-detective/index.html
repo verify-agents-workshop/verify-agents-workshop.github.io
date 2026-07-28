@@ -8,20 +8,19 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Who Verifies the Agents? · NeurIPS 2026 Workshop" />
   <meta property="og:description" content="A NeurIPS 2026 workshop on verification for reliable agent development. Sydney, Australia, Dec 11 or 12, 2026." />
-  <meta property="og:image" content="https://verify-agents-workshop.github.io/assets/social-card.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/fav-32.png" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%F0%9F%90%BE%3C/text%3E%3C/svg%3E" />
   <link rel="apple-touch-icon" href="assets/fav-180.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --sky: #cfe2f0; --cream: #fdf6e9; --sunset: #e58a4e; --gold: #d99a3d; --teal: #2f847f;
-      --green: #5f8f52; --purple: #7a4e94; --ink: #2f2b33; --soft: #635c66;
-      --line: #e9dfc9; --maxw: 1060px;
-      --disp: 'Baloo 2', cursive; --sans: 'Inter', sans-serif;
+      --sky: #dfe7f2; --cream: #faf5ea; --sunset: #b98f2e; --gold: #b98f2e; --teal: #1e2f55;
+      --green: #33415e; --purple: #1e2f55; --ink: #22304f; --soft: #5b6272;
+      --line: #e3dac1; --maxw: 1060px;
+      --disp: 'Playfair Display', serif; --sans: 'Inter', sans-serif;
     }
     * , *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -33,18 +32,13 @@
       position: relative;
       height: 100vh; height: 100svh;
       min-height: 560px;
-      background: url(assets/banner-v5b.png) center bottom / cover no-repeat;
+      background: url(assets/hero-classic2b.png) center bottom / cover no-repeat;
     }
     .hero-side::before {
       content: ""; position: absolute; inset: 0;
-      background: linear-gradient(90deg, rgba(253,246,233,0.14) 0%, rgba(253,246,233,0.05) 30%, rgba(253,246,233,0) 48%);
+      background: linear-gradient(90deg, rgba(250,245,234,0.14) 0%, rgba(250,245,234,0.05) 30%, rgba(250,245,234,0) 48%);
       mask-image: linear-gradient(180deg, #000 0%, #000 62%, rgba(0,0,0,0) 86%);
       -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 62%, rgba(0,0,0,0) 86%);
-    }
-    .hero-side::after {
-      content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 180px;
-      background: linear-gradient(180deg, rgba(43,38,61,0) 0%, rgba(43,38,61,0.5) 55%, #2b263d 100%);
-      pointer-events: none;
     }
     .hs-inner {
       position: relative; z-index: 2; max-width: 1180px; margin: 0 auto; padding: 0 28px;
@@ -52,7 +46,7 @@
       align-items: flex-start; text-align: left;
     }
     .hs-card { max-width: 660px; margin-bottom: 13vh; }
-    .hs-inner h1, .hs-sub { text-shadow: 0 2px 18px rgba(253,246,233,0.95); }
+    .hs-inner h1, .hs-sub { text-shadow: 0 2px 18px rgba(250,245,234,0.95); }
     .hs-chip {
       display: inline-block; font-family: var(--disp); font-weight: 700; font-size: 0.95rem;
       background: var(--purple); color: #fff; padding: 6px 20px; border-radius: 999px; margin-bottom: 26px;
@@ -61,8 +55,8 @@
       font-family: var(--disp); font-weight: 800; font-size: clamp(3.1rem, 5.8vw, 5rem);
       line-height: 1.02; margin: 0 0 14px; color: var(--purple);
     }
-    .hs-sub { font-family: var(--disp); font-weight: 700; font-size: clamp(1.35rem, 2.4vw, 1.8rem); color: #c06c33; margin: 0 0 24px; }
-    .hs-lede { font-size: 1.14rem; color: #322d38; font-weight: 500; text-shadow: 0 1px 12px rgba(253,246,233,0.85); margin: 0 0 30px; max-width: 600px; }
+    .hs-sub { font-family: var(--disp); font-weight: 700; font-size: clamp(1.35rem, 2.4vw, 1.8rem); color: #8f6c1e; margin: 0 0 24px; }
+    .hs-lede { font-size: 1.14rem; color: #232b3d; font-weight: 500; text-shadow: 0 1px 12px rgba(250,245,234,0.85); margin: 0 0 30px; max-width: 600px; }
     .hs-actions { margin-bottom: 18px; }
     .hs-actions .btn { margin-left: 0; margin-right: 12px; font-size: 1.08rem; padding: 14px 34px; }
     .hs-meta {
@@ -71,10 +65,10 @@
     }
     .hs-meta span {
       display: inline-flex; align-items: center; gap: 9px;
-      color: #fdf8ee; text-shadow: 0 1px 10px rgba(43,38,61,0.7);
+      color: #223052; text-shadow: 0 1px 10px rgba(250,245,234,0.8);
     }
-    .hs-meta svg { flex: none; color: #f0b45c; filter: drop-shadow(0 1px 4px rgba(43,38,61,0.5)); }
-    .hs-deadline { font-weight: 600; font-size: 0.92rem; color: #ded4ec; text-shadow: 0 1px 8px rgba(43,38,61,0.6); margin: 0; }
+    .hs-meta svg { flex: none; color: #8f6c1e; }
+    .hs-deadline { font-weight: 600; font-size: 0.92rem; color: #e8edf8; text-shadow: 0 1px 8px rgba(13,33,70,0.8); margin: 0; }
     .scroll-cue {
       position: absolute; z-index: 3; left: 50%; bottom: 18px; transform: translateX(-50%);
       color: #f0e9dc; opacity: 0.92;
@@ -87,34 +81,34 @@
     @media (max-width: 880px) {
       .hero-side { height: auto; min-height: 100svh; padding: 84px 0 84px; background-position: 72% center; }
       .hero-side::before {
-        background: linear-gradient(180deg, rgba(43,38,61,0.5) 0%, rgba(43,38,61,0.34) 45%, rgba(43,38,61,0.62) 100%);
+        background: linear-gradient(180deg, rgba(19,30,55,0.5) 0%, rgba(19,30,55,0.34) 45%, rgba(19,30,55,0.62) 100%);
         mask-image: none; -webkit-mask-image: none;
       }
       .hs-inner { align-items: center; text-align: center; }
-      .hs-inner h1 { color: #f6f0e4; text-shadow: 0 2px 16px rgba(43,38,61,0.85); }
-      .hs-sub { color: #f0b45c; text-shadow: 0 2px 12px rgba(43,38,61,0.85); }
-      .hs-lede { color: #e9e2f2; text-shadow: 0 1px 10px rgba(43,38,61,0.7); }
+      .hs-inner h1 { color: #f6f0e4; text-shadow: 0 2px 16px rgba(19,30,55,0.85); }
+      .hs-sub { color: #d4a94c; text-shadow: 0 2px 12px rgba(19,30,55,0.85); }
+      .hs-lede { color: #e9e2f2; text-shadow: 0 1px 10px rgba(19,30,55,0.7); }
       .hs-meta { justify-content: center; }
       .hs-actions .btn { margin: 0 6px 10px; }
     }
     .btn { display: inline-block; font-family: var(--disp); font-weight: 700; font-size: 1rem; padding: 12px 30px; border-radius: 999px; margin: 0 6px 10px; transition: transform .14s ease; }
     .btn:hover { transform: scale(1.05); text-decoration: none; }
-    .btn-s { background: var(--sunset); color: #fff; box-shadow: 0 6px 0 #c06c33; }
-    .btn-g { background: var(--green); color: #fff; box-shadow: 0 6px 0 #497040; }
+    .btn-s { background: var(--sunset); color: #fff; box-shadow: 0 6px 0 #8f6c1e; }
+    .btn-g { background: var(--green); color: #fff; box-shadow: 0 6px 0 #1c2740; }
     section { padding: 60px 0; }
-    .night { background: #2b263d; color: #ddd4ea; }
+    .night { background: #0e2245; color: #d6ddeb; }
     .night section { padding: 42px 0; }
     .night .stitle { color: #f6f0e4; }
-    .night .ov { color: #d9d1e6; }
-    .night a { color: #8fd0ca; }
+    .night .ov { color: #ccd5e6; }
+    .night a { color: #d4b76a; }
     .night .cc-person { background: rgba(255,255,255,0.055); box-shadow: none; border: 1px solid rgba(255,255,255,0.14); }
-    .night .cc-affil, .night .cc-bio { color: #b4a8c9; }
+    .night .cc-affil, .night .cc-bio { color: #9fb0cc; }
     .dawn {
       height: 300px;
-      background: linear-gradient(180deg, #2b263d 0%, #5c4266 36%, #c99a83 68%, #f2ddc2 86%, var(--cream) 100%);
+      background: linear-gradient(180deg, #0e2245 0%, #3c4d74 36%, #c2b085 68%, #eee3c6 86%, var(--cream) 100%);
     }
     section.tinted {
-      background: linear-gradient(180deg, rgba(244,234,214,0) 0%, #f4ead6 22%, #f4ead6 78%, rgba(244,234,214,0) 100%);
+      background: linear-gradient(180deg, rgba(241,234,214,0) 0%, #f1ead6 22%, #f1ead6 78%, rgba(241,234,214,0) 100%);
       padding: 86px 0;
     }
     .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
@@ -131,7 +125,7 @@
       padding: 1px 8px; border: 1.5px solid var(--sunset); border-radius: 9px;
       box-decoration-break: clone; -webkit-box-decoration-break: clone;
     }
-    .night .hl { color: #f6dcc6; }
+    .night .hl { color: #ecd9a8; }
     .cc-narrow { max-width: 760px; margin: 0 auto; text-align: left; }
     .cc-h3 { margin: 36px 0 10px; font-size: 1.35rem; font-weight: 700; font-family: var(--disp); }
     .cc-h4 { margin: 22px 0 4px; font-size: 1rem; font-weight: 700; color: var(--teal); }
@@ -142,7 +136,7 @@
     .cc-people { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 30px; }
     .cc-people-sp { max-width: 790px; margin-left: auto; margin-right: auto; }
     .cc-person { width: 232px; text-align: center; padding: 22px 14px; background: #fffdf6; border-radius: 18px; box-shadow: 0 3px 0 rgba(47,43,51,0.14); }
-    .cc-avatar { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; margin-bottom: 12px; border: 3px solid #3aa6a0; }
+    .cc-avatar { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; margin-bottom: 12px; border: 3px solid #b98f2e; }
     .cc-name { font-weight: 700; }
     .cc-name a { color: inherit; }
     .cc-affil { font-size: 0.85rem; color: var(--soft); }
@@ -154,7 +148,7 @@
     #speakers .cc-people { gap: 44px 40px; margin-top: 40px; }
     #speakers .cc-people-sp { max-width: none; }
     #speakers .cc-person { width: 252px; background: none; border: none; box-shadow: none; padding: 0; }
-    #speakers .cc-avatar { width: 138px; height: 138px; border: 3px solid #3aa6a0; box-shadow: 0 0 0 6px rgba(143,208,202,0.13); margin-bottom: 16px; }
+    #speakers .cc-avatar { width: 138px; height: 138px; border: 3px solid #b98f2e; box-shadow: 0 0 0 6px rgba(212,169,76,0.16); margin-bottom: 16px; }
     #speakers .cc-name { font-family: var(--disp); font-size: 1.14rem; color: #f6f0e4; }
     #speakers .cc-affil { font-size: 0.87rem; }
     #speakers .cc-bio { font-size: 0.86rem; }
@@ -174,10 +168,10 @@
     .finale-cap { font-family: var(--disp); font-weight: 700; font-size: 1.15rem; color: var(--soft); margin: 16px 0 0; }
     footer.foot { background: var(--purple); color: #e8e2f4; text-align: center; padding: 54px 24px; }
     footer.foot .t { font-family: var(--disp); font-weight: 800; font-size: 1.5rem; color: #fff; }
-    footer.foot .s { font-size: 0.9rem; margin-top: 8px; color: #cfc5e6; }
-    footer.foot .reach { font-size: 0.95rem; color: #d9cfe8; margin: 26px auto 4px; line-height: 1.9; }
-    footer.foot .reach a, footer.foot .soc a { color: #f0c987; font-weight: 700; }
-    footer.foot .soc { font-size: 0.9rem; color: #cfc5e6; margin: 4px 0 0; }
+    footer.foot .s { font-size: 0.9rem; margin-top: 8px; color: #b9c4da; }
+    footer.foot .reach { font-size: 0.95rem; color: #ccd5e6; margin: 26px auto 4px; line-height: 1.9; }
+    footer.foot .reach a, footer.foot .soc a { color: #d9b96a; font-weight: 700; }
+    footer.foot .soc { font-size: 0.9rem; color: #b9c4da; margin: 4px 0 0; }
     footer.foot .tag { font-family: var(--disp); font-weight: 700; color: #f0c987; margin-top: 16px; font-size: 1rem; }
   </style>
 </head>
@@ -209,7 +203,7 @@
   <section id="about">
     <div class="wrap reveal">
       <h2 class="stitle">Overview</h2>
-      <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g><circle cx="35" cy="13" r="6" fill="#d99a3d"/><circle cx="35" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6" fill="#d99a3d"/><circle cx="95" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6" fill="#d99a3d"/><circle cx="155" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/></g></svg>
+      <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g><circle cx="35" cy="13" r="6" fill="#b98f2e"/><circle cx="35" cy="13" r="9.5" fill="none" stroke="#33415e" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6" fill="#b98f2e"/><circle cx="95" cy="13" r="9.5" fill="none" stroke="#33415e" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6" fill="#b98f2e"/><circle cx="155" cy="13" r="9.5" fill="none" stroke="#33415e" stroke-width="2.4" stroke-dasharray="3 4"/></g></svg>
       <div class="cc-narrow"><p class="ov">Agents that reason, plan, and act in open-ended environments are advancing at a remarkable pace. Yet a basic question has become surprisingly hard to answer: when we update an agent's prompt, add a new tool, or change its reasoning strategy, <span class="hl">did it actually get better?</span></p><p class="ov">Answering that question is <span class="hl">verification</span>. Today it works well only where ground truth is clear, such as formal mathematics, competitive programming, and software tests. For general agentic tasks, verification signals remain shallow and noisy: improvements plateau, regressions slip through silently, and development turns into guesswork.</p><p class="ov">This workshop treats verification as a <span class="hl">first-class research problem</span>. We bring together researchers and practitioners working on robust verifiers, environment-grounded evaluation, and richer verification signals to lay the foundations of reliable agent development.</p></div>
     </div>
   </section>
@@ -217,8 +211,8 @@
   <section id="speakers">
     <div class="wrap reveal">
       <h2 class="stitle">Confirmed Speakers &amp; Panelists</h2>
-      <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g><circle cx="35" cy="13" r="6" fill="#d99a3d"/><circle cx="35" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6" fill="#d99a3d"/><circle cx="95" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6" fill="#d99a3d"/><circle cx="155" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/></g></svg>
-      <div class="cc-narrow"><div class="cc-people cc-people-sp"><div class="cc-person"><img class="cc-avatar" src="assets/speakers/pin-yu-chen.jpg" alt="Pin-Yu Chen" /><div class="cc-name"><a href="https://sites.google.com/site/pinyuchenpage/home" target="_blank" rel="noopener">Pin-Yu Chen</a></div><div class="cc-affil">IBM</div><p class="cc-bio">Trusted AI at IBM Research; PI at the MIT–IBM Watson AI Lab.</p></div><div class="cc-person"><img class="cc-avatar" src="assets/speakers/azalia-mirhoseini.jpg" alt="Azalia Mirhoseini" /><div class="cc-name"><a href="https://www.azaliamirhoseini.com/" target="_blank" rel="noopener">Azalia Mirhoseini</a></div><div class="cc-affil">Stanford · Ricursive Intelligence</div><p class="cc-bio">Scalable, self-improving AI; AlphaChip and Mixture-of-Experts.</p></div><div class="cc-person"><img class="cc-avatar" src="assets/speakers/seshendra-nalla.jpg" alt="Seshendra Nalla" /><div class="cc-name"><a href="https://www.linkedin.com/in/seshendranalla/" target="_blank" rel="noopener">Seshendra Nalla</a></div><div class="cc-affil">Datadog</div><p class="cc-bio">VP of Observability Data Platform; contributor to BitsEvolve.</p></div><div class="cc-person"><img class="cc-avatar" src="assets/speakers/dhaval-patel.jpg" alt="Dhaval Patel" /><div class="cc-name"><a href="https://www.linkedin.com/in/dhaval-patel-2b287033" target="_blank" rel="noopener">Dhaval Patel</a></div><div class="cc-affil">IBM Research</div><p class="cc-bio">Time-series foundation models and LLM agents at IBM T.J. Watson.</p></div><div class="cc-person"><img class="cc-avatar" src="assets/speakers/ion-stoica.jpg" alt="Ion Stoica" /><div class="cc-name"><a href="https://people.eecs.berkeley.edu/~istoica/" target="_blank" rel="noopener">Ion Stoica</a></div><div class="cc-affil">UC Berkeley · Anyscale · Databricks</div><p class="cc-bio">Systems for AI at Berkeley: Ray, Spark, vLLM, Chatbot Arena.</p></div><div class="cc-person"><img class="cc-avatar" src="assets/speakers/yu-su.jpg" alt="Yu Su" /><div class="cc-name"><a href="https://ysu1989.github.io/" target="_blank" rel="noopener">Yu Su</a></div><div class="cc-affil">Ohio State · NeoCognition</div><p class="cc-bio">Agent reliability and evaluation: Mind2Web, MMMU, SeeAct.</p></div></div></div>
+      <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g><circle cx="35" cy="13" r="6" fill="#b98f2e"/><circle cx="35" cy="13" r="9.5" fill="none" stroke="#33415e" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6" fill="#b98f2e"/><circle cx="95" cy="13" r="9.5" fill="none" stroke="#33415e" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6" fill="#b98f2e"/><circle cx="155" cy="13" r="9.5" fill="none" stroke="#33415e" stroke-width="2.4" stroke-dasharray="3 4"/></g></svg>
+      <div class="cc-narrow"><div class="cc-people cc-people-sp"><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/pin-yu-chen.jpg" alt="Pin-Yu Chen" /><div class="cc-name"><a href="https://sites.google.com/site/pinyuchenpage/home" target="_blank" rel="noopener">Pin-Yu Chen</a></div><div class="cc-affil">IBM</div><p class="cc-bio">Trusted AI at IBM Research; PI at the MIT–IBM Watson AI Lab.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/azalia-mirhoseini.jpg" alt="Azalia Mirhoseini" /><div class="cc-name"><a href="https://www.azaliamirhoseini.com/" target="_blank" rel="noopener">Azalia Mirhoseini</a></div><div class="cc-affil">Stanford · Ricursive Intelligence</div><p class="cc-bio">Scalable, self-improving AI; AlphaChip and Mixture-of-Experts.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/seshendra-nalla.jpg" alt="Seshendra Nalla" /><div class="cc-name"><a href="https://www.linkedin.com/in/seshendranalla/" target="_blank" rel="noopener">Seshendra Nalla</a></div><div class="cc-affil">Datadog</div><p class="cc-bio">VP of Observability Data Platform; contributor to BitsEvolve.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/dhaval-patel.jpg" alt="Dhaval Patel" /><div class="cc-name"><a href="https://www.linkedin.com/in/dhaval-patel-2b287033" target="_blank" rel="noopener">Dhaval Patel</a></div><div class="cc-affil">IBM Research</div><p class="cc-bio">Time-series foundation models and LLM agents at IBM T.J. Watson.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/ion-stoica.jpg" alt="Ion Stoica" /><div class="cc-name"><a href="https://people.eecs.berkeley.edu/~istoica/" target="_blank" rel="noopener">Ion Stoica</a></div><div class="cc-affil">UC Berkeley · Anyscale · Databricks</div><p class="cc-bio">Systems for AI at Berkeley: Ray, Spark, vLLM, Chatbot Arena.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/yu-su.jpg" alt="Yu Su" /><div class="cc-name"><a href="https://ysu1989.github.io/" target="_blank" rel="noopener">Yu Su</a></div><div class="cc-affil">Ohio State · NeoCognition</div><p class="cc-bio">Agent reliability and evaluation: Mind2Web, MMMU, SeeAct.</p></div></div></div>
     </div>
   </section>
   </div>
@@ -228,7 +222,7 @@
   <section id="cfp">
     <div class="wrap reveal">
       <h2 class="stitle">Call for Papers</h2>
-      <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g><circle cx="35" cy="13" r="6" fill="#d99a3d"/><circle cx="35" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6" fill="#d99a3d"/><circle cx="95" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6" fill="#d99a3d"/><circle cx="155" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/></g></svg>
+      <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g><circle cx="35" cy="13" r="6" fill="#b98f2e"/><circle cx="35" cy="13" r="9.5" fill="none" stroke="#33415e" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6" fill="#b98f2e"/><circle cx="95" cy="13" r="9.5" fill="none" stroke="#33415e" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6" fill="#b98f2e"/><circle cx="155" cy="13" r="9.5" fill="none" stroke="#33415e" stroke-width="2.4" stroke-dasharray="3 4"/></g></svg>
       <div class="cc-narrow"><h3 class="cc-h3">Topics of Interest</h3>
 <p class="cc-p">We invite submissions across three core pillars, as well as topics at their intersection:</p>
 <h4 class="cc-h4">Pillar 1: Safety and Robustness of Verification</h4>
@@ -278,7 +272,7 @@
   <section id="dates" class="tinted">
     <div class="wrap reveal">
       <h2 class="stitle">Important Dates</h2>
-      <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g><circle cx="35" cy="13" r="6" fill="#d99a3d"/><circle cx="35" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6" fill="#d99a3d"/><circle cx="95" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6" fill="#d99a3d"/><circle cx="155" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/></g></svg>
+      <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g><circle cx="35" cy="13" r="6" fill="#b98f2e"/><circle cx="35" cy="13" r="9.5" fill="none" stroke="#33415e" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6" fill="#b98f2e"/><circle cx="95" cy="13" r="9.5" fill="none" stroke="#33415e" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6" fill="#b98f2e"/><circle cx="155" cy="13" r="9.5" fill="none" stroke="#33415e" stroke-width="2.4" stroke-dasharray="3 4"/></g></svg>
       <div class="cc-narrow"><div class="cc-guide" style="max-width:580px;margin:0 auto;"><li style="display:flex;justify-content:space-between;font-weight:600;"><span>Submission deadline</span><span style="color:var(--sunset);font-family:var(--disp);">August 29, 2026</span></li><li style="display:flex;justify-content:space-between;font-weight:600;"><span>Author notification</span><span style="color:var(--sunset);font-family:var(--disp);">September 29, 2026</span></li><li style="display:flex;justify-content:space-between;font-weight:600;"><span>Workshop day</span><span style="color:var(--sunset);font-family:var(--disp);">Dec 11 or 12, 2026</span></li></div><p class="cc-note">The exact workshop day (Friday, Dec 11 or Saturday, Dec 12) will be confirmed once assigned by NeurIPS. All deadlines are 23:59 Anywhere on Earth (AoE) unless otherwise noted.</p></div>
     </div>
   </section>
@@ -287,8 +281,8 @@
   <section id="organizers">
     <div class="wrap reveal">
       <h2 class="stitle">Organizing Committee</h2>
-      <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g><circle cx="35" cy="13" r="6" fill="#d99a3d"/><circle cx="35" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6" fill="#d99a3d"/><circle cx="95" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6" fill="#d99a3d"/><circle cx="155" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/></g></svg>
-      <div class="cc-narrow"><div class="cc-people"><div class="cc-person"><img class="cc-avatar" src="assets/organizers/ahmad-beirami.jpg" alt="Ahmad Beirami" /><div class="cc-name"><a href="https://beirami.github.io/" target="_blank" rel="noopener">Ahmad Beirami</a></div><div class="cc-affil">Fidian</div></div><div class="cc-person"><img class="cc-avatar" src="assets/organizers/mert-cemri.jpg" alt="Mert Cemri" /><div class="cc-name"><a href="https://people.eecs.berkeley.edu/~mert_cemri/" target="_blank" rel="noopener">Mert Cemri</a></div><div class="cc-affil">UC Berkeley</div></div><div class="cc-person"><img class="cc-avatar" src="assets/organizers/zhang-wei-hong.jpg" alt="Zhang-Wei Hong" /><div class="cc-name"><a href="https://williamd4112.github.io/" target="_blank" rel="noopener">Zhang-Wei Hong</a></div><div class="cc-affil">MIT–IBM Watson AI Lab</div></div><div class="cc-person"><img class="cc-avatar" src="assets/organizers/hung-le.jpg" alt="Hung Le" /><div class="cc-name"><a href="https://sites.google.com/view/henryle2018/home" target="_blank" rel="noopener">Hung Le</a></div><div class="cc-affil">Fidian</div></div><div class="cc-person"><img class="cc-avatar" src="assets/organizers/ninareh-mehrabi.jpg" alt="Ninareh Mehrabi" /><div class="cc-name"><a href="https://ninarehm.github.io" target="_blank" rel="noopener">Ninareh Mehrabi</a></div><div class="cc-affil">Meta Superintelligence Labs</div></div><div class="cc-person"><img class="cc-avatar" src="assets/organizers/melissa-pan.jpg" alt="Melissa Pan" /><div class="cc-name"><a href="https://melissa-pan.github.io/" target="_blank" rel="noopener">Melissa Pan</a></div><div class="cc-affil">UC Berkeley</div></div><div class="cc-person"><img class="cc-avatar" src="assets/organizers/dilara-soylu.jpg" alt="Dilara Soylu" /><div class="cc-name"><a href="https://dilarasoylu.github.io/" target="_blank" rel="noopener">Dilara Soylu</a></div><div class="cc-affil">Stanford University</div></div></div></div>
+      <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g><circle cx="35" cy="13" r="6" fill="#b98f2e"/><circle cx="35" cy="13" r="9.5" fill="none" stroke="#33415e" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6" fill="#b98f2e"/><circle cx="95" cy="13" r="9.5" fill="none" stroke="#33415e" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6" fill="#b98f2e"/><circle cx="155" cy="13" r="9.5" fill="none" stroke="#33415e" stroke-width="2.4" stroke-dasharray="3 4"/></g></svg>
+      <div class="cc-narrow"><div class="cc-people"><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/ahmad-beirami.jpg" alt="Ahmad Beirami" /><div class="cc-name"><a href="https://beirami.github.io/" target="_blank" rel="noopener">Ahmad Beirami</a></div><div class="cc-affil">Fidian</div></div><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/mert-cemri.jpg" alt="Mert Cemri" /><div class="cc-name"><a href="https://people.eecs.berkeley.edu/~mert_cemri/" target="_blank" rel="noopener">Mert Cemri</a></div><div class="cc-affil">UC Berkeley</div></div><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/zhang-wei-hong.jpg" alt="Zhang-Wei Hong" /><div class="cc-name"><a href="https://williamd4112.github.io/" target="_blank" rel="noopener">Zhang-Wei Hong</a></div><div class="cc-affil">MIT–IBM Watson AI Lab</div></div><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/hung-le.jpg" alt="Hung Le" /><div class="cc-name"><a href="https://sites.google.com/view/henryle2018/home" target="_blank" rel="noopener">Hung Le</a></div><div class="cc-affil">Fidian</div></div><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/ninareh-mehrabi.jpg" alt="Ninareh Mehrabi" /><div class="cc-name"><a href="https://ninarehm.github.io" target="_blank" rel="noopener">Ninareh Mehrabi</a></div><div class="cc-affil">Meta Superintelligence Labs</div></div><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/melissa-pan.jpg" alt="Melissa Pan" /><div class="cc-name"><a href="https://melissa-pan.github.io/" target="_blank" rel="noopener">Melissa Pan</a></div><div class="cc-affil">UC Berkeley</div></div><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/dilara-soylu.jpg" alt="Dilara Soylu" /><div class="cc-name"><a href="https://dilarasoylu.github.io/" target="_blank" rel="noopener">Dilara Soylu</a></div><div class="cc-affil">Stanford University</div></div></div></div>
     </div>
   </section>
 
