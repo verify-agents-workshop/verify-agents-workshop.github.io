@@ -46,11 +46,11 @@
       position: relative;
       height: calc(100vh - 38px); height: calc(100svh - 38px);
       min-height: 560px;
-      background: url(assets/banner-wide2.png) 42% center / cover no-repeat;
+      background: url(assets/banner-full.png) center top / cover no-repeat;
     }
     .hero-side::before {
       content: ""; position: absolute; inset: 0;
-      background: linear-gradient(90deg, rgba(253,246,233,0.42) 0%, rgba(253,246,233,0.18) 34%, rgba(253,246,233,0) 55%);
+      background: linear-gradient(90deg, rgba(253,246,233,0.14) 0%, rgba(253,246,233,0.05) 30%, rgba(253,246,233,0) 48%);
     }
     .hero-side::after {
       content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 130px;
@@ -76,10 +76,7 @@
     .hs-lede { font-size: 1.03rem; color: #4c4450; margin: 0 0 26px; }
     .hs-actions { margin-bottom: 22px; }
     .hs-actions .btn { margin-left: 0; margin-right: 12px; }
-    .hs-meta {
-      display: inline-block; font-weight: 600; font-size: 0.9rem; color: #4c4450; margin: 0;
-      background: rgba(253,246,233,0.72); padding: 7px 16px; border-radius: 999px;
-    }
+    .hs-meta { font-weight: 600; font-size: 0.9rem; color: #4c4450; margin: 0; }
     .scroll-cue {
       position: absolute; z-index: 3; left: 50%; bottom: 18px; transform: translateX(-50%);
       color: var(--purple); opacity: 0.92; filter: drop-shadow(0 1px 3px rgba(253,246,233,0.7));
@@ -91,7 +88,7 @@
     }
     @media (max-width: 880px) {
       .hero-side { height: auto; min-height: calc(100svh - 38px); padding: 84px 0 84px; background-position: 72% center; }
-      .hero-side::before { background: rgba(253,246,233,0.55); }
+      .hero-side::before { background: rgba(253,246,233,0.3); }
       .hs-inner { align-items: center; text-align: center; }
       .hs-actions .btn { margin: 0 6px 10px; }
     }
