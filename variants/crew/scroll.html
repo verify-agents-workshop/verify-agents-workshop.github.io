@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mystery Crew (Full-Page Scroll) — Who Verifies the Agents?</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%F0%9F%A6%98%3C/text%3E%3C/svg%3E" />
+  <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -47,7 +50,7 @@
     }
     .hs-sub { font-family: var(--disp); font-weight: 700; font-size: clamp(1.35rem, 2.4vw, 1.8rem); color: #c06c33; margin: 0 0 24px; }
     .hs-lede { font-size: 1.14rem; color: #4c4450; margin: 0 0 30px; max-width: 600px; }
-    .hs-actions { margin-bottom: 4px; }
+    .hs-actions { margin-bottom: 18px; }
     .hs-actions .btn { margin-left: 0; margin-right: 12px; font-size: 1.08rem; padding: 14px 34px; }
     .hs-meta {
       display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px;
@@ -55,10 +58,9 @@
     }
     .hs-meta span {
       display: inline-flex; align-items: center; gap: 9px;
-      background: rgba(43,38,61,0.55); color: #f3ecdf;
-      padding: 8px 18px; border-radius: 999px; backdrop-filter: blur(3px);
+      color: #fdf8ee; text-shadow: 0 1px 10px rgba(43,38,61,0.7);
     }
-    .hs-meta svg { flex: none; color: #f0b45c; }
+    .hs-meta svg { flex: none; color: #f0b45c; filter: drop-shadow(0 1px 4px rgba(43,38,61,0.5)); }
     .hs-deadline { font-weight: 600; font-size: 0.92rem; color: #ded4ec; text-shadow: 0 1px 8px rgba(43,38,61,0.6); margin: 0; }
     .scroll-cue {
       position: absolute; z-index: 3; left: 50%; bottom: 18px; transform: translateX(-50%);
@@ -80,7 +82,7 @@
     .btn:hover { transform: scale(1.05); text-decoration: none; }
     .btn-s { background: var(--sunset); color: #fff; box-shadow: 0 6px 0 #c06c33; }
     .btn-g { background: var(--green); color: #fff; box-shadow: 0 6px 0 #497040; }
-    section { padding: 84px 0; }
+    section { padding: 60px 0; }
     .night { background: #2b263d; color: #ddd4ea; }
     .night .stitle { color: #f6f0e4; }
     .night .ov { color: #d9d1e6; }
@@ -93,7 +95,7 @@
     }
     section.tinted {
       background: linear-gradient(180deg, rgba(244,234,214,0) 0%, #f4ead6 22%, #f4ead6 78%, rgba(244,234,214,0) 100%);
-      padding: 110px 0;
+      padding: 86px 0;
     }
     .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
     .reveal.on { opacity: 1; transform: none; }
@@ -123,9 +125,9 @@
     .cc-center { text-align: center; }
     .cc-email a { font-weight: 700; font-size: 1.05rem; }
     .cc-note { font-style: italic; font-size: 0.9rem; color: var(--soft); margin-top: 16px; text-align: center; }
-    .finale-sec { padding: 90px 0 70px; background: var(--cream); overflow: hidden; }
+    .finale-sec { padding: 60px 0 70px; background: var(--cream); overflow: hidden; }
     .finale-wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; text-align: center; }
-    .finale-svg { width: 100%; height: auto; display: block; }
+    .finale-svg { width: 100%; height: auto; display: block; overflow: visible; }
     .finale-svg path { fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; opacity: 0.88; }
     .finale-cap { font-family: var(--disp); font-weight: 700; font-size: 1.15rem; color: var(--soft); margin: 26px 0 0; }
     footer.foot { background: var(--purple); color: #e8e2f4; text-align: center; padding: 54px 24px; }
@@ -166,7 +168,7 @@
     <div class="wrap reveal">
       <h2 class="stitle">Overview</h2>
       <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g><circle cx="35" cy="13" r="6" fill="#d99a3d"/><circle cx="35" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6" fill="#d99a3d"/><circle cx="95" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6" fill="#d99a3d"/><circle cx="155" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/></g></svg>
-      <div class="cc-narrow"><p class="ov">Despite remarkable advances in agents that reason, plan, and operate in open-ended environments, reliably verifying their improvements remains an unsolved challenge. Verification is the ability to determine whether a change to an agent (such as a prompt update, a new tool integration, or a modification to its reasoning process) produces a genuine improvement in capability or reliability.</p><p class="ov">Verification works in controlled settings (formal math, competitive programming, coding) but remains shallow and noisy for general agentic tasks, causing performance to plateau or silently regress during development. This workshop convenes researchers to tackle verification as a first-class research problem for reliable agent development.</p></div>
+      <div class="cc-narrow"><p class="ov">Agents that reason, plan, and act in open-ended environments are advancing at a remarkable pace. Yet a basic question has become surprisingly hard to answer: when we change an agent &mdash; a new prompt, an added tool, a different reasoning strategy &mdash; did it actually get better?</p><p class="ov">Answering that question is <strong>verification</strong>. Today it works well only where ground truth is clear, such as formal mathematics, competitive programming, and software tests. For general agentic tasks, verification signals remain shallow and noisy: improvements plateau, regressions slip through silently, and development turns into guesswork.</p><p class="ov">This workshop treats verification as a first-class research problem. We bring together researchers and practitioners working on robust verifiers, environment-grounded evaluation, and richer verification signals to lay the foundations of reliable agent development.</p></div>
     </div>
   </section>
 
@@ -313,7 +315,7 @@
         <path d="M 150 398 L 280 398 M 420 404 L 520 404 M 660 400 L 800 400 M 930 396 L 1060 396 M 1090 404 L 1160 404" />
         <path d="M 90 388 L 150 388 M 320 390 L 380 390 M 560 392 L 640 392 M 840 388 L 900 388" />
       </svg>
-      <p class="finale-cap">See you in Sydney! 🐾</p>
+      <p class="finale-cap">No mystery is solved until it's verified. 🐾</p>
     </div>
   </section>
 
@@ -323,7 +325,6 @@
     <p class="reach">Questions about the workshop, submissions, or sponsorship?<br/>
       <a href="mailto:verify-agents-workshop@googlegroups.com">verify-agents-workshop@googlegroups.com</a></p>
     <p class="soc"><a href="https://x.com/veri_agents">@veri_agents on X</a> · <a href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/Verify-Agents">OpenReview</a></p>
-    <div class="tag">No mystery is solved until it's verified. 🐾</div>
   </footer>
 
   <script>
@@ -364,7 +365,7 @@
         var vh = window.innerHeight;
         // 0 when the drawing enters the bottom of the viewport,
         // 1 shortly before the page bottom, so every stroke is seen drawing
-        var progress = (vh * 0.92 - r.top) / (vh * 0.48 + r.height * 0.6);
+        var progress = (vh * 0.66 - r.top) / (vh * 0.20 + r.height * 0.45);
         progress = Math.max(0, Math.min(1, progress));
         var drawn = progress * total;
         for (var i = 0; i < paths.length; i++) {
@@ -375,9 +376,11 @@
         // once everything is drawn, the sailboat casts off on the last stretch of scroll
         var doc = document.documentElement;
         var remaining = doc.scrollHeight - (window.scrollY + vh);
-        var sail = 1 - Math.max(0, Math.min(1, remaining / 150));
+        var sail = 1 - Math.max(0, Math.min(1, remaining / 120));
         if (progress < 1) sail = 0;
-        boat.setAttribute('transform', 'translate(' + (sail * 96) + ' ' + (-sail * 9) + ')');
+        var scale = r.width / 1200;
+        var toEdge = (window.innerWidth - r.left) / scale - 1104 + 30; // svg-units from the boat to past the window edge
+        boat.setAttribute('transform', 'translate(' + (sail * toEdge) + ' ' + (-sail * 10) + ')');
       }
       function onScroll() {
         if (!ticking) { ticking = true; window.requestAnimationFrame(draw); }
