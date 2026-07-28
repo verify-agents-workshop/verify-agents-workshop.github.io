@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mystery Crew — Who Verifies the Agents?</title>
+  <title>Mystery Crew (Full-Page Scroll) — Who Verifies the Agents?</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -28,27 +28,67 @@
     nav.links { display: flex; gap: 24px; }
     nav.links a { color: var(--soft); font-size: 0.9rem; font-weight: 600; }
     nav.links a:hover { color: var(--sunset); text-decoration: none; }
-    .hero-cover {
-      position: relative; height: clamp(520px, 68vh, 760px); text-align: center;
-      background: url(assets/banner.jpg) center top / cover no-repeat;
-      display: flex; align-items: flex-end; justify-content: center;
+    .hero-side {
+      position: relative;
+      height: calc(100vh - 66px - 38px); height: calc(100svh - 66px - 38px);
+      min-height: 560px;
+      background: url(assets/banner-wide.jpg) right center / cover no-repeat;
     }
-    .hero-cover::after {
+    .hero-side::before {
       content: ""; position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(38,26,48,0) 38%, rgba(38,26,48,0.55) 66%, rgba(38,26,48,0.92) 100%);
+      background: linear-gradient(90deg, rgba(253,246,233,0.22) 0%, rgba(253,246,233,0.08) 34%, rgba(253,246,233,0) 52%);
     }
-    .hero-overlay {
-      position: relative; z-index: 2; max-width: 760px; padding: 0 28px 58px; color: #fdf6e9;
+    .hs-inner {
+      position: relative; z-index: 2; max-width: 1180px; margin: 0 auto; padding: 0 28px;
+      height: 100%; display: flex; flex-direction: column; justify-content: center;
+      align-items: flex-start; text-align: left;
     }
-    .ov-lede { font-size: clamp(1rem, 1.6vw, 1.18rem); line-height: 1.6; margin: 0 0 26px; color: #fbf3e2; text-shadow: 0 1px 10px rgba(38,26,48,0.55); }
-    .ov-actions { margin-bottom: 20px; }
-    .ov-meta { font-weight: 600; font-size: 0.9rem; color: #eadfc8; margin: 0; text-shadow: 0 1px 8px rgba(38,26,48,0.6); }
+    .hs-card {
+      max-width: 560px; background: rgba(253,246,233,0.66); backdrop-filter: blur(9px);
+      border-radius: 26px; padding: 40px 44px; box-shadow: 0 12px 38px rgba(47,43,51,0.16);
+      border: 1px solid rgba(255,255,255,0.5);
+    }
+    .hs-chip {
+      display: inline-block; font-family: var(--disp); font-weight: 700; font-size: 0.85rem;
+      background: var(--purple); color: #fff; padding: 5px 18px; border-radius: 999px; margin-bottom: 22px;
+    }
+    .hs-inner h1 {
+      font-family: var(--disp); font-weight: 800; font-size: clamp(2.6rem, 4.6vw, 3.9rem);
+      line-height: 1.04; margin: 0 0 10px; color: var(--purple);
+    }
+    .hs-sub { font-family: var(--disp); font-weight: 700; font-size: clamp(1.1rem, 1.9vw, 1.4rem); color: #c06c33; margin: 0 0 20px; }
+    .hs-lede { font-size: 1.03rem; color: #4c4450; margin: 0 0 26px; }
+    .hs-actions { margin-bottom: 22px; }
+    .hs-actions .btn { margin-left: 0; margin-right: 12px; }
+    .hs-meta { font-weight: 600; font-size: 0.9rem; color: #4c4450; margin: 0; }
+    .scroll-cue {
+      position: absolute; z-index: 3; left: 50%; bottom: 18px; transform: translateX(-50%);
+      color: #fff; opacity: 0.92; filter: drop-shadow(0 2px 6px rgba(47,43,51,0.45));
+      animation: cue-bob 1.7s ease-in-out infinite;
+    }
+    @keyframes cue-bob {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(9px); }
+    }
+    @media (max-width: 880px) {
+      .hero-side { height: auto; min-height: calc(100svh - 66px - 38px); padding: 54px 0 84px; background-position: 72% center; }
+      .hero-side::before { background: rgba(253,246,233,0.45); }
+      .hs-card { padding: 30px 26px; }
+      .hs-inner { align-items: center; text-align: center; }
+      .hs-actions .btn { margin: 0 6px 10px; }
+    }
     .btn { display: inline-block; font-family: var(--disp); font-weight: 700; font-size: 1rem; padding: 12px 30px; border-radius: 999px; margin: 0 6px 10px; transition: transform .14s ease; }
     .btn:hover { transform: scale(1.05); text-decoration: none; }
     .btn-s { background: var(--sunset); color: #fff; box-shadow: 0 6px 0 #c06c33; }
     .btn-g { background: var(--green); color: #fff; box-shadow: 0 6px 0 #497040; }
-    .hero .meta { margin-top: 28px; font-weight: 600; font-size: 0.9rem; color: var(--soft); }
     section { padding: 76px 0; }
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.on { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .scroll-cue { animation: none; }
+    }
     .stitle { font-family: var(--disp); font-weight: 800; font-size: clamp(1.9rem, 3.4vw, 2.6rem); text-align: center; margin: 0 0 8px; color: var(--ink); }
     .divider { display: block; width: 190px; margin: 0 auto 38px; height: auto; opacity: 0.85; }
     .ov { font-size: 1.05rem; margin: 0 0 20px; }
@@ -70,6 +110,11 @@
     .cc-center { text-align: center; }
     .cc-email a { font-weight: 700; font-size: 1.05rem; }
     .cc-note { font-style: italic; font-size: 0.9rem; color: var(--soft); margin-top: 16px; text-align: center; }
+    .finale-sec { padding: 90px 0 30px; background: var(--cream); overflow: hidden; }
+    .finale-wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; text-align: center; }
+    .finale-svg { width: 100%; height: auto; display: block; }
+    .finale-svg path { fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; opacity: 0.88; }
+    .finale-cap { font-family: var(--disp); font-weight: 700; font-size: 1.15rem; color: var(--soft); margin: 26px 0 0; }
     footer.foot { background: var(--purple); color: #e8e2f4; text-align: center; padding: 54px 24px; }
     footer.foot .t { font-family: var(--disp); font-weight: 800; font-size: 1.5rem; color: #fff; }
     footer.foot .s { font-size: 0.9rem; margin-top: 8px; color: #cfc5e6; }
@@ -77,7 +122,7 @@
   </style>
 </head>
 <body>
-  <div class="variant-bar">🐕 Design Preview · Mystery Crew · hero: <strong>overlay</strong> / <a href="split.html">split</a> / <a href="scroll.html">full-page scroll</a> · <a href="/dev/variants/">all variants</a> · <a href="/dev/">baseline</a></div>
+  <div class="variant-bar">🐕 Design Preview · Mystery Crew · hero: <a href="index.html">overlay</a> / <a href="split.html">text-left on image</a> / <strong>full-page scroll</strong> · <a href="/dev/variants/">all variants</a> · <a href="/dev/">baseline</a></div>
 
   <header class="top">
     <div class="wrap top-inner">
@@ -92,19 +137,27 @@
     </div>
   </header>
 
-  <section class="hero-cover" role="img" aria-label="Who Verifies the Agents? Workshop on verification of AI agents, NeurIPS 2026, Sydney, Australia, December 2026">
-    <div class="hero-overlay">
-      <p class="ov-lede">Verification is the bottleneck between fragile prototypes and scalable, reliable agent systems. This workshop convenes researchers and practitioners to make verification a first-class discipline in agent development.</p>
-      <div class="ov-actions">
+  <section class="hero-side">
+    <div class="hs-inner">
+      <div class="hs-card">
+      <span class="hs-chip">NeurIPS 2026 Workshop</span>
+      <h1>Who Verifies<br/>the Agents?</h1>
+      <p class="hs-sub">Toward Reliable Agent Development</p>
+      <p class="hs-lede">Verification is the bottleneck between fragile prototypes and scalable, reliable agent systems. This workshop convenes researchers and practitioners to make verification a first-class discipline in agent development.</p>
+      <div class="hs-actions">
         <a class="btn btn-s" href="#cfp">Call for Papers</a>
         <a class="btn btn-g" href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/Verify-Agents">Submit on OpenReview</a>
       </div>
-      <p class="ov-meta">Sydney, Australia · Dec 11 or 12, 2026 · Submissions due Aug 29, 2026 (AoE)</p>
+      <p class="hs-meta">Sydney, Australia · Dec 11 or 12, 2026 · Submissions due Aug 29, 2026 (AoE)</p>
+      </div>
     </div>
+    <a class="scroll-cue" href="#about" aria-label="Scroll to overview">
+      <svg width="34" height="20" viewBox="0 0 34 20" fill="none" aria-hidden="true"><path d="M3 3 L17 16 L31 3" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
   </section>
 
   <section id="about">
-    <div class="wrap">
+    <div class="wrap reveal">
       <h2 class="stitle">Overview</h2>
       <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g><circle cx="35" cy="13" r="6" fill="#d99a3d"/><circle cx="35" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6" fill="#d99a3d"/><circle cx="95" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6" fill="#d99a3d"/><circle cx="155" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/></g></svg>
       <div class="cc-narrow"><p class="ov">Despite remarkable advances in agents that reason, plan, and operate in open-ended environments, reliably verifying their improvements remains an unsolved challenge. Verification is the ability to determine whether a change to an agent (such as a prompt update, a new tool integration, or a modification to its reasoning process) produces a genuine improvement in capability or reliability.</p><p class="ov">Verification works in controlled settings (formal math, competitive programming, coding) but remains shallow and noisy for general agentic tasks, causing performance to plateau or silently regress during development. This workshop convenes researchers to tackle verification as a first-class research problem for reliable agent development.</p></div>
@@ -112,7 +165,7 @@
   </section>
 
   <section id="cfp" style="background: #f4ead6;">
-    <div class="wrap">
+    <div class="wrap reveal">
       <h2 class="stitle">Call for Papers</h2>
       <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g><circle cx="35" cy="13" r="6" fill="#d99a3d"/><circle cx="35" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6" fill="#d99a3d"/><circle cx="95" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6" fill="#d99a3d"/><circle cx="155" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/></g></svg>
       <div class="cc-narrow"><h3 class="cc-h3">Topics of Interest</h3>
@@ -162,7 +215,7 @@
   </section>
 
   <section id="dates">
-    <div class="wrap">
+    <div class="wrap reveal">
       <h2 class="stitle">Important Dates</h2>
       <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g><circle cx="35" cy="13" r="6" fill="#d99a3d"/><circle cx="35" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6" fill="#d99a3d"/><circle cx="95" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6" fill="#d99a3d"/><circle cx="155" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/></g></svg>
       <div class="cc-narrow"><div class="cc-guide" style="max-width:580px;margin:0 auto;"><li style="display:flex;justify-content:space-between;font-weight:600;"><span>Submission deadline</span><span style="color:var(--sunset);font-family:var(--disp);">August 29, 2026</span></li><li style="display:flex;justify-content:space-between;font-weight:600;"><span>Author notification</span><span style="color:var(--sunset);font-family:var(--disp);">September 29, 2026</span></li><li style="display:flex;justify-content:space-between;font-weight:600;"><span>Workshop day</span><span style="color:var(--sunset);font-family:var(--disp);">Dec 11 or 12, 2026</span></li></div><p class="cc-note">The exact workshop day (Friday, Dec 11 or Saturday, Dec 12) will be confirmed once assigned by NeurIPS. All deadlines are 23:59 Anywhere on Earth (AoE) unless otherwise noted.</p></div>
@@ -170,7 +223,7 @@
   </section>
 
   <section id="speakers" style="background: #f4ead6;">
-    <div class="wrap">
+    <div class="wrap reveal">
       <h2 class="stitle">Confirmed Speakers &amp; Panelists</h2>
       <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g><circle cx="35" cy="13" r="6" fill="#d99a3d"/><circle cx="35" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6" fill="#d99a3d"/><circle cx="95" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6" fill="#d99a3d"/><circle cx="155" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/></g></svg>
       <div class="cc-narrow"><div class="cc-people cc-people-sp"><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/pin-yu-chen.jpg" alt="Pin-Yu Chen" /><div class="cc-name"><a href="https://sites.google.com/site/pinyuchenpage/home" target="_blank" rel="noopener">Pin-Yu Chen</a></div><div class="cc-affil">IBM</div><p class="cc-bio">Principal Research Scientist, Trusted AI Group; PI at the MIT–IBM Watson AI Lab. AI safety, robustness, and trustworthiness.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/azalia-mirhoseini.jpg" alt="Azalia Mirhoseini" /><div class="cc-name"><a href="https://www.azaliamirhoseini.com/" target="_blank" rel="noopener">Azalia Mirhoseini</a></div><div class="cc-affil">Stanford University · Ricursive Intelligence</div><p class="cc-bio">Assistant Professor at Stanford. Scalable, self-improving AI; Mixture-of-Experts and AlphaChip.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/seshendra-nalla.jpg" alt="Seshendra Nalla" /><div class="cc-name"><a href="https://www.linkedin.com/in/seshendranalla/" target="_blank" rel="noopener">Seshendra Nalla</a></div><div class="cc-affil">Datadog</div><p class="cc-bio">VP of Observability Data Platform; core contributor to BitsEvolve, a self-optimizing code system.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/ion-stoica.jpg" alt="Ion Stoica" /><div class="cc-name"><a href="https://people.eecs.berkeley.edu/~istoica/" target="_blank" rel="noopener">Ion Stoica</a></div><div class="cc-affil">UC Berkeley · Anyscale · Databricks</div><p class="cc-bio">Professor at UC Berkeley; Executive Chairman of Databricks and Anyscale. AI systems: SkyPilot, vLLM, Chatbot Arena, Ray, Spark.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/yu-su.jpg" alt="Yu Su" /><div class="cc-name"><a href="https://ysu1989.github.io/" target="_blank" rel="noopener">Yu Su</a></div><div class="cc-affil">Ohio State University · NeoCognition</div><p class="cc-bio">Associate Professor and 2025 Sloan Fellow. Agent reliability and evaluation: Mind2Web, MMMU, SeeAct.</p></div></div></div>
@@ -178,7 +231,7 @@
   </section>
 
   <section id="organizers">
-    <div class="wrap">
+    <div class="wrap reveal">
       <h2 class="stitle">Organizing Committee</h2>
       <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g><circle cx="35" cy="13" r="6" fill="#d99a3d"/><circle cx="35" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6" fill="#d99a3d"/><circle cx="95" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6" fill="#d99a3d"/><circle cx="155" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/></g></svg>
       <div class="cc-narrow"><div class="cc-people"><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/ahmad-beirami.jpg" alt="Ahmad Beirami" /><div class="cc-name"><a href="https://beirami.github.io/" target="_blank" rel="noopener">Ahmad Beirami</a></div><div class="cc-affil">Fidian</div></div><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/mert-cemri.jpg" alt="Mert Cemri" /><div class="cc-name"><a href="https://people.eecs.berkeley.edu/~mert_cemri/" target="_blank" rel="noopener">Mert Cemri</a></div><div class="cc-affil">UC Berkeley</div></div><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/zhang-wei-hong.jpg" alt="Zhang-Wei Hong" /><div class="cc-name"><a href="https://williamd4112.github.io/" target="_blank" rel="noopener">Zhang-Wei Hong</a></div><div class="cc-affil">MIT–IBM Watson AI Lab</div></div><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/hung-le.jpg" alt="Hung Le" /><div class="cc-name"><a href="https://sites.google.com/view/henryle2018/home" target="_blank" rel="noopener">Hung Le</a></div><div class="cc-affil">Fidian</div></div><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/ninareh-mehrabi.jpg" alt="Ninareh Mehrabi" /><div class="cc-name"><a href="https://ninarehm.github.io" target="_blank" rel="noopener">Ninareh Mehrabi</a></div><div class="cc-affil">Meta Superintelligence Labs</div></div><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/melissa-pan.jpg" alt="Melissa Pan" /><div class="cc-name"><a href="https://melissa-pan.github.io/" target="_blank" rel="noopener">Melissa Pan</a></div><div class="cc-affil">UC Berkeley</div></div><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/dilara-soylu.jpg" alt="Dilara Soylu" /><div class="cc-name"><a href="https://dilarasoylu.github.io/" target="_blank" rel="noopener">Dilara Soylu</a></div><div class="cc-affil">Stanford University</div></div></div></div>
@@ -186,10 +239,41 @@
   </section>
 
   <section id="contact" style="background: #f4ead6;">
-    <div class="wrap">
+    <div class="wrap reveal">
       <h2 class="stitle">Get in Touch</h2>
       <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g><circle cx="35" cy="13" r="6" fill="#d99a3d"/><circle cx="35" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6" fill="#d99a3d"/><circle cx="95" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6" fill="#d99a3d"/><circle cx="155" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/></g></svg>
       <div class="cc-narrow"><p class="cc-p cc-center">Questions about the workshop, submissions, or sponsorship? Reach out to the organizing committee.</p><p class="cc-email cc-center"><a href="mailto:verify-agents-workshop@googlegroups.com">verify-agents-workshop@googlegroups.com</a></p><p class="cc-p cc-center"><a href="https://x.com/veri_agents">@veri_agents on X</a> · <a href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/Verify-Agents">OpenReview</a></p></div>
+    </div>
+  </section>
+
+  <section class="finale-sec">
+    <div class="finale-wrap">
+      <svg id="finale" class="finale-svg" viewBox="0 0 1200 430" aria-label="Line drawing of the Sydney Harbour Bridge and Opera House">
+        <!-- Harbour Bridge: outer arch -->
+        <path d="M 70 372 Q 315 96 560 372" />
+        <!-- inner arch -->
+        <path d="M 100 372 Q 315 148 530 372" />
+        <!-- deck -->
+        <path d="M 42 315 L 588 315 M 42 326 L 588 326" />
+        <!-- hangers -->
+        <path d="M 170 285 L 170 315 M 230 252 L 230 315 M 290 237 L 290 315 M 340 234 L 340 315 M 400 246 L 400 315 M 460 276 L 460 315" />
+        <!-- pylons -->
+        <path d="M 58 372 L 58 296 L 66 288 L 88 288 L 96 296 L 96 372 M 66 288 L 66 278 L 74 278 L 74 288 M 80 288 L 80 278 L 88 278 L 88 288" />
+        <path d="M 534 372 L 534 296 L 542 288 L 564 288 L 572 296 L 572 372 M 542 288 L 542 278 L 550 278 L 550 288 M 556 288 L 556 278 L 564 278 L 564 288" />
+        <!-- Opera House: podium -->
+        <path d="M 640 372 L 648 352 L 1142 352 L 1150 372" />
+        <!-- large sail group -->
+        <path d="M 672 352 C 674 268 716 200 806 174 C 812 236 810 300 800 352" />
+        <path d="M 712 352 C 718 276 764 212 862 190 C 866 248 862 304 852 352" />
+        <path d="M 762 352 C 772 288 822 234 918 220 C 920 268 916 314 908 352" />
+        <!-- small sail group -->
+        <path d="M 946 352 C 950 306 984 270 1044 258 C 1048 292 1046 324 1040 352" />
+        <path d="M 980 352 C 986 316 1016 290 1068 282 C 1072 308 1070 332 1064 352" />
+        <!-- water line and reflections -->
+        <path d="M 20 372 L 1180 372" />
+        <path d="M 150 398 L 280 398 M 420 404 L 520 404 M 660 400 L 800 400 M 930 396 L 1060 396" />
+      </svg>
+      <p class="finale-cap">See you in Sydney! 🐾</p>
     </div>
   </section>
 
@@ -198,5 +282,60 @@
     <div class="s">NeurIPS 2026 · Sydney, Australia</div>
     <div class="tag">No mystery is solved until it's verified. 🐾</div>
   </footer>
+
+  <script>
+    (function () {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Fade-up section reveals
+      var revealed = document.querySelectorAll('.reveal');
+      if (!reduce && 'IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.12 });
+        revealed.forEach(function (el) { io.observe(el); });
+      } else {
+        revealed.forEach(function (el) { el.classList.add('on'); });
+      }
+
+      // Scroll-driven line drawing of the harbour finale
+      var svg = document.getElementById('finale');
+      var paths = Array.prototype.slice.call(svg.querySelectorAll('path'));
+      var lens = paths.map(function (p) { return p.getTotalLength(); });
+      var total = lens.reduce(function (a, b) { return a + b; }, 0);
+
+      if (reduce) return; // leave the drawing fully visible
+
+      paths.forEach(function (p, i) {
+        p.style.strokeDasharray = lens[i] + ' ' + lens[i];
+        p.style.strokeDashoffset = lens[i];
+      });
+
+      var ticking = false;
+      function draw() {
+        ticking = false;
+        var r = svg.getBoundingClientRect();
+        var vh = window.innerHeight;
+        // 0 when the drawing enters the bottom of the viewport,
+        // 1 shortly after its top clears the upper part of the screen
+        var progress = (vh * 0.92 - r.top) / (vh * 0.5 + r.height * 0.55);
+        progress = Math.max(0, Math.min(1, progress));
+        var drawn = progress * total;
+        for (var i = 0; i < paths.length; i++) {
+          var take = Math.max(0, Math.min(lens[i], drawn));
+          paths[i].style.strokeDashoffset = lens[i] - take;
+          drawn -= take;
+        }
+      }
+      function onScroll() {
+        if (!ticking) { ticking = true; window.requestAnimationFrame(draw); }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      draw();
+    })();
+  </script>
 </body>
 </html>
