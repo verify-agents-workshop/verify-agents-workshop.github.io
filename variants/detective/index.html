@@ -3,195 +3,232 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Detective — Who Verifies the Agents?</title>
-  <link rel="icon" type="image/jpeg" href="assets/logo.jpg" />
+  <title>Who Verifies the Agents? · NeurIPS 2026 Workshop</title>
+  <meta name="description" content="NeurIPS 2026 workshop on verification for reliable agent development. Sydney, Australia, Dec 11 or 12, 2026. Submissions due Aug 29, 2026." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Who Verifies the Agents? · NeurIPS 2026 Workshop" />
+  <meta property="og:description" content="A NeurIPS 2026 workshop on verification for reliable agent development. Sydney, Australia, Dec 11 or 12, 2026." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/fav-32.png" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%F0%9F%94%8D%3C/text%3E%3C/svg%3E" />
+  <link rel="apple-touch-icon" href="assets/fav-180.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --cream: #faf5ea;
-      --cream-deep: #f3ecdc;
-      --navy: #1e2f55;
-      --navy-deep: #16233f;
-      --gold: #b98f2e;
-      --gold-soft: #d9c08a;
-      --ink: #232c42;
-      --ink-soft: #55597a;
-      --line: #e5dcc6;
-      --maxw: 1060px;
-      --serif: 'Playfair Display', Georgia, serif;
-      --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --sky: #dfe7f2; --cream: #faf5ea; --sunset: #b98f2e; --gold: #b98f2e; --teal: #1e2f55;
+      --green: #33415e; --purple: #1e2f55; --ink: #22304f; --soft: #5b6272;
+      --line: #e3dac1; --maxw: 1060px;
+      --disp: 'Playfair Display', serif; --sans: 'Inter', sans-serif;
     }
     * , *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body {
-      margin: 0; font-family: var(--sans); color: var(--ink); background: var(--cream);
-      line-height: 1.7; -webkit-font-smoothing: antialiased;
-    }
-    a { color: var(--navy); text-decoration: none; }
-    a:hover { color: var(--gold); }
-
-    .variant-bar {
-      background: var(--navy-deep); color: #fff; font-size: 0.8rem; letter-spacing: 0.04em;
-      text-align: center; padding: 9px 16px; font-weight: 600;
-    }
-    .variant-bar a { color: #fff; text-decoration: underline; }
-
+    body { margin: 0; font-family: var(--sans); color: var(--ink); background: var(--cream); line-height: 1.68; -webkit-font-smoothing: antialiased; }
+    a { color: var(--teal); text-decoration: none; }
+    a:hover { text-decoration: underline; }
     .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
-
-    header.top {
-      position: sticky; top: 0; z-index: 20; background: rgba(250,245,234,0.92);
-      backdrop-filter: blur(10px); border-bottom: 1px solid var(--line);
+    .hero-side {
+      position: relative;
+      height: 100vh; height: 100svh;
+      min-height: 560px;
+      background: url(assets/hero-classic.png) center bottom / cover no-repeat;
     }
-    .top-inner { display: flex; justify-content: space-between; align-items: center; height: 72px; }
-    .brand { display: flex; align-items: center; gap: 12px; font-family: var(--serif); font-weight: 700; font-size: 1.12rem; color: var(--navy); }
-    .brand img { width: 42px; height: 42px; border-radius: 50%; }
-    nav.links { display: flex; gap: 26px; }
-    nav.links a { color: var(--ink-soft); font-size: 0.9rem; font-weight: 500; }
-    nav.links a:hover { color: var(--gold); }
-
-    /* hero: the banner is the masthead */
-    .hero { padding: 64px 0 84px; text-align: center; }
-    .banner-frame {
-      max-width: 1100px; margin: 0 auto; padding: 0 28px;
+    .hero-side::before {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(250,245,234,0.14) 0%, rgba(250,245,234,0.05) 30%, rgba(250,245,234,0) 48%);
+      mask-image: linear-gradient(180deg, #000 0%, #000 62%, rgba(0,0,0,0) 86%);
+      -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 62%, rgba(0,0,0,0) 86%);
     }
-    .banner-frame img {
-      width: 100%; height: auto; display: block; border-radius: 10px;
-      box-shadow: 0 10px 40px rgba(30, 47, 85, 0.22);
+    /* temporary until the classic hero bakes its own navy dusk bottom */
+    .hero-side::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 150px;
+      background: linear-gradient(180deg, rgba(30,47,85,0) 0%, rgba(30,47,85,0.5) 55%, #1e2f55 100%);
+      pointer-events: none;
     }
-    .hero .lede {
-      max-width: 620px; margin: 44px auto 34px; font-size: 1.12rem; color: var(--ink-soft);
+    .hs-inner {
+      position: relative; z-index: 2; max-width: 1180px; margin: 0 auto; padding: 0 28px;
+      height: 100%; display: flex; flex-direction: column; justify-content: center;
+      align-items: flex-start; text-align: left;
     }
-    .btn {
-      display: inline-block; padding: 13px 30px; border-radius: 4px; font-weight: 600;
-      font-size: 0.92rem; letter-spacing: 0.04em; transition: all .16s ease;
+    .hs-card { max-width: 660px; margin-bottom: 13vh; }
+    .hs-inner h1, .hs-sub { text-shadow: 0 2px 18px rgba(250,245,234,0.95); }
+    .hs-chip {
+      display: inline-block; font-family: var(--disp); font-weight: 700; font-size: 0.95rem;
+      background: var(--purple); color: #fff; padding: 6px 20px; border-radius: 999px; margin-bottom: 26px;
     }
-    .btn-navy { background: var(--navy); color: #fff; }
-    .btn-navy:hover { background: var(--navy-deep); color: #fff; }
-    .btn-line { border: 1.5px solid var(--gold); color: var(--navy); margin-left: 10px; }
-    .btn-line:hover { background: var(--gold); color: #fff; }
-    .hero .meta { margin-top: 30px; color: var(--ink-soft); font-weight: 500; font-size: 0.94rem; letter-spacing: 0.06em; }
-
-    /* gold ruled heading, banner-style */
-    section { padding: 78px 0; }
-    .section-navy { background: var(--navy); color: #e9e4d5; }
-    .crest { display: block; width: 120px; margin: 0 auto 10px; }
-    .stitle {
-      font-family: var(--serif); font-weight: 600; font-size: clamp(1.9rem, 3.4vw, 2.6rem);
-      color: var(--navy); text-align: center; margin: 0 0 14px;
+    .hs-inner h1 {
+      font-family: var(--disp); font-weight: 800; font-size: clamp(3.1rem, 5.8vw, 5rem);
+      line-height: 1.02; margin: 0 0 14px; color: var(--purple);
     }
-    .section-navy .stitle { color: #f5efdd; }
-    .goldrule {
-      display: flex; align-items: center; gap: 14px; max-width: 300px; margin: 0 auto 40px;
+    .hs-sub { font-family: var(--disp); font-weight: 700; font-size: clamp(1.35rem, 2.4vw, 1.8rem); color: #8f6c1e; margin: 0 0 24px; }
+    .hs-lede { font-size: 1.14rem; color: #232b3d; font-weight: 500; text-shadow: 0 1px 12px rgba(250,245,234,0.85); margin: 0 0 30px; max-width: 600px; }
+    .hs-actions { margin-bottom: 18px; }
+    .hs-actions .btn { margin-left: 0; margin-right: 12px; font-size: 1.08rem; padding: 14px 34px; }
+    .hs-meta {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px;
+      font-weight: 600; font-size: 1rem; margin: 0 0 28px;
     }
-    .goldrule::before, .goldrule::after { content: ""; flex: 1; border-top: 1.5px solid var(--gold-soft); }
-    .goldrule .diamond { width: 7px; height: 7px; background: var(--gold); transform: rotate(45deg); }
-
-    .prose { max-width: 680px; margin: 0 auto; }
-    .prose p { font-size: 1.06rem; margin: 0 0 20px; }
-
-    /* pillars */
-    .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
-    .pcard {
-      background: #fffdf6; border: 1px solid var(--line); border-top: 3px solid var(--gold);
-      border-radius: 6px; padding: 34px 28px; text-align: center;
-      box-shadow: 0 2px 8px rgba(30,47,85,0.06);
-      transition: transform .18s ease, box-shadow .18s ease;
+    .hs-meta span {
+      display: inline-flex; align-items: center; gap: 9px;
+      color: #fdf8ee; text-shadow: 0 1px 10px rgba(19,30,55,0.7);
     }
-    .pcard:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(30,47,85,0.12); }
-    .pnum { font-family: var(--serif); font-size: 1.3rem; color: var(--gold); letter-spacing: 0.28em; margin-bottom: 12px; }
-    .pcard h3 { font-family: var(--serif); font-weight: 600; font-size: 1.3rem; color: var(--navy); margin: 0 0 12px; line-height: 1.3; }
-    .pcard p { font-size: 0.95rem; color: var(--ink-soft); margin: 0; }
-    @media (max-width: 820px) { .pillars { grid-template-columns: 1fr; } }
-
-    /* dates on navy */
-    .dates { max-width: 560px; margin: 0 auto; }
-    .drow {
-      display: flex; justify-content: space-between; gap: 16px; padding: 15px 4px;
-      border-bottom: 1px solid rgba(217,192,138,0.28); font-size: 1rem;
+    .hs-meta svg { flex: none; color: #d4a94c; filter: drop-shadow(0 1px 4px rgba(19,30,55,0.5)); }
+    .hs-deadline { font-weight: 600; font-size: 0.92rem; color: #ccd6ea; text-shadow: 0 1px 8px rgba(19,30,55,0.6); margin: 0; }
+    .scroll-cue {
+      position: absolute; z-index: 3; left: 50%; bottom: 18px; transform: translateX(-50%);
+      color: #f0e9dc; opacity: 0.92;
+      animation: cue-bob 1.7s ease-in-out infinite;
     }
-    .drow .k { color: #cfc9b4; }
-    .drow .v { color: var(--gold-soft); font-weight: 600; white-space: nowrap; }
-    .dates-note { text-align: center; color: #9aa3bd; font-size: 0.88rem; margin-top: 22px; font-style: italic; }
-
-    footer.foot {
-      background: var(--navy-deep); color: #cfc9b4; text-align: center; padding: 54px 24px;
+    @keyframes cue-bob {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(9px); }
     }
-    footer.foot img { width: 84px; height: 84px; border-radius: 50%; margin-bottom: 16px; border: 2px solid var(--gold); }
-    footer.foot .t { font-family: var(--serif); font-size: 1.35rem; color: #f5efdd; }
-    footer.foot .s { font-size: 0.85rem; letter-spacing: 0.16em; text-transform: uppercase; margin-top: 8px; color: #8f97ad; }
-
-    /* canonical content blocks */
+    @media (max-width: 880px) {
+      .hero-side { height: auto; min-height: 100svh; padding: 84px 0 84px; background-position: 72% center; }
+      .hero-side::before {
+        background: linear-gradient(180deg, rgba(19,30,55,0.5) 0%, rgba(19,30,55,0.34) 45%, rgba(19,30,55,0.62) 100%);
+        mask-image: none; -webkit-mask-image: none;
+      }
+      .hs-inner { align-items: center; text-align: center; }
+      .hs-inner h1 { color: #f6f0e4; text-shadow: 0 2px 16px rgba(19,30,55,0.85); }
+      .hs-sub { color: #d4a94c; text-shadow: 0 2px 12px rgba(19,30,55,0.85); }
+      .hs-lede { color: #e9e2f2; text-shadow: 0 1px 10px rgba(19,30,55,0.7); }
+      .hs-meta { justify-content: center; }
+      .hs-actions .btn { margin: 0 6px 10px; }
+    }
+    .btn { display: inline-block; font-family: var(--disp); font-weight: 700; font-size: 1rem; padding: 12px 30px; border-radius: 999px; margin: 0 6px 10px; transition: transform .14s ease; }
+    .btn:hover { transform: scale(1.05); text-decoration: none; }
+    .btn-s { background: var(--sunset); color: #fff; box-shadow: 0 6px 0 #8f6c1e; }
+    .btn-g { background: var(--green); color: #fff; box-shadow: 0 6px 0 #1c2740; }
+    section { padding: 60px 0; }
+    .night { background: #1e2f55; color: #d6ddeb; }
+    .night section { padding: 42px 0; }
+    .night .stitle { color: #f6f0e4; }
+    .night .ov { color: #ccd5e6; }
+    .night a { color: #d4b76a; }
+    .night .cc-person { background: rgba(255,255,255,0.055); box-shadow: none; border: 1px solid rgba(255,255,255,0.14); }
+    .night .cc-affil, .night .cc-bio { color: #9fb0cc; }
+    .dawn {
+      height: 300px;
+      background: linear-gradient(180deg, #1e2f55 0%, #3c4d74 36%, #c2b085 68%, #eee3c6 86%, var(--cream) 100%);
+    }
+    section.tinted {
+      background: linear-gradient(180deg, rgba(241,234,214,0) 0%, #f1ead6 22%, #f1ead6 78%, rgba(241,234,214,0) 100%);
+      padding: 86px 0;
+    }
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.on { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .scroll-cue { animation: none; }
+    }
+    .stitle { font-family: var(--disp); font-weight: 800; font-size: clamp(1.9rem, 3.4vw, 2.6rem); text-align: center; margin: 0 0 8px; color: var(--ink); }
+    .divider { display: block; width: 190px; margin: 0 auto 38px; height: auto; opacity: 0.85; }
+    .ov { font-size: 1.05rem; margin: 0 0 20px; }
+    .hl {
+      padding: 1px 8px; border: 1.5px solid var(--sunset); border-radius: 9px;
+      box-decoration-break: clone; -webkit-box-decoration-break: clone;
+    }
+    .night .hl { color: #ecd9a8; }
     .cc-narrow { max-width: 760px; margin: 0 auto; text-align: left; }
-    .cc-h3 { margin: 36px 0 10px; font-size: 1.35rem; font-weight: 700; }
-    .cc-h4 { margin: 22px 0 4px; font-size: 1rem; font-weight: 700; color: #1e2f55; }
+    .cc-h3 { margin: 36px 0 10px; font-size: 1.35rem; font-weight: 700; font-family: var(--disp); }
+    .cc-h4 { margin: 22px 0 4px; font-size: 1rem; font-weight: 700; color: var(--teal); }
     .cc-list { margin: 6px 0 18px; padding-left: 24px; }
     .cc-list li { padding: 3px 0; }
     .cc-guide { list-style: none; padding: 0; margin: 8px 0 20px; }
-    .cc-guide li { padding: 9px 0; border-bottom: 1px solid #e5dcc6; }
+    .cc-guide li { padding: 9px 0; border-bottom: 1px solid var(--line); }
     .cc-people { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 30px; }
     .cc-people-sp { max-width: 790px; margin-left: auto; margin-right: auto; }
-    .cc-person { width: 232px; text-align: center; padding: 22px 14px; background: #fffdf6; border: 1px solid #e5dcc6; border-top: 3px solid #b98f2e; box-shadow: 0 2px 8px rgba(30,47,85,0.06); border-radius: 10px; }
-    .cc-avatar { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; margin-bottom: 12px; }
+    .cc-person { width: 232px; text-align: center; padding: 22px 14px; background: #fffdf6; border-radius: 18px; box-shadow: 0 3px 0 rgba(47,43,51,0.14); }
+    .cc-avatar { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; margin-bottom: 12px; border: 3px solid #b98f2e; }
     .cc-name { font-weight: 700; }
     .cc-name a { color: inherit; }
-    .cc-affil { font-size: 0.85rem; color: #55597a; }
-    .cc-bio { font-size: 0.83rem; color: #55597a; line-height: 1.5; margin: 8px 0 0; }
+    .cc-affil { font-size: 0.85rem; color: var(--soft); }
+    .cc-bio { font-size: 0.83rem; color: var(--soft); line-height: 1.5; margin: 8px 0 0; }
     .cc-center { text-align: center; }
     .cc-email a { font-weight: 700; font-size: 1.05rem; }
-    .cc-note { font-style: italic; font-size: 0.9rem; color: #55597a; margin-top: 16px; text-align: center; }
-    .cc-links { margin: 0 0 34px; }
-    .cc-links a { margin-right: 26px; font-weight: 600; }
+    .cc-note { font-style: italic; font-size: 0.9rem; color: var(--soft); margin-top: 16px; text-align: center; }
+    #speakers .cc-narrow { max-width: 1010px; }
+    #speakers .cc-people { gap: 44px 40px; margin-top: 40px; }
+    #speakers .cc-people-sp { max-width: none; }
+    #speakers .cc-person { width: 252px; background: none; border: none; box-shadow: none; padding: 0; }
+    #speakers .cc-avatar { width: 138px; height: 138px; border: 3px solid #b98f2e; box-shadow: 0 0 0 6px rgba(212,169,76,0.16); margin-bottom: 16px; }
+    #speakers .cc-name { font-family: var(--disp); font-size: 1.14rem; color: #f6f0e4; }
+    #speakers .cc-affil { font-size: 0.87rem; }
+    #speakers .cc-bio { font-size: 0.86rem; }
+    #organizers .cc-narrow { max-width: 1040px; }
+    #organizers .cc-people { gap: 38px 32px; margin-top: 40px; }
+    #organizers .cc-person { width: 220px; background: none; border: none; box-shadow: none; padding: 0; }
+    #organizers .cc-avatar { width: 118px; height: 118px; margin-bottom: 12px; }
+    #organizers .cc-name { font-family: var(--disp); font-size: 1.06rem; }
+    .finale-sec { height: 170vh; height: 170svh; position: relative; background: var(--cream); }
+    .finale-pin {
+      position: sticky; top: 22vh; top: 22svh; height: 56vh; height: 56svh; overflow: hidden;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .finale-wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; text-align: center; width: 100%; }
+    .finale-svg { width: 100%; height: auto; display: block; overflow: visible; }
+    .finale-svg path { fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; opacity: 0.88; }
+    .finale-cap { font-family: var(--disp); font-weight: 700; font-size: 1.15rem; color: var(--soft); margin: 16px 0 0; }
+    footer.foot { background: var(--purple); color: #e8e2f4; text-align: center; padding: 54px 24px; }
+    footer.foot .t { font-family: var(--disp); font-weight: 800; font-size: 1.5rem; color: #fff; }
+    footer.foot .s { font-size: 0.9rem; margin-top: 8px; color: #b9c4da; }
+    footer.foot .reach { font-size: 0.95rem; color: #ccd5e6; margin: 26px auto 4px; line-height: 1.9; }
+    footer.foot .reach a, footer.foot .soc a { color: #d9b96a; font-weight: 700; }
+    footer.foot .soc { font-size: 0.9rem; color: #b9c4da; margin: 4px 0 0; }
+    footer.foot .tag { font-family: var(--disp); font-weight: 700; color: #f0c987; margin-top: 16px; font-size: 1rem; }
   </style>
 </head>
 <body>
-  <div class="variant-bar">🕵️ Design Preview · Detective · <a href="/dev/variants/">all variants</a> · <a href="/dev/">baseline</a></div>
-
-  <header class="top">
-    <div class="wrap top-inner">
-      <div class="brand"><img src="assets/logo.jpg" alt="Workshop logo" />Who Verifies the Agents?</div>
-      <nav class="links">
-        <a href="#about">Overview</a>
-        <a href="#cfp">Call for Papers</a>
-        <a href="#dates">Dates</a>
-        <a href="#speakers">Speakers</a>
-        <a href="#organizers">Organizers</a>
-      </nav>
-    </div>
-  </header>
-
-  <section class="hero">
-    <div class="banner-frame">
-      <img src="assets/background.jpg" alt="Who Verifies the Agents? NeurIPS'26, Sydney" />
-    </div>
-    <div class="wrap">
-      <p class="lede">Verification is the bottleneck between fragile prototypes and scalable, reliable agent systems. This workshop convenes researchers and practitioners to make verification a first-class discipline in agent development.</p>
-      <div>
-        <a class="btn btn-navy" href="#about">Read the Overview</a>
-        <a class="btn btn-line" href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/Verify-Agents">Submit on OpenReview</a>
+  <section class="hero-side">
+    <div class="hs-inner">
+      <div class="hs-card">
+      <span class="hs-chip">NeurIPS 2026 Workshop</span>
+      <h1>Who Verifies<br/>the Agents?</h1>
+      <p class="hs-sub">Toward Reliable Agent Development</p>
+      <p class="hs-lede">Verification is the bottleneck between fragile prototypes and scalable, reliable agent systems. This workshop convenes researchers and practitioners to make verification a first-class discipline.</p>
+      <p class="hs-meta">
+        <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>Dec 11 or 12, 2026</span>
+        <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>Sydney, Australia</span>
+      </p>
+      <div class="hs-actions">
+        <a class="btn btn-s" href="#cfp">Call for Papers</a>
+        <a class="btn btn-g" href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/Verify-Agents">Submit on OpenReview</a>
       </div>
-      <p class="meta">SYDNEY, AUSTRALIA · DEC 11 OR 12, 2026 · SUBMISSIONS DUE AUG 29</p>
+      <p class="hs-deadline">Submissions due Aug 29, 2026 (AoE)</p>
+      </div>
     </div>
+    <a class="scroll-cue" href="#about" aria-label="Scroll to overview">
+      <svg width="34" height="20" viewBox="0 0 34 20" fill="none" aria-hidden="true"><path d="M3 3 L17 16 L31 3" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
   </section>
 
-  <section id="about" style="padding-top: 0;">
-    <div class="wrap">
-      <img class="crest" src="assets/shield.png" alt="" />
+  <div class="night">
+  <section id="about">
+    <div class="wrap reveal">
       <h2 class="stitle">Overview</h2>
-      <div class="goldrule"><span class="diamond"></span></div>
-      <div class="prose">
-        <p>Despite remarkable advances in agents that reason, plan, and operate in open-ended environments, reliably verifying their improvements remains an unsolved challenge. Verification is the ability to determine whether a change to an agent (such as a prompt update, a new tool integration, or a modification to its reasoning process) produces a genuine improvement in capability or reliability.</p>
-        <p>Verification works in controlled settings (formal math, competitive programming, coding) but remains shallow and noisy for general agentic tasks, causing performance to plateau or silently regress during development. This workshop convenes researchers to tackle verification as a first-class research problem for reliable agent development.</p>
-      </div>
+      <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g><circle cx="35" cy="13" r="6" fill="#b98f2e"/><circle cx="35" cy="13" r="9.5" fill="none" stroke="#33415e" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6" fill="#b98f2e"/><circle cx="95" cy="13" r="9.5" fill="none" stroke="#33415e" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6" fill="#b98f2e"/><circle cx="155" cy="13" r="9.5" fill="none" stroke="#33415e" stroke-width="2.4" stroke-dasharray="3 4"/></g></svg>
+      <div class="cc-narrow"><p class="ov">Agents that reason, plan, and act in open-ended environments are advancing at a remarkable pace. Yet a basic question has become surprisingly hard to answer: when we update an agent's prompt, add a new tool, or change its reasoning strategy, <span class="hl">did it actually get better?</span></p><p class="ov">Answering that question is <span class="hl">verification</span>. Today it works well only where ground truth is clear, such as formal mathematics, competitive programming, and software tests. For general agentic tasks, verification signals remain shallow and noisy: improvements plateau, regressions slip through silently, and development turns into guesswork.</p><p class="ov">This workshop treats verification as a <span class="hl">first-class research problem</span>. We bring together researchers and practitioners working on robust verifiers, environment-grounded evaluation, and richer verification signals to lay the foundations of reliable agent development.</p></div>
     </div>
   </section>
 
+  <section id="speakers">
+    <div class="wrap reveal">
+      <h2 class="stitle">Confirmed Speakers &amp; Panelists</h2>
+      <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g><circle cx="35" cy="13" r="6" fill="#b98f2e"/><circle cx="35" cy="13" r="9.5" fill="none" stroke="#33415e" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6" fill="#b98f2e"/><circle cx="95" cy="13" r="9.5" fill="none" stroke="#33415e" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6" fill="#b98f2e"/><circle cx="155" cy="13" r="9.5" fill="none" stroke="#33415e" stroke-width="2.4" stroke-dasharray="3 4"/></g></svg>
+      <div class="cc-narrow"><div class="cc-people cc-people-sp"><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/pin-yu-chen.jpg" alt="Pin-Yu Chen" /><div class="cc-name"><a href="https://sites.google.com/site/pinyuchenpage/home" target="_blank" rel="noopener">Pin-Yu Chen</a></div><div class="cc-affil">IBM</div><p class="cc-bio">Trusted AI at IBM Research; PI at the MIT–IBM Watson AI Lab.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/azalia-mirhoseini.jpg" alt="Azalia Mirhoseini" /><div class="cc-name"><a href="https://www.azaliamirhoseini.com/" target="_blank" rel="noopener">Azalia Mirhoseini</a></div><div class="cc-affil">Stanford · Ricursive Intelligence</div><p class="cc-bio">Scalable, self-improving AI; AlphaChip and Mixture-of-Experts.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/seshendra-nalla.jpg" alt="Seshendra Nalla" /><div class="cc-name"><a href="https://www.linkedin.com/in/seshendranalla/" target="_blank" rel="noopener">Seshendra Nalla</a></div><div class="cc-affil">Datadog</div><p class="cc-bio">VP of Observability Data Platform; contributor to BitsEvolve.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/dhaval-patel.jpg" alt="Dhaval Patel" /><div class="cc-name"><a href="https://www.linkedin.com/in/dhaval-patel-2b287033" target="_blank" rel="noopener">Dhaval Patel</a></div><div class="cc-affil">IBM Research</div><p class="cc-bio">Time-series foundation models and LLM agents at IBM T.J. Watson.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/ion-stoica.jpg" alt="Ion Stoica" /><div class="cc-name"><a href="https://people.eecs.berkeley.edu/~istoica/" target="_blank" rel="noopener">Ion Stoica</a></div><div class="cc-affil">UC Berkeley · Anyscale · Databricks</div><p class="cc-bio">Systems for AI at Berkeley: Ray, Spark, vLLM, Chatbot Arena.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/yu-su.jpg" alt="Yu Su" /><div class="cc-name"><a href="https://ysu1989.github.io/" target="_blank" rel="noopener">Yu Su</a></div><div class="cc-affil">Ohio State · NeoCognition</div><p class="cc-bio">Agent reliability and evaluation: Mind2Web, MMMU, SeeAct.</p></div></div></div>
+    </div>
+  </section>
+  </div>
 
-  <section id="cfp" style="background: var(--cream-deep);">
-    <div class="wrap">
+  <div class="dawn"></div>
+
+  <section id="cfp">
+    <div class="wrap reveal">
       <h2 class="stitle">Call for Papers</h2>
-      <div class="goldrule"><span class="diamond"></span></div>
+      <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g><circle cx="35" cy="13" r="6" fill="#b98f2e"/><circle cx="35" cy="13" r="9.5" fill="none" stroke="#33415e" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6" fill="#b98f2e"/><circle cx="95" cy="13" r="9.5" fill="none" stroke="#33415e" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6" fill="#b98f2e"/><circle cx="155" cy="13" r="9.5" fill="none" stroke="#33415e" stroke-width="2.4" stroke-dasharray="3 4"/></g></svg>
       <div class="cc-narrow"><h3 class="cc-h3">Topics of Interest</h3>
 <p class="cc-p">We invite submissions across three core pillars, as well as topics at their intersection:</p>
 <h4 class="cc-h4">Pillar 1: Safety and Robustness of Verification</h4>
@@ -238,47 +275,174 @@
     </div>
   </section>
 
-  <section id="dates" class="section-navy">
-    <div class="wrap">
+  <section id="dates" class="tinted">
+    <div class="wrap reveal">
       <h2 class="stitle">Important Dates</h2>
-      <div class="goldrule"><span class="diamond"></span></div>
-      <div class="dates">
-        <div class="drow"><span class="k">Submission deadline</span><span class="v">August 29, 2026</span></div>
-        <div class="drow"><span class="k">Author notification</span><span class="v">September 29, 2026</span></div>
-        <div class="drow"><span class="k">Workshop day</span><span class="v">Dec 11 or 12, 2026</span></div>
-      </div>
-      <p class="dates-note">The exact workshop day (Friday, Dec 11 or Saturday, Dec 12) will be confirmed once assigned by NeurIPS. All deadlines are 23:59 Anywhere on Earth (AoE) unless otherwise noted.</p>
+      <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g><circle cx="35" cy="13" r="6" fill="#b98f2e"/><circle cx="35" cy="13" r="9.5" fill="none" stroke="#33415e" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6" fill="#b98f2e"/><circle cx="95" cy="13" r="9.5" fill="none" stroke="#33415e" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6" fill="#b98f2e"/><circle cx="155" cy="13" r="9.5" fill="none" stroke="#33415e" stroke-width="2.4" stroke-dasharray="3 4"/></g></svg>
+      <div class="cc-narrow"><div class="cc-guide" style="max-width:580px;margin:0 auto;"><li style="display:flex;justify-content:space-between;font-weight:600;"><span>Submission deadline</span><span style="color:var(--sunset);font-family:var(--disp);">August 29, 2026</span></li><li style="display:flex;justify-content:space-between;font-weight:600;"><span>Author notification</span><span style="color:var(--sunset);font-family:var(--disp);">September 29, 2026</span></li><li style="display:flex;justify-content:space-between;font-weight:600;"><span>Workshop day</span><span style="color:var(--sunset);font-family:var(--disp);">Dec 11 or 12, 2026</span></li></div><p class="cc-note">The exact workshop day (Friday, Dec 11 or Saturday, Dec 12) will be confirmed once assigned by NeurIPS. All deadlines are 23:59 Anywhere on Earth (AoE) unless otherwise noted.</p></div>
     </div>
   </section>
 
-  <section id="speakers">
-    <div class="wrap">
-      <h2 class="stitle">Confirmed Speakers &amp; Panelists</h2>
-      <div class="goldrule"><span class="diamond"></span></div>
-      <div class="cc-narrow"><div class="cc-people cc-people-sp"><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/pin-yu-chen.jpg" alt="Pin-Yu Chen" /><div class="cc-name"><a href="https://sites.google.com/site/pinyuchenpage/home" target="_blank" rel="noopener">Pin-Yu Chen</a></div><div class="cc-affil">IBM</div><p class="cc-bio">Principal Research Scientist, Trusted AI Group; PI at the MIT–IBM Watson AI Lab. AI safety, robustness, and trustworthiness.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/azalia-mirhoseini.jpg" alt="Azalia Mirhoseini" /><div class="cc-name"><a href="https://www.azaliamirhoseini.com/" target="_blank" rel="noopener">Azalia Mirhoseini</a></div><div class="cc-affil">Stanford University · Ricursive Intelligence</div><p class="cc-bio">Assistant Professor at Stanford. Scalable, self-improving AI; Mixture-of-Experts and AlphaChip.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/seshendra-nalla.jpg" alt="Seshendra Nalla" /><div class="cc-name"><a href="https://www.linkedin.com/in/seshendranalla/" target="_blank" rel="noopener">Seshendra Nalla</a></div><div class="cc-affil">Datadog</div><p class="cc-bio">VP of Observability Data Platform; core contributor to BitsEvolve, a self-optimizing code system.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/ion-stoica.jpg" alt="Ion Stoica" /><div class="cc-name"><a href="https://people.eecs.berkeley.edu/~istoica/" target="_blank" rel="noopener">Ion Stoica</a></div><div class="cc-affil">UC Berkeley · Anyscale · Databricks</div><p class="cc-bio">Professor at UC Berkeley; Executive Chairman of Databricks and Anyscale. AI systems: SkyPilot, vLLM, Chatbot Arena, Ray, Spark.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/yu-su.jpg" alt="Yu Su" /><div class="cc-name"><a href="https://ysu1989.github.io/" target="_blank" rel="noopener">Yu Su</a></div><div class="cc-affil">Ohio State University · NeoCognition</div><p class="cc-bio">Associate Professor and 2025 Sloan Fellow. Agent reliability and evaluation: Mind2Web, MMMU, SeeAct.</p></div></div></div>
-    </div>
-  </section>
 
-  <section id="organizers" style="background: var(--cream-deep);">
-    <div class="wrap">
+  <section id="organizers">
+    <div class="wrap reveal">
       <h2 class="stitle">Organizing Committee</h2>
-      <div class="goldrule"><span class="diamond"></span></div>
+      <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g><circle cx="35" cy="13" r="6" fill="#b98f2e"/><circle cx="35" cy="13" r="9.5" fill="none" stroke="#33415e" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6" fill="#b98f2e"/><circle cx="95" cy="13" r="9.5" fill="none" stroke="#33415e" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6" fill="#b98f2e"/><circle cx="155" cy="13" r="9.5" fill="none" stroke="#33415e" stroke-width="2.4" stroke-dasharray="3 4"/></g></svg>
       <div class="cc-narrow"><div class="cc-people"><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/ahmad-beirami.jpg" alt="Ahmad Beirami" /><div class="cc-name"><a href="https://beirami.github.io/" target="_blank" rel="noopener">Ahmad Beirami</a></div><div class="cc-affil">Fidian</div></div><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/mert-cemri.jpg" alt="Mert Cemri" /><div class="cc-name"><a href="https://people.eecs.berkeley.edu/~mert_cemri/" target="_blank" rel="noopener">Mert Cemri</a></div><div class="cc-affil">UC Berkeley</div></div><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/zhang-wei-hong.jpg" alt="Zhang-Wei Hong" /><div class="cc-name"><a href="https://williamd4112.github.io/" target="_blank" rel="noopener">Zhang-Wei Hong</a></div><div class="cc-affil">MIT–IBM Watson AI Lab</div></div><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/hung-le.jpg" alt="Hung Le" /><div class="cc-name"><a href="https://sites.google.com/view/henryle2018/home" target="_blank" rel="noopener">Hung Le</a></div><div class="cc-affil">Fidian</div></div><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/ninareh-mehrabi.jpg" alt="Ninareh Mehrabi" /><div class="cc-name"><a href="https://ninarehm.github.io" target="_blank" rel="noopener">Ninareh Mehrabi</a></div><div class="cc-affil">Meta Superintelligence Labs</div></div><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/melissa-pan.jpg" alt="Melissa Pan" /><div class="cc-name"><a href="https://melissa-pan.github.io/" target="_blank" rel="noopener">Melissa Pan</a></div><div class="cc-affil">UC Berkeley</div></div><div class="cc-person"><img class="cc-avatar" src="../../assets/organizers/dilara-soylu.jpg" alt="Dilara Soylu" /><div class="cc-name"><a href="https://dilarasoylu.github.io/" target="_blank" rel="noopener">Dilara Soylu</a></div><div class="cc-affil">Stanford University</div></div></div></div>
     </div>
   </section>
 
-  <section id="contact">
-    <div class="wrap">
-      <h2 class="stitle">Get in Touch</h2>
-      <div class="goldrule"><span class="diamond"></span></div>
-      <div class="cc-narrow"><p class="cc-p cc-center">Questions about the workshop, submissions, or sponsorship? Reach out to the organizing committee.</p><p class="cc-email cc-center"><a href="mailto:verify-agents-workshop@googlegroups.com">verify-agents-workshop@googlegroups.com</a></p><p class="cc-p cc-center"><a href="https://x.com/veri_agents">@veri_agents on X</a> · <a href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/Verify-Agents">OpenReview</a></p></div>
+  <section class="finale-sec" id="finale-sec">
+    <div class="finale-pin">
+    <div class="finale-wrap">
+      <svg id="finale" class="finale-svg" viewBox="0 0 1200 430" aria-label="Line drawing of Sydney Harbour: the Harbour Bridge, a ferry, and the Opera House">
+        <!-- clouds -->
+        <path d="M 142 100 Q 150 80 174 82 Q 184 64 210 68 Q 234 62 242 80 Q 262 80 256 98 Q 200 104 142 100" />
+        <path d="M 396 66 Q 404 50 422 53 Q 430 40 450 45 Q 468 42 472 58 Q 484 60 478 70 Q 436 74 396 66" />
+        <!-- sun with rays -->
+        <path d="M 1080 96 a 26 26 0 1 0 0.1 0" />
+        <path d="M 1080 84 L 1080 70 M 1107 95 L 1117 85 M 1118 122 L 1132 122 M 1053 95 L 1043 85 M 1042 122 L 1028 122" />
+        <!-- birds -->
+        <path d="M 664 118 Q 673 108 682 118 Q 691 108 700 118 M 726 96 Q 734 87 742 96 Q 750 87 758 96 M 622 84 Q 629 76 636 84 Q 643 76 650 84" />
+        <!-- sparkles -->
+        <path d="M 980 62 Q 982 70 990 72 Q 982 74 980 82 Q 978 74 970 72 Q 978 70 980 62" />
+        <path d="M 880 150 Q 881 156 887 157 Q 881 158 880 164 Q 879 158 873 157 Q 879 156 880 150" />
+        <path d="M 1150 56 Q 1151 62 1157 63 Q 1151 64 1150 70 Q 1149 64 1143 63 Q 1149 62 1150 56" />
+        <!-- Harbour Bridge: outer arch -->
+        <path d="M 70 372 Q 315 96 560 372" />
+        <!-- inner arch -->
+        <path d="M 100 372 Q 315 148 530 372" />
+        <!-- lattice bracing between the arches -->
+        <path d="M 150 297 L 165 315 L 180 276 L 195 295 L 210 259 L 225 280 L 240 247 L 255 269 L 270 239 L 285 262 L 300 234 L 315 260 L 330 235 L 345 262 L 360 238 L 375 268 L 390 247 L 405 279 L 420 259 L 435 295 L 450 276 L 465 315 L 480 297" />
+        <!-- deck -->
+        <path d="M 42 315 L 588 315 M 42 326 L 588 326" />
+        <!-- deck railing -->
+        <path d="M 60 305 L 570 305 M 90 305 L 90 315 M 130 305 L 130 315 M 170 305 L 170 315 M 210 305 L 210 315 M 250 305 L 250 315 M 290 305 L 290 315 M 330 305 L 330 315 M 370 305 L 370 315 M 410 305 L 410 315 M 450 305 L 450 315 M 490 305 L 490 315 M 530 305 L 530 315" />
+        <!-- hangers -->
+        <path d="M 170 285 L 170 315 M 230 252 L 230 315 M 290 237 L 290 315 M 340 234 L 340 315 M 400 246 L 400 315 M 460 276 L 460 315" />
+        <!-- pylons -->
+        <path d="M 58 372 L 58 296 L 66 288 L 88 288 L 96 296 L 96 372 M 66 288 L 66 278 L 74 278 L 74 288 M 80 288 L 80 278 L 88 278 L 88 288" />
+        <path d="M 534 372 L 534 296 L 542 288 L 564 288 L 572 296 L 572 372 M 542 288 L 542 278 L 550 278 L 550 288 M 556 288 L 556 278 L 564 278 L 564 288" />
+        <!-- pylon flags -->
+        <path d="M 70 278 L 70 264 L 80 267 L 70 270 M 546 278 L 546 264 L 556 267 L 546 270" />
+        <!-- ferry passing under the bridge -->
+        <path d="M 246 370 L 254 354 L 386 354 L 394 370 L 246 370" />
+        <path d="M 270 354 L 270 342 L 370 342 L 370 354" />
+        <path d="M 280 348 L 288 348 M 298 348 L 306 348 M 316 348 L 324 348 M 334 348 L 342 348 M 352 348 L 360 348" />
+        <path d="M 300 342 L 300 334 L 342 334 L 342 342 M 320 334 L 320 328 L 328 330" />
+        <!-- ferry wake -->
+        <path d="M 206 378 L 242 378 M 398 378 L 436 378" />
+        <!-- Opera House: podium and steps -->
+        <path d="M 640 372 L 648 352 L 1142 352 L 1150 372" />
+        <path d="M 655 362 L 1136 362" />
+        <!-- large sail group -->
+        <path d="M 672 352 C 674 268 716 200 806 174 C 812 236 810 300 800 352" />
+        <path d="M 712 352 C 718 276 764 212 862 190 C 866 248 862 304 852 352" />
+        <path d="M 762 352 C 772 288 822 234 918 220 C 920 268 916 314 908 352" />
+        <!-- small sail group -->
+        <path d="M 946 352 C 950 306 984 270 1044 258 C 1048 292 1046 324 1040 352" />
+        <path d="M 980 352 C 986 316 1016 290 1068 282 C 1072 308 1070 332 1064 352" />
+        <!-- shell ribs -->
+        <path d="M 700 352 C 702 285 730 225 790 195" />
+        <path d="M 745 352 C 750 292 786 235 845 208" />
+        <path d="M 795 352 C 803 300 840 255 895 238" />
+        <path d="M 962 352 C 966 315 992 288 1030 276" />
+        <path d="M 1000 352 C 1006 322 1030 302 1058 294" />
+        <!-- the crew joins the scene: detective with book -->
+        <path d="M 595 330 a 6.5 6.5 0 1 0 0.1 0 M 600 326 a 3 3 0 1 0 0.1 0 M 595 343 L 595 350 M 588 366 L 595 350 L 602 366 L 588 366 M 592 366 L 592 372 M 598 366 L 598 372 M 600 351 L 608 348 L 608 355 L 600 358 L 600 351" />
+        <!-- detective with magnifier -->
+        <path d="M 624 326 a 6.5 6.5 0 1 0 0.1 0 M 624 339 L 624 358 M 624 358 L 619 372 M 624 358 L 629 372 M 624 344 L 616 351 M 624 344 L 632 348 M 632 348 L 635 346 M 639 342 a 4.5 4.5 0 1 0 0.1 0" />
+        <!-- the golden retriever, watching the boat -->
+        <path d="M 1167 315 a 7.5 7.5 0 1 0 0.1 0 M 1159.5 321 L 1152 323 L 1159 326 M 1172 316 C 1176 312 1180 315 1177 320 M 1163 329 C 1160 337 1159 345 1159 353 M 1159 353 L 1159 372 M 1166 353 L 1166 372 M 1171 328 C 1179 334 1184 343 1185 353 C 1186 361 1183 368 1179 372 M 1184 364 C 1191 361 1195 353 1192 346 M 1160 332 L 1170 334 M 1165 336 L 1165 339 M 1165 341 a 2 2 0 1 0 0.1 0" />
+        <!-- sailboat (sails away as you reach the end) -->
+        <g id="sailboat">
+          <path d="M 1108 340 L 1146 340 L 1138 348 L 1114 348 L 1108 340 M 1126 340 L 1126 310 M 1126 312 L 1144 336 L 1128 336 M 1124 316 L 1112 336 L 1123 336" />
+          <path d="M 1104 354 L 1150 354" />
+        </g>
+        <!-- water line and reflections -->
+        <path d="M 20 372 L 1180 372" />
+        <path d="M 150 398 L 280 398 M 420 404 L 520 404 M 660 400 L 800 400 M 930 396 L 1060 396 M 1090 404 L 1160 404" />
+        <path d="M 90 388 L 150 388 M 320 390 L 380 390 M 560 392 L 640 392 M 840 388 L 900 388" />
+      </svg>
+      <p class="finale-cap">No mystery is solved until it's verified. 🐾</p>
+    </div>
     </div>
   </section>
 
-  <footer class="foot">
-    <img src="assets/logo.jpg" alt="Workshop logo" />
+  <footer class="foot" id="contact">
     <div class="t">Who Verifies the Agents?</div>
-    <div class="s">NeurIPS 2026 · Sydney, Australia</div>
+    <div class="s">NeurIPS 2026 Workshop · Sydney, Australia · Dec 11 or 12, 2026</div>
+    <p class="reach">Questions about the workshop, submissions, or sponsorship?<br/>
+      <a href="mailto:verify-agents-workshop@googlegroups.com">verify-agents-workshop@googlegroups.com</a></p>
+    <p class="soc"><a href="https://x.com/veri_agents">@veri_agents on X</a> · <a href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/Verify-Agents">OpenReview</a></p>
   </footer>
+
+  <script>
+    (function () {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Fade-up section reveals
+      var revealed = document.querySelectorAll('.reveal');
+      if (!reduce && 'IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.12 });
+        revealed.forEach(function (el) { io.observe(el); });
+      } else {
+        revealed.forEach(function (el) { el.classList.add('on'); });
+      }
+
+      // Scroll-driven line drawing of the harbour finale
+      var svg = document.getElementById('finale');
+      var boat = document.getElementById('sailboat');
+      var paths = Array.prototype.slice.call(svg.querySelectorAll('path'));
+      var lens = paths.map(function (p) { return p.getTotalLength(); });
+      var total = lens.reduce(function (a, b) { return a + b; }, 0);
+
+      if (reduce) return; // leave the drawing fully visible
+
+      paths.forEach(function (p, i) {
+        p.style.strokeDasharray = lens[i] + ' ' + lens[i];
+        p.style.strokeDashoffset = lens[i];
+      });
+
+      var ticking = false;
+      function draw() {
+        ticking = false;
+        var sec = document.getElementById('finale-sec');
+        var sr = sec.getBoundingClientRect();
+        var vh = window.innerHeight;
+        // drawing begins the moment the section enters the viewport, keeps
+        // going while the stage is pinned, and the ship takes the last stretch
+        var stage = document.querySelector('.finale-pin');
+        var pinSpan = sr.height - stage.offsetHeight;
+        var y = vh - sr.top;
+        // first strokes appear once the canvas reaches mid-viewport,
+        // then the drawing runs through 80% of the pinned stretch
+        var startY = vh * 0.5;
+        var drawSpan = vh * 0.28 + pinSpan * 0.8;
+        var progress = Math.max(0, Math.min(1, (y - startY) / drawSpan));
+        var drawn = progress * total;
+        for (var i = 0; i < paths.length; i++) {
+          var take = Math.max(0, Math.min(lens[i], drawn));
+          paths[i].style.strokeDashoffset = lens[i] - take;
+          drawn -= take;
+        }
+        var sail = Math.max(0, Math.min(1, (y - startY - drawSpan * 0.96) / (pinSpan * 0.2)));
+        var r = svg.getBoundingClientRect();
+        var scale = r.width / 1200;
+        var toEdge = (window.innerWidth - r.left) / scale - 1104 + 30; // svg-units from the boat to past the window edge
+        boat.setAttribute('transform', 'translate(' + (sail * toEdge) + ' ' + (-sail * 10) + ')');
+      }
+      function onScroll() {
+        if (!ticking) { ticking = true; window.requestAnimationFrame(draw); }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      draw();
+    })();
+  </script>
 </body>
 </html>
