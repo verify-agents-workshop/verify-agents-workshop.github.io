@@ -32,19 +32,13 @@
       position: relative;
       height: 100vh; height: 100svh;
       min-height: 560px;
-      background: url(assets/hero-classic.png) center bottom / cover no-repeat;
+      background: url(assets/hero-classic2.png) center bottom / cover no-repeat;
     }
     .hero-side::before {
       content: ""; position: absolute; inset: 0;
       background: linear-gradient(90deg, rgba(250,245,234,0.14) 0%, rgba(250,245,234,0.05) 30%, rgba(250,245,234,0) 48%);
       mask-image: linear-gradient(180deg, #000 0%, #000 62%, rgba(0,0,0,0) 86%);
       -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 62%, rgba(0,0,0,0) 86%);
-    }
-    /* temporary until the classic hero bakes its own navy dusk bottom */
-    .hero-side::after {
-      content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 150px;
-      background: linear-gradient(180deg, rgba(30,47,85,0) 0%, rgba(30,47,85,0.5) 55%, #1e2f55 100%);
-      pointer-events: none;
     }
     .hs-inner {
       position: relative; z-index: 2; max-width: 1180px; margin: 0 auto; padding: 0 28px;
@@ -71,10 +65,10 @@
     }
     .hs-meta span {
       display: inline-flex; align-items: center; gap: 9px;
-      color: #fdf8ee; text-shadow: 0 1px 10px rgba(19,30,55,0.7);
+      color: #223052; text-shadow: 0 1px 10px rgba(250,245,234,0.8);
     }
-    .hs-meta svg { flex: none; color: #d4a94c; filter: drop-shadow(0 1px 4px rgba(19,30,55,0.5)); }
-    .hs-deadline { font-weight: 600; font-size: 0.92rem; color: #ccd6ea; text-shadow: 0 1px 8px rgba(19,30,55,0.6); margin: 0; }
+    .hs-meta svg { flex: none; color: #8f6c1e; }
+    .hs-deadline { font-weight: 600; font-size: 0.92rem; color: #e8edf8; text-shadow: 0 1px 8px rgba(13,33,70,0.8); margin: 0; }
     .scroll-cue {
       position: absolute; z-index: 3; left: 50%; bottom: 18px; transform: translateX(-50%);
       color: #f0e9dc; opacity: 0.92;
@@ -102,7 +96,7 @@
     .btn-s { background: var(--sunset); color: #fff; box-shadow: 0 6px 0 #8f6c1e; }
     .btn-g { background: var(--green); color: #fff; box-shadow: 0 6px 0 #1c2740; }
     section { padding: 60px 0; }
-    .night { background: #1e2f55; color: #d6ddeb; }
+    .night { background: #0e2245; color: #d6ddeb; }
     .night section { padding: 42px 0; }
     .night .stitle { color: #f6f0e4; }
     .night .ov { color: #ccd5e6; }
@@ -111,7 +105,7 @@
     .night .cc-affil, .night .cc-bio { color: #9fb0cc; }
     .dawn {
       height: 300px;
-      background: linear-gradient(180deg, #1e2f55 0%, #3c4d74 36%, #c2b085 68%, #eee3c6 86%, var(--cream) 100%);
+      background: linear-gradient(180deg, #0e2245 0%, #3c4d74 36%, #c2b085 68%, #eee3c6 86%, var(--cream) 100%);
     }
     section.tinted {
       background: linear-gradient(180deg, rgba(241,234,214,0) 0%, #f1ead6 22%, #f1ead6 78%, rgba(241,234,214,0) 100%);
