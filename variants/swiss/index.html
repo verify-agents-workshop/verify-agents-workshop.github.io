@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Swiss Minimal — Who Verifies the Agents?</title>
+  <title>Swiss Minimal · Who Verifies the Agents?</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../crew/assets/fav-32.png" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%F0%9F%90%BE%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -115,6 +117,16 @@
     .cc-note { font-style: italic; font-size: 0.9rem; color: #55555c; margin-top: 16px; text-align: center; }
     .cc-links { margin: 0 0 34px; }
     .cc-links a { margin-right: 26px; font-weight: 600; }
+  
+    .hl { padding: 1px 8px; border: 1.5px solid #3b5bdb; border-radius: 9px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+    .fin-lite { padding: 70px 0 30px; }
+    .fin-wrap { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+    .fin-svg { width: 100%; height: auto; display: block; }
+    .fin-svg path { fill: none; stroke: #111111; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; opacity: 0.9; }
+
+    section.rv { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+    section.rv.on { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { section.rv { opacity: 1; transform: none; transition: none; } }
   </style>
 </head>
 <body>
@@ -138,7 +150,7 @@
       <span class="label">NeurIPS 2026 Workshop</span>
       <h1>Who Verifies the Agents?</h1>
       <p class="sub">Toward Reliable Agent Development</p>
-      <p class="lede">Verification is the bottleneck between fragile prototypes and scalable, reliable agent systems. This workshop convenes researchers and practitioners to make verification a first-class discipline in agent development.</p>
+      <p class="lede">Verification is the bottleneck between fragile prototypes and scalable, reliable agent systems. This workshop convenes researchers and practitioners to make verification a first-class discipline.</p>
       <p class="cc-links"><a href="#cfp">Call for Papers →</a><a href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/Verify-Agents">Submit on OpenReview →</a></p>
       <div class="meta">
         <div class="meta-item"><span class="k">Location</span><span class="v">Sydney, Australia</span></div>
@@ -153,13 +165,39 @@
       <div class="sec-head">
         <h2>Overview</h2>
         <div class="sec-body">
-          <p>Despite remarkable advances in agents that reason, plan, and operate in open-ended environments, reliably verifying their improvements remains an unsolved challenge. Verification is the ability to determine whether a change to an agent (such as a prompt update, a new tool integration, or a modification to its reasoning process) produces a genuine improvement in capability or reliability.</p>
-          <p>Verification works in controlled settings (formal math, competitive programming, coding) but remains shallow and noisy for general agentic tasks, causing performance to plateau or silently regress during development. This workshop convenes researchers to tackle verification as a first-class research problem for reliable agent development.</p>
+          <p>Agents that reason, plan, and act in open-ended environments are advancing at a remarkable pace. Yet a basic question has become surprisingly hard to answer: when we update an agent's prompt, add a new tool, or change its reasoning strategy, <span class="hl">did it actually get better?</span></p>
+          <p>Answering that question is <span class="hl">verification</span>. Today it works well only where ground truth is clear, such as formal mathematics, competitive programming, and software tests. For general agentic tasks, verification signals remain shallow and noisy: improvements plateau, regressions slip through silently, and development turns into guesswork.</p>
+        <p>This workshop treats verification as a <span class="hl">first-class research problem</span>. We bring together researchers and practitioners working on robust verifiers, environment-grounded evaluation, and richer verification signals to lay the foundations of reliable agent development.</p>
         </div>
       </div>
     </section>
   </div>
 
+
+  <div class="wrap">
+    <section id="speakers">
+      <div class="sec-head">
+        <h2>Confirmed Speakers &amp; Panelists</h2>
+        <div class="sec-body" style="max-width:none;"><div class="cc-people cc-people-sp"><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/pin-yu-chen.jpg" alt="Pin-Yu Chen" /><div class="cc-name"><a href="https://sites.google.com/site/pinyuchenpage/home" target="_blank" rel="noopener">Pin-Yu Chen</a></div><div class="cc-affil">IBM</div><p class="cc-bio">Trusted AI at IBM Research; PI at the MIT–IBM Watson AI Lab.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/azalia-mirhoseini.jpg" alt="Azalia Mirhoseini" /><div class="cc-name"><a href="https://www.azaliamirhoseini.com/" target="_blank" rel="noopener">Azalia Mirhoseini</a></div><div class="cc-affil">Stanford · Ricursive Intelligence</div><p class="cc-bio">Scalable, self-improving AI; AlphaChip and Mixture-of-Experts.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/seshendra-nalla.jpg" alt="Seshendra Nalla" /><div class="cc-name"><a href="https://www.linkedin.com/in/seshendranalla/" target="_blank" rel="noopener">Seshendra Nalla</a></div><div class="cc-affil">Datadog</div><p class="cc-bio">VP of Observability Data Platform; contributor to BitsEvolve.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/dhaval-patel.jpg" alt="Dhaval Patel" /><div class="cc-name"><a href="https://www.linkedin.com/in/dhaval-patel-2b287033" target="_blank" rel="noopener">Dhaval Patel</a></div><div class="cc-affil">IBM Research</div><p class="cc-bio">Time-series foundation models and LLM agents at IBM T.J. Watson.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/ion-stoica.jpg" alt="Ion Stoica" /><div class="cc-name"><a href="https://people.eecs.berkeley.edu/~istoica/" target="_blank" rel="noopener">Ion Stoica</a></div><div class="cc-affil">UC Berkeley · Anyscale · Databricks</div><p class="cc-bio">Systems for AI at Berkeley: Ray, Spark, vLLM, Chatbot Arena.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/yu-su.jpg" alt="Yu Su" /><div class="cc-name"><a href="https://ysu1989.github.io/" target="_blank" rel="noopener">Yu Su</a></div><div class="cc-affil">Ohio State · NeoCognition</div><p class="cc-bio">Agent reliability and evaluation: Mind2Web, MMMU, SeeAct.</p></div></div></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap">
+    <section id="dates">
+      <div class="sec-head">
+        <h2>Important Dates</h2>
+        <div class="sec-body">
+          <div class="dates">
+            <div class="drow"><span class="k">Submission deadline</span><span class="v">August 29, 2026</span></div>
+            <div class="drow"><span class="k">Author notification</span><span class="v">September 29, 2026</span></div>
+            <div class="drow"><span class="k">Workshop day</span><span class="v">Dec 11 or 12, 2026</span></div>
+          </div>
+          <p class="cc-note">The exact workshop day (Friday, Dec 11 or Saturday, Dec 12) will be confirmed once assigned by NeurIPS. All deadlines are 23:59 Anywhere on Earth (AoE) unless otherwise noted.</p>
+        </div>
+      </div>
+    </section>
+  </div>
 
   <div class="wrap">
     <section id="cfp">
@@ -214,31 +252,6 @@
   </div>
 
   <div class="wrap">
-    <section id="dates">
-      <div class="sec-head">
-        <h2>Important Dates</h2>
-        <div class="sec-body">
-          <div class="dates">
-            <div class="drow"><span class="k">Submission deadline</span><span class="v">August 29, 2026</span></div>
-            <div class="drow"><span class="k">Author notification</span><span class="v">September 29, 2026</span></div>
-            <div class="drow"><span class="k">Workshop day</span><span class="v">Dec 11 or 12, 2026</span></div>
-          </div>
-          <p class="cc-note">The exact workshop day (Friday, Dec 11 or Saturday, Dec 12) will be confirmed once assigned by NeurIPS. All deadlines are 23:59 Anywhere on Earth (AoE) unless otherwise noted.</p>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <div class="wrap">
-    <section id="speakers">
-      <div class="sec-head">
-        <h2>Confirmed Speakers &amp; Panelists</h2>
-        <div class="sec-body" style="max-width:none;"><div class="cc-people cc-people-sp"><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/pin-yu-chen.jpg" alt="Pin-Yu Chen" /><div class="cc-name"><a href="https://sites.google.com/site/pinyuchenpage/home" target="_blank" rel="noopener">Pin-Yu Chen</a></div><div class="cc-affil">IBM</div><p class="cc-bio">Principal Research Scientist, Trusted AI Group; PI at the MIT–IBM Watson AI Lab. AI safety, robustness, and trustworthiness.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/azalia-mirhoseini.jpg" alt="Azalia Mirhoseini" /><div class="cc-name"><a href="https://www.azaliamirhoseini.com/" target="_blank" rel="noopener">Azalia Mirhoseini</a></div><div class="cc-affil">Stanford University · Ricursive Intelligence</div><p class="cc-bio">Assistant Professor at Stanford. Scalable, self-improving AI; Mixture-of-Experts and AlphaChip.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/seshendra-nalla.jpg" alt="Seshendra Nalla" /><div class="cc-name"><a href="https://www.linkedin.com/in/seshendranalla/" target="_blank" rel="noopener">Seshendra Nalla</a></div><div class="cc-affil">Datadog</div><p class="cc-bio">VP of Observability Data Platform; core contributor to BitsEvolve, a self-optimizing code system.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/ion-stoica.jpg" alt="Ion Stoica" /><div class="cc-name"><a href="https://people.eecs.berkeley.edu/~istoica/" target="_blank" rel="noopener">Ion Stoica</a></div><div class="cc-affil">UC Berkeley · Anyscale · Databricks</div><p class="cc-bio">Professor at UC Berkeley; Executive Chairman of Databricks and Anyscale. AI systems: SkyPilot, vLLM, Chatbot Arena, Ray, Spark.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/yu-su.jpg" alt="Yu Su" /><div class="cc-name"><a href="https://ysu1989.github.io/" target="_blank" rel="noopener">Yu Su</a></div><div class="cc-affil">Ohio State University · NeoCognition</div><p class="cc-bio">Associate Professor and 2025 Sloan Fellow. Agent reliability and evaluation: Mind2Web, MMMU, SeeAct.</p></div></div></div>
-      </div>
-    </section>
-  </div>
-
-  <div class="wrap">
     <section id="organizers">
       <div class="sec-head">
         <h2>Organizing Committee</h2>
@@ -257,10 +270,97 @@
   </div>
 
   <div class="wrap">
-    <footer class="foot">
+      <section class="fin-lite">
+    <div class="fin-wrap">
+      <svg class="fin-svg" viewBox="0 0 1200 430" aria-label="Line drawing of Sydney Harbour">
+        <!-- clouds -->
+        <path d="M 142 100 Q 150 80 174 82 Q 184 64 210 68 Q 234 62 242 80 Q 262 80 256 98 Q 200 104 142 100" />
+        <path d="M 396 66 Q 404 50 422 53 Q 430 40 450 45 Q 468 42 472 58 Q 484 60 478 70 Q 436 74 396 66" />
+        <!-- sun with rays -->
+        <path d="M 1080 96 a 26 26 0 1 0 0.1 0" />
+        <path d="M 1080 84 L 1080 70 M 1107 95 L 1117 85 M 1118 122 L 1132 122 M 1053 95 L 1043 85 M 1042 122 L 1028 122" />
+        <!-- birds -->
+        <path d="M 664 118 Q 673 108 682 118 Q 691 108 700 118 M 726 96 Q 734 87 742 96 Q 750 87 758 96 M 622 84 Q 629 76 636 84 Q 643 76 650 84" />
+        <!-- sparkles -->
+        <path d="M 980 62 Q 982 70 990 72 Q 982 74 980 82 Q 978 74 970 72 Q 978 70 980 62" />
+        <path d="M 880 150 Q 881 156 887 157 Q 881 158 880 164 Q 879 158 873 157 Q 879 156 880 150" />
+        <path d="M 1150 56 Q 1151 62 1157 63 Q 1151 64 1150 70 Q 1149 64 1143 63 Q 1149 62 1150 56" />
+        <!-- Harbour Bridge: outer arch -->
+        <path d="M 70 372 Q 315 96 560 372" />
+        <!-- inner arch -->
+        <path d="M 100 372 Q 315 148 530 372" />
+        <!-- lattice bracing between the arches -->
+        <path d="M 150 297 L 165 315 L 180 276 L 195 295 L 210 259 L 225 280 L 240 247 L 255 269 L 270 239 L 285 262 L 300 234 L 315 260 L 330 235 L 345 262 L 360 238 L 375 268 L 390 247 L 405 279 L 420 259 L 435 295 L 450 276 L 465 315 L 480 297" />
+        <!-- deck -->
+        <path d="M 42 315 L 588 315 M 42 326 L 588 326" />
+        <!-- deck railing -->
+        <path d="M 60 305 L 570 305 M 90 305 L 90 315 M 130 305 L 130 315 M 170 305 L 170 315 M 210 305 L 210 315 M 250 305 L 250 315 M 290 305 L 290 315 M 330 305 L 330 315 M 370 305 L 370 315 M 410 305 L 410 315 M 450 305 L 450 315 M 490 305 L 490 315 M 530 305 L 530 315" />
+        <!-- hangers -->
+        <path d="M 170 285 L 170 315 M 230 252 L 230 315 M 290 237 L 290 315 M 340 234 L 340 315 M 400 246 L 400 315 M 460 276 L 460 315" />
+        <!-- pylons -->
+        <path d="M 58 372 L 58 296 L 66 288 L 88 288 L 96 296 L 96 372 M 66 288 L 66 278 L 74 278 L 74 288 M 80 288 L 80 278 L 88 278 L 88 288" />
+        <path d="M 534 372 L 534 296 L 542 288 L 564 288 L 572 296 L 572 372 M 542 288 L 542 278 L 550 278 L 550 288 M 556 288 L 556 278 L 564 278 L 564 288" />
+        <!-- pylon flags -->
+        <path d="M 70 278 L 70 264 L 80 267 L 70 270 M 546 278 L 546 264 L 556 267 L 546 270" />
+        <!-- ferry passing under the bridge -->
+        <path d="M 246 370 L 254 354 L 386 354 L 394 370 L 246 370" />
+        <path d="M 270 354 L 270 342 L 370 342 L 370 354" />
+        <path d="M 280 348 L 288 348 M 298 348 L 306 348 M 316 348 L 324 348 M 334 348 L 342 348 M 352 348 L 360 348" />
+        <path d="M 300 342 L 300 334 L 342 334 L 342 342 M 320 334 L 320 328 L 328 330" />
+        <!-- ferry wake -->
+        <path d="M 206 378 L 242 378 M 398 378 L 436 378" />
+        <!-- Opera House: podium and steps -->
+        <path d="M 640 372 L 648 352 L 1142 352 L 1150 372" />
+        <path d="M 655 362 L 1136 362" />
+        <!-- large sail group -->
+        <path d="M 672 352 C 674 268 716 200 806 174 C 812 236 810 300 800 352" />
+        <path d="M 712 352 C 718 276 764 212 862 190 C 866 248 862 304 852 352" />
+        <path d="M 762 352 C 772 288 822 234 918 220 C 920 268 916 314 908 352" />
+        <!-- small sail group -->
+        <path d="M 946 352 C 950 306 984 270 1044 258 C 1048 292 1046 324 1040 352" />
+        <path d="M 980 352 C 986 316 1016 290 1068 282 C 1072 308 1070 332 1064 352" />
+        <!-- shell ribs -->
+        <path d="M 700 352 C 702 285 730 225 790 195" />
+        <path d="M 745 352 C 750 292 786 235 845 208" />
+        <path d="M 795 352 C 803 300 840 255 895 238" />
+        <path d="M 962 352 C 966 315 992 288 1030 276" />
+        <path d="M 1000 352 C 1006 322 1030 302 1058 294" />
+        <!-- the crew joins the scene: detective with book -->
+        <path d="M 595 330 a 6.5 6.5 0 1 0 0.1 0 M 600 326 a 3 3 0 1 0 0.1 0 M 595 343 L 595 350 M 588 366 L 595 350 L 602 366 L 588 366 M 592 366 L 592 372 M 598 366 L 598 372 M 600 351 L 608 348 L 608 355 L 600 358 L 600 351" />
+        <!-- detective with magnifier -->
+        <path d="M 624 326 a 6.5 6.5 0 1 0 0.1 0 M 624 339 L 624 358 M 624 358 L 619 372 M 624 358 L 629 372 M 624 344 L 616 351 M 624 344 L 632 348 M 632 348 L 635 346 M 639 342 a 4.5 4.5 0 1 0 0.1 0" />
+        <!-- the golden retriever, watching the boat -->
+        <path d="M 1167 315 a 7.5 7.5 0 1 0 0.1 0 M 1159.5 321 L 1152 323 L 1159 326 M 1172 316 C 1176 312 1180 315 1177 320 M 1163 329 C 1160 337 1159 345 1159 353 M 1159 353 L 1159 372 M 1166 353 L 1166 372 M 1171 328 C 1179 334 1184 343 1185 353 C 1186 361 1183 368 1179 372 M 1184 364 C 1191 361 1195 353 1192 346 M 1160 332 L 1170 334 M 1165 336 L 1165 339 M 1165 341 a 2 2 0 1 0 0.1 0" />
+        <!-- sailboat (sails away as you reach the end) -->
+        <g>
+          <path d="M 1108 340 L 1146 340 L 1138 348 L 1114 348 L 1108 340 M 1126 340 L 1126 310 M 1126 312 L 1144 336 L 1128 336 M 1124 316 L 1112 336 L 1123 336" />
+          <path d="M 1104 354 L 1150 354" />
+        </g>
+        <!-- water line and reflections -->
+        <path d="M 20 372 L 1180 372" />
+        <path d="M 150 398 L 280 398 M 420 404 L 520 404 M 660 400 L 800 400 M 930 396 L 1060 396 M 1090 404 L 1160 404" />
+        <path d="M 90 388 L 150 388 M 320 390 L 380 390 M 560 392 L 640 392 M 840 388 L 900 388" />
+      </svg>
+    </div>
+  </section>
+
+  <footer class="foot">
       <div class="t">Who Verifies the Agents? Toward Reliable Agent Development</div>
       <div class="s">NeurIPS 2026 Workshop · Sydney, Australia</div>
     </footer>
   </div>
+
+  <script>
+    (function () {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var els = Array.prototype.slice.call(document.querySelectorAll('section'));
+      els.forEach(function (e) { e.classList.add('rv'); });
+      if (reduce || !('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('on'); }); return; }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('on'); io.unobserve(x.target); } });
+      }, { threshold: 0.08 });
+      els.forEach(function (e) { io.observe(e); });
+    })();
+  </script>
 </body>
 </html>

@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Field Notes — Who Verifies the Agents?</title>
+  <title>Field Notes · Who Verifies the Agents?</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../crew/assets/fav-32.png" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%F0%9F%90%BE%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -173,6 +175,16 @@
     .cc-note { font-style: italic; font-size: 0.9rem; color: #6e685c; margin-top: 16px; text-align: center; }
     .cc-links { margin: 0 0 34px; }
     .cc-links a { margin-right: 26px; font-weight: 600; }
+  
+    .hl { padding: 1px 8px; border: 1.5px solid #b8815f; border-radius: 9px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+    .fin-lite { padding: 70px 0 30px; }
+    .fin-wrap { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+    .fin-svg { width: 100%; height: auto; display: block; }
+    .fin-svg path { fill: none; stroke: #57604a; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; opacity: 0.9; }
+
+    section.rv { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+    section.rv.on { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { section.rv { opacity: 1; transform: none; transition: none; } }
   </style>
 </head>
 <body>
@@ -290,7 +302,7 @@
       <span class="eyebrow">NeurIPS 2026 Workshop</span>
       <h1>Who Verifies the Agents?</h1>
       <p class="sub">Toward Reliable Agent Development</p>
-      <p class="lede">Verification is the bottleneck between fragile prototypes and scalable, reliable agent systems. This workshop convenes researchers and practitioners to make verification a first-class discipline in agent development.</p>
+      <p class="lede">Verification is the bottleneck between fragile prototypes and scalable, reliable agent systems. This workshop convenes researchers and practitioners to make verification a first-class discipline.</p>
       <a class="btn" href="#cfp">Call for Papers</a> <a class="btn" href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/Verify-Agents">Submit on OpenReview</a>
       <p class="meta">Sydney, Australia · Dec 11 or 12, 2026 · Submissions due Aug 29, 2026 (AoE)</p>
     </div>
@@ -304,9 +316,41 @@
         <rect x="6" y="4" width="138" height="6" rx="3" fill="#a8b892" opacity="0.85" filter="url(#wc-brush)"/>
       </svg>
       <div class="page">
-        <p>Despite remarkable advances in agents that reason, plan, and operate in open-ended environments, reliably verifying their improvements remains an unsolved challenge. Verification is the ability to determine whether a change to an agent (such as a prompt update, a new tool integration, or a modification to its reasoning process) produces a genuine improvement in capability or reliability.</p>
-        <p>Verification works in controlled settings (formal math, competitive programming, coding) but remains shallow and noisy for general agentic tasks, causing performance to plateau or silently regress during development. This workshop convenes researchers to tackle verification as a first-class research problem for reliable agent development.</p>
+        <p>Agents that reason, plan, and act in open-ended environments are advancing at a remarkable pace. Yet a basic question has become surprisingly hard to answer: when we update an agent's prompt, add a new tool, or change its reasoning strategy, <span class="hl">did it actually get better?</span></p>
+        <p>Answering that question is <span class="hl">verification</span>. Today it works well only where ground truth is clear, such as formal mathematics, competitive programming, and software tests. For general agentic tasks, verification signals remain shallow and noisy: improvements plateau, regressions slip through silently, and development turns into guesswork.</p>
+        <p>This workshop treats verification as a <span class="hl">first-class research problem</span>. We bring together researchers and practitioners working on robust verifiers, environment-grounded evaluation, and richer verification signals to lay the foundations of reliable agent development.</p>
       </div>
+    </div>
+  </section>
+
+
+  <section id="speakers">
+    <div class="wrap">
+      <span class="entry-no">Field Entry 04</span>
+      <h2 class="stitle">Confirmed Speakers &amp; Panelists</h2>
+      <svg class="brush-under" viewBox="0 0 150 14" aria-hidden="true"><rect x="6" y="4" width="138" height="6" rx="3" fill="#a8b892" opacity="0.85" filter="url(#wc-brush)"/></svg>
+      <div class="cc-narrow"><div class="cc-people cc-people-sp"><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/pin-yu-chen.jpg" alt="Pin-Yu Chen" /><div class="cc-name"><a href="https://sites.google.com/site/pinyuchenpage/home" target="_blank" rel="noopener">Pin-Yu Chen</a></div><div class="cc-affil">IBM</div><p class="cc-bio">Trusted AI at IBM Research; PI at the MIT–IBM Watson AI Lab.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/azalia-mirhoseini.jpg" alt="Azalia Mirhoseini" /><div class="cc-name"><a href="https://www.azaliamirhoseini.com/" target="_blank" rel="noopener">Azalia Mirhoseini</a></div><div class="cc-affil">Stanford · Ricursive Intelligence</div><p class="cc-bio">Scalable, self-improving AI; AlphaChip and Mixture-of-Experts.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/seshendra-nalla.jpg" alt="Seshendra Nalla" /><div class="cc-name"><a href="https://www.linkedin.com/in/seshendranalla/" target="_blank" rel="noopener">Seshendra Nalla</a></div><div class="cc-affil">Datadog</div><p class="cc-bio">VP of Observability Data Platform; contributor to BitsEvolve.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/dhaval-patel.jpg" alt="Dhaval Patel" /><div class="cc-name"><a href="https://www.linkedin.com/in/dhaval-patel-2b287033" target="_blank" rel="noopener">Dhaval Patel</a></div><div class="cc-affil">IBM Research</div><p class="cc-bio">Time-series foundation models and LLM agents at IBM T.J. Watson.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/ion-stoica.jpg" alt="Ion Stoica" /><div class="cc-name"><a href="https://people.eecs.berkeley.edu/~istoica/" target="_blank" rel="noopener">Ion Stoica</a></div><div class="cc-affil">UC Berkeley · Anyscale · Databricks</div><p class="cc-bio">Systems for AI at Berkeley: Ray, Spark, vLLM, Chatbot Arena.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/yu-su.jpg" alt="Yu Su" /><div class="cc-name"><a href="https://ysu1989.github.io/" target="_blank" rel="noopener">Yu Su</a></div><div class="cc-affil">Ohio State · NeoCognition</div><p class="cc-bio">Agent reliability and evaluation: Mind2Web, MMMU, SeeAct.</p></div></div></div>
+    </div>
+  </section>
+
+  <section id="dates">
+    <svg class="wash" style="bottom:-60px; right:-220px; width:560px; height:440px;" viewBox="0 0 560 440" aria-hidden="true">
+      <g filter="url(#wc-soft)">
+        <ellipse cx="290" cy="220" rx="210" ry="140" fill="#a3bcc0" opacity="0.2"/>
+      </g>
+    </svg>
+    <div class="wrap">
+      <span class="entry-no">Field Entry 03</span>
+      <h2 class="stitle">Important Dates</h2>
+      <svg class="brush-under" viewBox="0 0 150 14" aria-hidden="true">
+        <rect x="6" y="4" width="138" height="6" rx="3" fill="#a3bcc0" opacity="0.9" filter="url(#wc-brush)"/>
+      </svg>
+      <div class="fieldlog">
+        <div class="frow"><span class="k">Submission deadline</span><span class="v">August 29, 2026</span></div>
+        <div class="frow"><span class="k">Author notification</span><span class="v">September 29, 2026</span></div>
+        <div class="frow"><span class="k">Workshop day</span><span class="v">Dec 11 or 12, 2026</span></div>
+      </div>
+      <p class="cc-note">The exact workshop day (Friday, Dec 11 or Saturday, Dec 12) will be confirmed once assigned by NeurIPS. All deadlines are 23:59 Anywhere on Earth (AoE) unless otherwise noted.</p>
     </div>
   </section>
 
@@ -359,37 +403,6 @@
 </ul>
 <p class="cc-p">Submissions and reviewing are handled through <a href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/Verify-Agents"><strong>OpenReview</strong></a>.</p>
 </div>
-    </div>
-  </section>
-
-  <section id="dates">
-    <svg class="wash" style="bottom:-60px; right:-220px; width:560px; height:440px;" viewBox="0 0 560 440" aria-hidden="true">
-      <g filter="url(#wc-soft)">
-        <ellipse cx="290" cy="220" rx="210" ry="140" fill="#a3bcc0" opacity="0.2"/>
-      </g>
-    </svg>
-    <div class="wrap">
-      <span class="entry-no">Field Entry 03</span>
-      <h2 class="stitle">Important Dates</h2>
-      <svg class="brush-under" viewBox="0 0 150 14" aria-hidden="true">
-        <rect x="6" y="4" width="138" height="6" rx="3" fill="#a3bcc0" opacity="0.9" filter="url(#wc-brush)"/>
-      </svg>
-      <div class="fieldlog">
-        <div class="frow"><span class="k">Submission deadline</span><span class="v">August 29, 2026</span></div>
-        <div class="frow"><span class="k">Author notification</span><span class="v">September 29, 2026</span></div>
-        <div class="frow"><span class="k">Workshop day</span><span class="v">Dec 11 or 12, 2026</span></div>
-      </div>
-      <p class="cc-note">The exact workshop day (Friday, Dec 11 or Saturday, Dec 12) will be confirmed once assigned by NeurIPS. All deadlines are 23:59 Anywhere on Earth (AoE) unless otherwise noted.</p>
-    </div>
-  </section>
-
-
-  <section id="speakers">
-    <div class="wrap">
-      <span class="entry-no">Field Entry 04</span>
-      <h2 class="stitle">Confirmed Speakers &amp; Panelists</h2>
-      <svg class="brush-under" viewBox="0 0 150 14" aria-hidden="true"><rect x="6" y="4" width="138" height="6" rx="3" fill="#a8b892" opacity="0.85" filter="url(#wc-brush)"/></svg>
-      <div class="cc-narrow"><div class="cc-people cc-people-sp"><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/pin-yu-chen.jpg" alt="Pin-Yu Chen" /><div class="cc-name"><a href="https://sites.google.com/site/pinyuchenpage/home" target="_blank" rel="noopener">Pin-Yu Chen</a></div><div class="cc-affil">IBM</div><p class="cc-bio">Principal Research Scientist, Trusted AI Group; PI at the MIT–IBM Watson AI Lab. AI safety, robustness, and trustworthiness.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/azalia-mirhoseini.jpg" alt="Azalia Mirhoseini" /><div class="cc-name"><a href="https://www.azaliamirhoseini.com/" target="_blank" rel="noopener">Azalia Mirhoseini</a></div><div class="cc-affil">Stanford University · Ricursive Intelligence</div><p class="cc-bio">Assistant Professor at Stanford. Scalable, self-improving AI; Mixture-of-Experts and AlphaChip.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/seshendra-nalla.jpg" alt="Seshendra Nalla" /><div class="cc-name"><a href="https://www.linkedin.com/in/seshendranalla/" target="_blank" rel="noopener">Seshendra Nalla</a></div><div class="cc-affil">Datadog</div><p class="cc-bio">VP of Observability Data Platform; core contributor to BitsEvolve, a self-optimizing code system.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/ion-stoica.jpg" alt="Ion Stoica" /><div class="cc-name"><a href="https://people.eecs.berkeley.edu/~istoica/" target="_blank" rel="noopener">Ion Stoica</a></div><div class="cc-affil">UC Berkeley · Anyscale · Databricks</div><p class="cc-bio">Professor at UC Berkeley; Executive Chairman of Databricks and Anyscale. AI systems: SkyPilot, vLLM, Chatbot Arena, Ray, Spark.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/yu-su.jpg" alt="Yu Su" /><div class="cc-name"><a href="https://ysu1989.github.io/" target="_blank" rel="noopener">Yu Su</a></div><div class="cc-affil">Ohio State University · NeoCognition</div><p class="cc-bio">Associate Professor and 2025 Sloan Fellow. Agent reliability and evaluation: Mind2Web, MMMU, SeeAct.</p></div></div></div>
     </div>
   </section>
 
@@ -475,9 +488,22 @@
   </svg>
   <div class="land-cap">Sydney Harbour · December 2026</div>
 
-  <footer class="foot">
+    <footer class="foot">
     <div class="t">Who Verifies the Agents?</div>
     <div class="s">NeurIPS 2026 Workshop · Sydney, Australia</div>
   </footer>
+
+  <script>
+    (function () {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var els = Array.prototype.slice.call(document.querySelectorAll('section'));
+      els.forEach(function (e) { e.classList.add('rv'); });
+      if (reduce || !('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('on'); }); return; }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('on'); io.unobserve(x.target); } });
+      }, { threshold: 0.08 });
+      els.forEach(function (e) { io.observe(e); });
+    })();
+  </script>
 </body>
 </html>
