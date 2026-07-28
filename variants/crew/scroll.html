@@ -32,6 +32,8 @@
     .hero-side::before {
       content: ""; position: absolute; inset: 0;
       background: linear-gradient(90deg, rgba(253,246,233,0.14) 0%, rgba(253,246,233,0.05) 30%, rgba(253,246,233,0) 48%);
+      mask-image: linear-gradient(180deg, #000 0%, #000 62%, rgba(0,0,0,0) 86%);
+      -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 62%, rgba(0,0,0,0) 86%);
     }
     .hs-inner {
       position: relative; z-index: 2; max-width: 1180px; margin: 0 auto; padding: 0 28px;
