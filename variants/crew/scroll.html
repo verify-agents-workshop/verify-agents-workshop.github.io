@@ -84,6 +84,7 @@
     .btn-g { background: var(--green); color: #fff; box-shadow: 0 6px 0 #497040; }
     section { padding: 60px 0; }
     .night { background: #2b263d; color: #ddd4ea; }
+    .night section { padding: 42px 0; }
     .night .stitle { color: #f6f0e4; }
     .night .ov { color: #d9d1e6; }
     .night a { color: #8fd0ca; }
@@ -125,10 +126,27 @@
     .cc-center { text-align: center; }
     .cc-email a { font-weight: 700; font-size: 1.05rem; }
     .cc-note { font-style: italic; font-size: 0.9rem; color: var(--soft); margin-top: 16px; text-align: center; }
-    .finale-sec { padding: 60px 0 70px; background: var(--cream); overflow: hidden; }
-    .finale-wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; text-align: center; }
+    #speakers .cc-narrow { max-width: 1010px; }
+    #speakers .cc-people { gap: 44px 40px; margin-top: 40px; }
+    #speakers .cc-people-sp { max-width: none; }
+    #speakers .cc-person { width: 252px; background: none; border: none; box-shadow: none; padding: 0; }
+    #speakers .cc-avatar { width: 138px; height: 138px; border: 3px solid #3aa6a0; box-shadow: 0 0 0 6px rgba(143,208,202,0.13); margin-bottom: 16px; }
+    #speakers .cc-name { font-family: var(--disp); font-size: 1.14rem; color: #f6f0e4; }
+    #speakers .cc-affil { font-size: 0.87rem; }
+    #speakers .cc-bio { font-size: 0.86rem; }
+    #organizers .cc-narrow { max-width: 1040px; }
+    #organizers .cc-people { gap: 38px 32px; margin-top: 40px; }
+    #organizers .cc-person { width: 220px; background: none; border: none; box-shadow: none; padding: 0; }
+    #organizers .cc-avatar { width: 118px; height: 118px; margin-bottom: 12px; }
+    #organizers .cc-name { font-family: var(--disp); font-size: 1.06rem; }
+    .finale-sec { height: 280vh; height: 280svh; position: relative; background: var(--cream); }
+    .finale-pin {
+      position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .finale-wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; text-align: center; width: 100%; }
     .finale-svg { width: 100%; height: auto; display: block; overflow: visible; }
-    .finale-svg path { fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; opacity: 0.88; }
+    .finale-svg path { fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; opacity: 0.88; }
     .finale-cap { font-family: var(--disp); font-weight: 700; font-size: 1.15rem; color: var(--soft); margin: 26px 0 0; }
     footer.foot { background: var(--purple); color: #e8e2f4; text-align: center; padding: 54px 24px; }
     footer.foot .t { font-family: var(--disp); font-weight: 800; font-size: 1.5rem; color: #fff; }
@@ -176,7 +194,7 @@
     <div class="wrap reveal">
       <h2 class="stitle">Confirmed Speakers &amp; Panelists</h2>
       <svg class="divider" viewBox="0 0 190 26" aria-hidden="true"><g><circle cx="35" cy="13" r="6" fill="#d99a3d"/><circle cx="35" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="95" cy="13" r="6" fill="#d99a3d"/><circle cx="95" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/><circle cx="155" cy="13" r="6" fill="#d99a3d"/><circle cx="155" cy="13" r="9.5" fill="none" stroke="#3aa6a0" stroke-width="2.4" stroke-dasharray="3 4"/></g></svg>
-      <div class="cc-narrow"><div class="cc-people cc-people-sp"><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/pin-yu-chen.jpg" alt="Pin-Yu Chen" /><div class="cc-name"><a href="https://sites.google.com/site/pinyuchenpage/home" target="_blank" rel="noopener">Pin-Yu Chen</a></div><div class="cc-affil">IBM</div><p class="cc-bio">Principal Research Scientist, Trusted AI Group; PI at the MIT–IBM Watson AI Lab. AI safety, robustness, and trustworthiness.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/azalia-mirhoseini.jpg" alt="Azalia Mirhoseini" /><div class="cc-name"><a href="https://www.azaliamirhoseini.com/" target="_blank" rel="noopener">Azalia Mirhoseini</a></div><div class="cc-affil">Stanford University · Ricursive Intelligence</div><p class="cc-bio">Assistant Professor at Stanford. Scalable, self-improving AI; Mixture-of-Experts and AlphaChip.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/seshendra-nalla.jpg" alt="Seshendra Nalla" /><div class="cc-name"><a href="https://www.linkedin.com/in/seshendranalla/" target="_blank" rel="noopener">Seshendra Nalla</a></div><div class="cc-affil">Datadog</div><p class="cc-bio">VP of Observability Data Platform; core contributor to BitsEvolve, a self-optimizing code system.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/ion-stoica.jpg" alt="Ion Stoica" /><div class="cc-name"><a href="https://people.eecs.berkeley.edu/~istoica/" target="_blank" rel="noopener">Ion Stoica</a></div><div class="cc-affil">UC Berkeley · Anyscale · Databricks</div><p class="cc-bio">Professor at UC Berkeley; Executive Chairman of Databricks and Anyscale. AI systems: SkyPilot, vLLM, Chatbot Arena, Ray, Spark.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/yu-su.jpg" alt="Yu Su" /><div class="cc-name"><a href="https://ysu1989.github.io/" target="_blank" rel="noopener">Yu Su</a></div><div class="cc-affil">Ohio State University · NeoCognition</div><p class="cc-bio">Associate Professor and 2025 Sloan Fellow. Agent reliability and evaluation: Mind2Web, MMMU, SeeAct.</p></div></div></div>
+      <div class="cc-narrow"><div class="cc-people cc-people-sp"><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/pin-yu-chen.jpg" alt="Pin-Yu Chen" /><div class="cc-name"><a href="https://sites.google.com/site/pinyuchenpage/home" target="_blank" rel="noopener">Pin-Yu Chen</a></div><div class="cc-affil">IBM</div><p class="cc-bio">Trusted AI at IBM Research; PI at the MIT–IBM Watson AI Lab.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/azalia-mirhoseini.jpg" alt="Azalia Mirhoseini" /><div class="cc-name"><a href="https://www.azaliamirhoseini.com/" target="_blank" rel="noopener">Azalia Mirhoseini</a></div><div class="cc-affil">Stanford University · Ricursive Intelligence</div><p class="cc-bio">Scalable, self-improving AI at Stanford; AlphaChip and Mixture-of-Experts.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/seshendra-nalla.jpg" alt="Seshendra Nalla" /><div class="cc-name"><a href="https://www.linkedin.com/in/seshendranalla/" target="_blank" rel="noopener">Seshendra Nalla</a></div><div class="cc-affil">Datadog</div><p class="cc-bio">VP of Observability Data Platform; core contributor to the self-optimizing BitsEvolve.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/ion-stoica.jpg" alt="Ion Stoica" /><div class="cc-name"><a href="https://people.eecs.berkeley.edu/~istoica/" target="_blank" rel="noopener">Ion Stoica</a></div><div class="cc-affil">UC Berkeley · Anyscale · Databricks</div><p class="cc-bio">Systems for AI at Berkeley: Ray, Spark, vLLM, Chatbot Arena.</p></div><div class="cc-person"><img class="cc-avatar" src="../../assets/speakers/yu-su.jpg" alt="Yu Su" /><div class="cc-name"><a href="https://ysu1989.github.io/" target="_blank" rel="noopener">Yu Su</a></div><div class="cc-affil">Ohio State University · NeoCognition</div><p class="cc-bio">Agent reliability and evaluation: Mind2Web, MMMU, SeeAct. 2025 Sloan Fellow.</p></div></div></div>
     </div>
   </section>
   </div>
@@ -250,7 +268,8 @@
     </div>
   </section>
 
-  <section class="finale-sec">
+  <section class="finale-sec" id="finale-sec">
+    <div class="finale-pin">
     <div class="finale-wrap">
       <svg id="finale" class="finale-svg" viewBox="0 0 1200 430" aria-label="Line drawing of Sydney Harbour: the Harbour Bridge, a ferry, and the Opera House">
         <!-- clouds -->
@@ -317,11 +336,12 @@
       </svg>
       <p class="finale-cap">No mystery is solved until it's verified. 🐾</p>
     </div>
+    </div>
   </section>
 
   <footer class="foot" id="contact">
     <div class="t">Who Verifies the Agents?</div>
-    <div class="s">NeurIPS 2026 · Sydney, Australia · Dec 11 or 12, 2026</div>
+    <div class="s">NeurIPS 2026 Workshop · Sydney, Australia · Dec 11 or 12, 2026</div>
     <p class="reach">Questions about the workshop, submissions, or sponsorship?<br/>
       <a href="mailto:verify-agents-workshop@googlegroups.com">verify-agents-workshop@googlegroups.com</a></p>
     <p class="soc"><a href="https://x.com/veri_agents">@veri_agents on X</a> · <a href="https://openreview.net/group?id=NeurIPS.cc/2026/Workshop/Verify-Agents">OpenReview</a></p>
@@ -361,23 +381,23 @@
       var ticking = false;
       function draw() {
         ticking = false;
-        var r = svg.getBoundingClientRect();
+        var sec = document.getElementById('finale-sec');
+        var sr = sec.getBoundingClientRect();
         var vh = window.innerHeight;
-        // 0 when the drawing enters the bottom of the viewport,
-        // 1 shortly before the page bottom, so every stroke is seen drawing
-        var progress = (vh * 0.66 - r.top) / (vh * 0.20 + r.height * 0.45);
-        progress = Math.max(0, Math.min(1, progress));
+        // the stage pins while the user scrolls through the tall section;
+        // t runs 0 -> 1 across that pinned stretch
+        var t = -sr.top / (sr.height - vh);
+        t = Math.max(0, Math.min(1, t));
+        // drawing occupies the first 80% of the pinned scroll, the ship the rest
+        var progress = Math.min(1, t / 0.8);
         var drawn = progress * total;
         for (var i = 0; i < paths.length; i++) {
           var take = Math.max(0, Math.min(lens[i], drawn));
           paths[i].style.strokeDashoffset = lens[i] - take;
           drawn -= take;
         }
-        // once everything is drawn, the sailboat casts off on the last stretch of scroll
-        var doc = document.documentElement;
-        var remaining = doc.scrollHeight - (window.scrollY + vh);
-        var sail = 1 - Math.max(0, Math.min(1, remaining / 120));
-        if (progress < 1) sail = 0;
+        var sail = Math.max(0, Math.min(1, (t - 0.8) / 0.2));
+        var r = svg.getBoundingClientRect();
         var scale = r.width / 1200;
         var toEdge = (window.innerWidth - r.left) / scale - 1104 + 30; // svg-units from the boat to past the window edge
         boat.setAttribute('transform', 'translate(' + (sail * toEdge) + ' ' + (-sail * 10) + ')');
